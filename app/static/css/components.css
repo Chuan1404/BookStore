@@ -9,7 +9,7 @@
 .header__logo img {
     max-width: 100%;
 }
-/* ----------header---------- */
+/* ----------button---------- */
 .button {
     background-color: var(--main-cl);
     border-radius: var(--radius);
