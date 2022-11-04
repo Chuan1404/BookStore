@@ -1,0 +1,9 @@
+/* ----------cardbox---------- */
+.cardbox {
+    width: 2.5rem;
+    cursor: pointer;
+}
+.cardbox:hover svg {
+    fill: var(--main-cl);
+    transition: var(--t);
+}

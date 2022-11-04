@@ -1,5 +1,12 @@
 :root {
+    --main-cl: #ff6162;
     --main-bg: #00001d; 
     --text-cl: #ffffff;
-    --padding: 25px;
+    --border-cl: rgba(255,255,255,.1);
+
+
+    --padding: 2.5rem;
+    --radius: 10px;
+
+    --t: .2s
 }

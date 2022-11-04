@@ -1,4 +1,22 @@
+
+/* ----------header---------- */
 #header {
     background-color: var(--main-bg);
     padding: var(--padding) 0;
+    border-bottom: 1px solid var(--border-cl);
+}
+/* ----------header---------- */
+.button {
+    background-color: var(--main-cl);
+    border-radius: var(--radius);
+    padding: 1rem var(--padding);
+    border: 1px solid transparent;
+    transition: var(--t);
+
+}
+.button:hover {
+    background-color: transparent;
+    border-color: var(--main-cl);
+    color: var(--main-cl);
+
 }
