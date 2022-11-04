@@ -5,6 +5,10 @@
     padding: var(--padding) 0;
     border-bottom: 1px solid var(--border-cl);
 }
+
+.header__logo img {
+    max-width: 100%;
+}
 /* ----------header---------- */
 .button {
     background-color: var(--main-cl);
@@ -20,3 +24,13 @@
     color: var(--main-cl);
 
 }
+
+@media (max-width: 576px) {  }
+
+@media (max-width: 768px) {  }
+
+@media (max-width: 992px) {  }
+
+@media (max-width: 1200px) {  }
+
+@media (max-width: 1400px) {  }

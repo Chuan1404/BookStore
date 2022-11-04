@@ -3,6 +3,8 @@
     margin: 0;
     box-sizing: border-box;
     font-size: 2rem;
+
+    color: var(--text-cl);
 }
 
 html, body {
@@ -18,15 +20,17 @@ svg {
 }
 /* ----------button---------- */
 button {
-    color: white;
     border: none;
 }
 /* ----------input---------- */
 input {
     width: 100%;
-    color: white;
     background-color: transparent;
     border: 1px solid var(--border-cl);
     outline: none;
     padding: 1rem var(--padding);
+}
+/* ----------ul li---------- */
+ul {
+    list-style-type: none;
 }
