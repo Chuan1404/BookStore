@@ -8,8 +8,10 @@
     <title>{% block title %}Base{% endblock %}</title>
 
     <!-- css -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/libs/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/variable.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/reset.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/components.css')}}">
     <!-- js -->
     <script src="{{url_for('static', filename='js/bundle.min.js')}}"></script>
