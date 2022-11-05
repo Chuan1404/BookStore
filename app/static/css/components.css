@@ -1,84 +1,104 @@
-
 /* ----------header---------- */
 #header {
-    background-color: var(--main-bg);
-    padding: var(--padding) 0;
-    border-bottom: 1px solid var(--border-cl);
+  background-color: var(--main-bg);
+  padding: var(--padding) 0;
+  border-bottom: 1px solid var(--border-cl);
 }
 
 .header__logo img {
-    max-width: 100%;
+  max-width: 100%;
+}
+
+/* ----------footer---------- */
+#footer {
+  background-color: var(--main-ft);
+  padding: var(--padding) 0;
+}
+
+.footer__logo img {
+  max-width: 200px;
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.footer__text {
+  max-width: 550px;
 }
 /* ----------button---------- */
 .button {
-    background-color: var(--main-cl);
-    border-radius: var(--radius);
-    padding: 1rem var(--padding);
-    border: 1px solid transparent;
-    transition: var(--t);
-    white-space: nowrap;
+  background-color: var(--main-cl);
+  border-radius: var(--radius);
+  padding: 1rem var(--padding);
+  border: 1px solid transparent;
+  transition: var(--t);
+  white-space: nowrap;
 }
-.button:hover,.button.btn-transparent {
-    background-color: transparent;
-    border-color: var(--main-cl);
-    color: var(--main-cl);
-
+.button:hover,
+.button.btn-transparent {
+  background-color: transparent;
+  border-color: var(--main-cl);
+  color: var(--main-cl);
 }
 .button.white-border {
-    border-color: var(--text-cl);
-    color: var(--text-cl)
+  border-color: var(--text-cl);
+  color: var(--text-cl);
 }
 .button.btn-transparent:hover {
-    background-color: var(--main-cl);
-    color: var(--text-cl);
+  background-color: var(--main-cl);
+  color: var(--text-cl);
 }
 .button.btn-no-hover {
-    pointer-events: none;
+  pointer-events: none;
 }
 .button.white-border:hover {
-    border-color: var(--main-cl);
+  border-color: var(--main-cl);
 }
 /* ----------product---------- */
 .product {
-    border: 1px solid var(--border-cl);
+  border: 1px solid var(--border-cl);
 }
 .product__img {
-    min-height: 1px;
+  min-height: 1px;
 }
 .product__img .img {
-    overflow: hidden;
-    height: 40rem;
+  overflow: hidden;
+  height: 40rem;
 }
 .product__img .img img {
-    width: 100%;
+  width: 100%;
 }
 .product__img .btn-box {
-    background-color: var(--main-bg);
-    border-radius: 3rem;
-    transform: translate(-50%,-50%) scaleY(0);
-    transition: var(--t);
+  background-color: var(--main-bg);
+  border-radius: 3rem;
+  transform: translate(-50%, -50%) scaleY(0);
+  transition: var(--t);
 }
-.product:hover .btn-box{
-    transform: translate(-50%,-50%) scaleY(1);
+.product:hover .btn-box {
+  transform: translate(-50%, -50%) scaleY(1);
 }
 .product .price {
-    color: var(--main-cl);
-    font-weight: 700;
+  color: var(--main-cl);
+  font-weight: 700;
 }
 .product .subprice {
-    text-decoration: line-through;
-    vertical-align: text-top;
-    font-size: 1.5rem;
+  text-decoration: line-through;
+  vertical-align: text-top;
+  font-size: 1.5rem;
 }
 .product .description {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
-@media (max-width: 576px) {  }
+@media (max-width: 576px) {
+}
 
-@media (max-width: 768px) {  }
+@media (max-width: 768px) {
+}
 
-@media (max-width: 992px) {  }
+@media (max-width: 992px) {
+}
 
-@media (max-width: 1200px) {  }
+@media (max-width: 1200px) {
+}
 
-@media (max-width: 1400px) {  }
+@media (max-width: 1400px) {
+}

@@ -1,12 +1,12 @@
 :root {
-    --main-cl: #f03f41;
-    --main-bg: #00001d; 
-    --text-cl: #ffffff;
-    --border-cl: rgba(255,255,255,.1);
+  --main-cl: #f03f41;
+  --main-bg: #00001d;
+  --main-ft: #0c0c27;
+  --text-cl: #ffffff;
+  --border-cl: rgba(255, 255, 255, 0.1);
 
+  --padding: 2.5rem;
+  --radius: 5px;
 
-    --padding: 2.5rem;
-    --radius: 5px;
-
-    --t: .2s
+  --t: 0.2s;
 }
