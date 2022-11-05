@@ -24,12 +24,19 @@
     color: var(--main-cl);
 
 }
+.button.white-border {
+    border-color: var(--text-cl);
+    color: var(--text-cl)
+}
 .button.btn-transparent:hover {
     background-color: var(--main-cl);
     color: var(--text-cl);
 }
 .button.btn-no-hover {
     pointer-events: none;
+}
+.button.white-border:hover {
+    border-color: var(--main-cl);
 }
 /* ----------product---------- */
 .product {
@@ -43,7 +50,7 @@
     height: 40rem;
 }
 .product__img .img img {
-    
+    width: 100%;
 }
 .product__img .btn-box {
     background-color: var(--main-bg);
@@ -62,6 +69,9 @@
     text-decoration: line-through;
     vertical-align: text-top;
     font-size: 1.5rem;
+}
+.product .description {
+    font-size: 1.6rem;
 }
 @media (max-width: 576px) {  }
 

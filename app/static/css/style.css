@@ -3,6 +3,10 @@
     width: 2.5rem;
     cursor: pointer;
 }
+.cardbox svg {
+    width: 100%;
+    fill: var(--text-cl);
+}
 .cardbox:hover svg {
     fill: var(--main-cl);
     transition: var(--t);
