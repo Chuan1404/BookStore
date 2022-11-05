@@ -3,7 +3,6 @@
     margin: 0;
     box-sizing: border-box;
     font-size: 2rem;
-
     color: var(--text-cl);
 }
 
@@ -11,7 +10,19 @@ html, body {
     font-size: 62.5%;
     background-color: var(--main-bg);
 }
-
+/* ----------main---------- */
+main {
+    min-height: 100vh;
+}
+/* ----------svg---------- */
+a {
+    text-decoration: none;
+    color: var(--text-cl);
+    transition: var(--t);
+}
+a:hover {
+    color: var(--main-cl);
+}
 /* ----------svg---------- */
 svg {
     fill: white;
