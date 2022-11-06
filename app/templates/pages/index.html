@@ -1,4 +1,8 @@
-{% extends 'pages/base.html' %} {% block title %}Home{% endblock %} {% block content %}
+{% extends 'pages/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
 <main id="home page">
     <div class="container">
         <div class="row mt-5">
@@ -87,8 +91,8 @@
                         </li>
                     </ul>
                 </div>
-                <div class="home__shop--bottom row">
-                    <div class="product p-4 col-4">
+                <div class="home__shop--bottom grid">
+                    <div class="product p-4">
                         <div class="product__img position-relative">
                             <div class="img position-relative">
                                 <img src="https://bizweb.dktcdn.net/thumb/large/100/441/742/products/8fb425e1-d387-4070-9508-4f9ee0dc42e3.jpg?v=1654826957000"
@@ -378,7 +382,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="product p-4 col-4">
+                    <div class="product p-4">
                         <div class="product__img position-relative">
                             <div class="img position-relative">
                                 <img src="https://bizweb.dktcdn.net/thumb/large/100/441/742/products/8fb425e1-d387-4070-9508-4f9ee0dc42e3.jpg?v=1654826957000"
@@ -668,7 +672,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="product p-4 col-4">
+                    <div class="product p-4">
                         <div class="product__img position-relative">
                             <div class="img position-relative">
                                 <img src="https://bizweb.dktcdn.net/thumb/large/100/441/742/products/8fb425e1-d387-4070-9508-4f9ee0dc42e3.jpg?v=1654826957000"
@@ -958,7 +962,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="product p-4 col-4">
+                    <div class="product p-4">
                         <div class="product__img position-relative">
                             <div class="img position-relative">
                                 <img src="https://bizweb.dktcdn.net/thumb/large/100/441/742/products/8fb425e1-d387-4070-9508-4f9ee0dc42e3.jpg?v=1654826957000"
@@ -1254,6 +1258,10 @@
         </div>
     </div>
 </main>
+{% endblock %}
+
+{% block script %}
+<script type="module" src="{{url_for('static', filename='js/pages/index.js')}}"></script>
 {% endblock %}
 
 <!-- 
