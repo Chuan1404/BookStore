@@ -6,18 +6,19 @@
 }
 
 .header__logo img {
-  max-width: 100%;
+  max-width: 125px;
+  width: 100%;
 }
 
 /* ----------footer---------- */
 #footer {
-  background-color: var(--main-ft);
+  background-color: var(--main-bg2);
   padding: var(--padding) 0;
 }
 
 .footer__logo img {
   max-width: 200px;
-  width: 200px;
+  width:100%
 }
 
 .footer__logo {
@@ -56,6 +57,8 @@
 .button.white-border:hover {
   border-color: var(--main-cl);
 }
+/* ----------input---------- */
+
 /* ----------product---------- */
 .product {
   border: 1px solid var(--border-cl);
@@ -91,6 +94,7 @@
 .product .description {
   font-size: 1.6rem;
 }
+
 @media (max-width: 576px) {
 }
 
