@@ -1,6 +1,8 @@
 import sys
 from flask import Flask
 from dotenv import load_dotenv
+from flask_sqlalchemy import SQLAlchemy
+from urllib.parse import quote
 
 # load env file
 load_dotenv()
@@ -10,3 +12,6 @@ sys.path.append('./')
 
 # create app
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://admin:%s@localhost:3306/QuanLySach?charset=utf8mb4' % quote('Admin@123')
+
+db=SQLAlchemy(app=app)

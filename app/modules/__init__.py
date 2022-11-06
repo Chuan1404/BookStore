@@ -1,1 +1,2 @@
-print('This is module')
+from . import User
+print(User)
