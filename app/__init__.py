@@ -12,7 +12,7 @@ sys.path.append('./')
 
 # create app
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://admin:%s@localhost:3306/QuanLySach?charset=utf8mb4' % quote('Admin@123')
+app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://admin:%s@localhost:3306/quanlysach?charset=utf8mb4' % quote('Admin@123')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db=SQLAlchemy(app=app)

@@ -7,9 +7,13 @@
     width: 100%;
     fill: var(--text-cl);
 }
-.cardbox:hover svg {
+.cardbox:hover svg,.cardbox.active svg {
     fill: var(--main-cl);
     transition: var(--t);
+}
+.cardbox-parent {
+    /* use this class when use cardbox.active */
+    /* use for parrent */
 }
 
 @media (max-width: 576px) {  }

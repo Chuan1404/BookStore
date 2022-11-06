@@ -8,6 +8,11 @@ class User(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50), nullable=False)
 
+    def login(email, password):
+        pass
+    def logout():
+        pass
+
 class WarehouseManager(User):
     __tablename__='warehouse_manager'
 
