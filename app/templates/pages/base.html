@@ -1,36 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Base{% endblock %}</title>
 
     <!-- css -->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/libs/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/variable.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/reset.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/components.css')}}">
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/libs/bootstrap.min.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/variable.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/reset.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/style.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/components.css')}}"
+    />
 
     <!-- js -->
     <script src="{{url_for('static', filename='js/libs/bundle.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/libs/popper.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/libs/bootstrap.min.js')}}"></script>
-</head>
+  </head>
 
-<body>
-    {% include 'components/header.html' %}
-
-    {% block content %}
+  <body>
+    {% include 'components/header.html' %} {% block content %}
     <h1>Content here</h1>
-    {% endblock %}
+    {% endblock %} {% include 'components/footer.html' %}
+  </body>
 
-    {% include 'components/footer.html' %}
-</body>
-
-<script type="module" src="{{url_for('static', filename='js/main.js')}}"></script>
-{% block script %}{% endblock %}
-
+  <script
+    type="module"
+    src="{{url_for('static', filename='js/main.js')}}"
+  ></script>
+  {% block script %}{% endblock %}
 </html>
