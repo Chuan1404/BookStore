@@ -57,12 +57,11 @@
 .button.white-border:hover {
   border-color: var(--main-cl);
 }
+
 /* ----------input---------- */
 input.input-auth {
   background-color: white;
-  color: black;
   margin-bottom: 20px;
-  font-size: 18px;
   height: 40px;
 }
 /* ----------login---------- */
@@ -71,12 +70,10 @@ input.input-auth {
   margin-bottom: 30px;
 }
 .login-text h2 {
-  color: black;
   font-size: 30px;
 }
 .login-text p {
   color: #666;
-  font-size: 15px;
 }
 /* ----------product---------- */
 .product {

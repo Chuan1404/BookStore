@@ -34,6 +34,18 @@ svg {
 button {
   border: none;
 }
+.btn-org-to-white {
+  background-color: var(--btn-white-to-org);
+  color: black;
+  font-size: 16px;
+  height: 40px;
+  padding: 8px 25px;
+}
+.btn-org-to-white:hover {
+  background-color: var(--main-cl);
+  color: white;
+  transition: 0.2s;
+}
 /* ----------input---------- */
 input {
   width: 100%;
@@ -47,8 +59,26 @@ ul {
   list-style-type: none;
 }
 /* ----------form---------- */
-form.background-white {
+form.form-background-white {
   background-color: var(--form-auth);
   padding: 37px 40px;
   margin: 100px;
+}
+
+/* ----------margin---------- */
+.margin-top-bot-20px {
+  margin: 20px 0;
+}
+/* ---------font-size-------- */
+.font-size-16px {
+  font-size: 16px;
+}
+/* ---------color-black-------- */
+.color-black {
+  color: black;
+}
+/* -----space-between---------- */
+.space-between {
+  display: flex;
+  justify-content: space-between;
 }
