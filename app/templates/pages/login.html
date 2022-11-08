@@ -1,5 +1,20 @@
 {% extends 'pages/base.html' %} {% block title %}Login{% endblock %}{% block
 content %}
-<h1>hello</h1>
+<div class="row">
+  <div class="col-lg-6 offset-lg-3">
+    <form action="" class="background-white mx-auto">
+      <div class="login-text">
+        <h2>Login</h2>
+        <p>Please login using account detail bellow.</p>
+      </div>
+      <input
+        type="text"
+        class="input-auth"
+        placeholder="Email / Số điện thoại"
+      />
+      <input type="text" class="input-auth" placeholder="Mật khẩu" />
+    </form>
+  </div>
+</div>
 <a href="{{url_for('register')}}"><h1>Creat acount</h1></a>
 {% endblock %}
