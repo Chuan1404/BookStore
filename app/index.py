@@ -1,5 +1,5 @@
 from app import app
-import controller, modules, routes
+import controllers, models, routes
 
 
 with app.app_context():
