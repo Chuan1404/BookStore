@@ -30,6 +30,7 @@ function viewMode() {
         if (hasClass(homeProduct, 'grid')) {
             products.forEach(product => {
                 addClass(product, 'col-4')
+                removeClass(product, 'row')
                 removeClass(product.querySelector('.product__img'), 'col-4')
                 removeClass(product.querySelector('.product__info'), 'col-8')
             })

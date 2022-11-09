@@ -11,6 +11,10 @@ export function removeClass(element, className) {
     return element.classList.remove(className)
 }
 
+export function toggleClass(element, className) {
+    return element.classList.toggle(className)
+}
+
 // functions work with .cardbox
 export function activeCardbox() {
     // query all elements have .cardbox
