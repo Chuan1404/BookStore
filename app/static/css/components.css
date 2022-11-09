@@ -79,12 +79,22 @@
   background-color: #f1f1f1;
   padding: 3.7rem 4.7rem;
   margin: 10rem;
+}
 
+.form__title {
+  text-align: center;
+  margin-bottom: 30px; 
+}
+.form__title h2 {
+  font-size: 3rem;
+}
+
+.form__title p {
+  color: #666;
 }
 /* ----------input---------- */
 .input.input-bg-white {
   background-color: white;
-
 }
 
 /* ----------product---------- */
