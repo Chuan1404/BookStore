@@ -37,13 +37,21 @@ button {
 }
 
 /* ----------input---------- */
-input {
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='password']  {
   width: 100%;
   background-color: transparent;
   border: 1px solid var(--border-cl);
   outline: none;
   padding: 1rem var(--padding);
 }
+input[type='checkbox'] {
+  appearance: none;
+}
+
+
 /* ----------ul li---------- */
 ul {
   list-style-type: none;

@@ -43,8 +43,9 @@ export function accordion() {
     accordion_titles.forEach(title => {
         title.addEventListener('click', () => {
             toggleClass(title.parentNode, 'active')
-            console.log(title.nextElementSibling)
-            title.nextElementSibling.style.maxHeight = title.nextElementSibling.height
+
+            let panel = title.nextElementSibling
+            panel.style.maxHeight = hasClass(title.parentNode, 'active') ? panel.scrollHeight + 'px' : 0
         })
     })
 }
