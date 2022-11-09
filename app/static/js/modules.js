@@ -23,7 +23,7 @@ export function activeCardbox() {
 
     cardbox.forEach(item => {
         item.addEventListener('click', (e) => {
-            //check parent of item has class cardbox-parent
+            // check parent of item has class cardbox-parent
             let condition = hasClass(item.parentNode, 'cardbox-parent')
             if (condition) {
                 let siblings = getAllSiblings(item)
@@ -36,7 +36,19 @@ export function activeCardbox() {
     })
 }
 
-// functions work to get all siblings of element
+// function work with .accordion
+export function accordion() {
+    let accordion_titles = document.querySelectorAll('.accordion__title')
+
+    accordion_titles.forEach(title => {
+        title.addEventListener('click', () => {
+            toggleClass(title.parentNode, 'active')
+            console.log(title.nextElementSibling)
+            title.nextElementSibling.style.maxHeight = title.nextElementSibling.height
+        })
+    })
+}
+// functions use to get all siblings of element
 
 export function getAllSiblings(element) {
     let currentItem = element.parentNode.firstChild // first element
@@ -49,3 +61,4 @@ export function getAllSiblings(element) {
 
     return sibs
 }
+

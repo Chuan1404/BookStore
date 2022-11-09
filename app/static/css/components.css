@@ -76,11 +76,17 @@
 }
 /* ----------form---------- */
 .form {
-  background-color: #f1f1f1;
   padding: 3.7rem 4.7rem;
   margin: 10rem;
 }
 
+.form.form-bg-white {
+  background-color: #f1f1f1;
+}
+
+.form__group {
+  margin: 1rem 0;
+}
 .form__title {
   text-align: center;
   margin-bottom: 30px; 
@@ -131,6 +137,45 @@
 }
 .product .description {
   font-size: 1.6rem;
+}
+
+/* ----------accordion---------- */
+.accordion {
+  padding: 1rem 0;
+  user-select: none;
+  transition: var(--t);
+}
+.accordion svg, .accordion h3{
+  transition: var(--t);
+}
+
+.accordion.active svg {
+  transform: rotate(90deg);
+}
+.accordion.active svg, .accordion.active h3,
+.accordion__title:hover svg, .accordion__title:hover h3 {
+  color: var(--main-cl);
+  fill: var(--main-cl);
+}
+
+.accordion label {
+  width: 10rem;
+}
+
+.accordion__title {
+  cursor: pointer;
+}
+.accordion__title h3 {
+  font-size: 2rem;
+}
+
+.accordion__panel {
+  transition: var(--t);
+  overflow: hidden;
+  max-height: 0;
+}
+.accordion.active .accordion__panel {
+  /* height: 200px; */
 }
 
 @media (max-width: 576px) {
