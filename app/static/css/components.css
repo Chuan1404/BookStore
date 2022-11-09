@@ -37,6 +37,7 @@
   transition: var(--t);
   white-space: nowrap;
 }
+
 .button:hover,
 .button.btn-transparent {
   background-color: transparent;
@@ -57,7 +58,22 @@
 .button.white-border:hover {
   border-color: var(--main-cl);
 }
+.button.btn-gray {
+  background-color: var(--btn-white-to-org);
+  color: black;
+  /* font-size: 1.6rem; */
+}
 
+.btn-org-to-white {
+  background-color: var(--gray-cl);
+  color: black;
+  font-size: 1.6rem;
+  padding: .8rem var(--padding);
+}
+.btn-org-to-white:hover {
+  background-color: var(--main-cl);
+  color: white;
+}
 /* ----------input---------- */
 input.input-auth {
   background-color: white;
