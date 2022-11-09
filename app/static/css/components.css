@@ -74,23 +74,19 @@
   background-color: var(--main-cl);
   color: white;
 }
+/* ----------form---------- */
+.form {
+  background-color: #f1f1f1;
+  padding: 3.7rem 4.7rem;
+  margin: 10rem;
+
+}
 /* ----------input---------- */
-input.input-auth {
+.input.input-bg-white {
   background-color: white;
-  margin-bottom: 20px;
-  height: 40px;
+
 }
-/* ----------login---------- */
-.login-text {
-  text-align: center;
-  margin-bottom: 30px;
-}
-.login-text h2 {
-  font-size: 30px;
-}
-.login-text p {
-  color: #666;
-}
+
 /* ----------product---------- */
 .product {
   border: 1px solid var(--border-cl);

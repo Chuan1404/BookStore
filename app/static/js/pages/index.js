@@ -1,7 +1,49 @@
-import { } from '../modules.js'
+import { addClass, hasClass, removeClass } from '../modules.js'
 
 // query
 
-let homeProducts = document.querySelector('.home__shop--bottom')
+window.addEventListener('load', () => {
+    viewMode()
+})
 
-console.log(homeProducts)
+function viewMode() {
+    let homeProduct = document.querySelector('.home__shop--bottom')
+    let products = homeProduct.querySelectorAll('.product')
+
+    let gridMode = document.querySelectorAll('.home__shop--top .cardbox')[0]
+    let listMode = document.querySelectorAll('.home__shop--top .cardbox')[1]
+
+    // change view mode by clicking cardbox
+    gridMode.addEventListener('click', () => {
+        addClass(homeProduct, 'grid')
+        changeViewMode()
+
+    })
+    listMode.addEventListener('click', () => {
+        removeClass(homeProduct, 'grid')
+        changeViewMode()
+
+    })
+
+    // change view mode
+    function changeViewMode() {
+        if (hasClass(homeProduct, 'grid')) {
+            products.forEach(product => {
+                addClass(product, 'col-4')
+                removeClass(product.querySelector('.product__img'), 'col-4')
+                removeClass(product.querySelector('.product__info'), 'col-8')
+            })
+        }
+        else {
+            products.forEach(product => {
+                removeClass(product, 'col-4')
+                addClass(product, 'row')
+                addClass(product.querySelector('.product__img'), 'col-4')
+                addClass(product.querySelector('.product__info'), 'col-8')
+            })
+
+        }
+    }
+
+}
+

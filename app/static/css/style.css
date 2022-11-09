@@ -16,6 +16,11 @@
     /* use for parrent */
 }
 
+/* ---------text-black-------- */
+.text-black {
+    color: black;
+  }
+
 @media (max-width: 576px) {  }
 
 @media (max-width: 768px) {  }

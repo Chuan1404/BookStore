@@ -1,20 +1,26 @@
-{% extends 'pages/base.html' %} {% block title %}Login{% endblock %}{% block
-content %}
+{% extends 'pages/base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/pages/login.css')}}" />
+{% endblock %}
+
+{% block content %}
 <div class="row">
   <div class="col-lg-6 offset-lg-3">
-    <form action="" class="form-background-white mx-auto">
-      <div class="login-text font-size-16px">
-        <h2 class="color-black">Login</h2>
+    <form action="" class="form mx-auto">
+      <div class="login-text">
+        <h2 class="text-black">Login</h2>
         <p>Please login using account detail bellow.</p>
       </div>
-      <input type="text" class="input-auth font-size-16px color-black" placeholder="Email / Number" />
-      <input type="text" class="input-auth font-size-16px color-black" placeholder="Password" />
+      <input name="email" type="text" class="input input-bg-white mb-4 text-black" placeholder="Email / Number" />
+      <input name="password" type="text" class="input input-bg-white mb-4 text-black" placeholder="Password" />
 
-      <div class="space-between margin-top-bot-20px">
+      <div class="my-4 d-flex align-items-center">
         <button class="button btn-org-to-white">Sign in</button>
-        <a href="#" class="color-black font-size-16px">Forgot your password?</a>
+        <a href="#" class="text-black ms-auto">Forgot your password?</a>
       </div>
-      <a href="{{ url_for('register') }}" class="color-black font-size-16px">Create account</a>
+      <a href="{{ url_for('register') }}" class="text-black">Create account</a>
     </form>
   </div>
 </div>
