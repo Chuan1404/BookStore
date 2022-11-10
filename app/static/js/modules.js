@@ -1,6 +1,7 @@
 // functions work with class
 export function addClass(element, className) {
-    return element.classList.add(className)
+    className = className.split(' ')
+    return className.forEach(classname => element.classList.add(classname))
 }
 
 export function hasClass(element, className) {
@@ -8,7 +9,9 @@ export function hasClass(element, className) {
 }
 
 export function removeClass(element, className) {
-    return element.classList.remove(className)
+    className = className.split(' ')
+
+    return className.forEach(classname => element.classList.remove(classname))
 }
 
 export function toggleClass(element, className) {

@@ -29,7 +29,7 @@ function viewMode() {
     function changeViewMode() {
         if (hasClass(homeProduct, 'grid')) {
             products.forEach(product => {
-                addClass(product, 'col-4')
+                addClass(product, 'col-12 col-md-6 col-lg-4')
                 removeClass(product, 'row')
                 removeClass(product.querySelector('.product__img'), 'col-4')
                 removeClass(product.querySelector('.product__info'), 'col-8')
@@ -37,7 +37,7 @@ function viewMode() {
         }
         else {
             products.forEach(product => {
-                removeClass(product, 'col-4')
+                removeClass(product, 'col-12 col-md-6 col-lg-4')
                 addClass(product, 'row')
                 addClass(product.querySelector('.product__img'), 'col-4')
                 addClass(product.querySelector('.product__info'), 'col-8')
