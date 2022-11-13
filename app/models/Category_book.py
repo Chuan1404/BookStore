@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from app import db
 
 
-class Category(db.model):
+class Category(db.Model):
     __tablename__='category'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -24,8 +24,9 @@ class Book(db.Model):
     author = Column(String(50))
 
     # RELATIONSHIP
-    book_received_note = relationship('book_received_note_detail', backref='book_detail')
+    book_received_note = relationship('received_note_detail', backref='book_received_note')
     book_category = relationship('category_book', backref='book_category')
+    book_receipt = relationship('receipt_detail', backref='book_receipt')
 
 class Category_book(db.Model):
     __tablename__='category_book'

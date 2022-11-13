@@ -41,10 +41,13 @@ class Admin(User):
         pass
 
     # RELATIONSHIP
-    phieu_nhap_sach = relationship('PhieuNhapSach', backref='admin', lazy=True)
+    admin_recrived_note = relationship('received_note', backref='admin_recrived_note', lazy=True)
 
 class Staff(User):
     __tablename__='staff'
+
+    # RELATIONSHIP
+    staff_receipt = relationship('receipt', backref='staff_receipt')
 
     def input_code(): # nhập mã
         pass
@@ -56,7 +59,11 @@ class Staff(User):
 class Customer(User):
     __tablename__='customer'
 
-    def order_books():
+    # RELATIONSHIP
+    customer_receipt = relationship('receipt', backref='customer_receipt')
+
+    def order_books(): # đặt sách
         pass
-    def pay_receipt():
+    def pay_receipt(): # thanh toán hóa đơn
         pass
+
