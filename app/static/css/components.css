@@ -44,24 +44,32 @@
   border-color: var(--main-cl);
   color: var(--main-cl);
 }
-.button.white-border {
-  border-color: var(--text-cl);
-  color: var(--text-cl);
-}
 .button.btn-transparent:hover {
   background-color: var(--main-cl);
   color: var(--text-cl);
 }
-.button.btn-no-hover {
-  pointer-events: none;
+.button.white-border {
+  border-color: var(--text-cl);
+  color: var(--text-cl);
 }
 .button.white-border:hover {
   border-color: var(--main-cl);
 }
+.button.btn-no-hover {
+  pointer-events: none;
+}
+
 .button.btn-gray {
   background-color: var(--btn-white-to-org);
   color: black;
-  /* font-size: 1.6rem; */
+}
+.button.btn-black{
+  background-color: #1f2226;
+}
+.button.btn-black:hover{
+  background-color: var(--main-cl);
+  color: white;
+
 }
 
 .btn-org-to-white {
@@ -132,6 +140,23 @@
 }
 .input.input-checkbox input:checked ~ .checkbox svg{
   display: block;
+}
+
+.input.input-amount{
+  display: inline-flex;
+  border: 1px solid var(--border-cl);
+  min-height: 5rem;
+}
+.input.input-amount input{
+  max-width: 3rem;
+  color: white;
+  padding: 0;
+  text-align: center;
+  border: none;
+}
+.input.input-amount button{
+  background-color: transparent;
+  padding: 0 .7rem;
 }
 /* ----------product---------- */
 .product {
@@ -209,6 +234,17 @@
   overflow: hidden;
   max-height: 0;
 }
+
+/* ----------table---------- */
+.table {
+  border-collapse: collapse;
+}
+
+.table tr, .table td {
+  border: 1px solid var(--border-cl);
+  padding: 2rem;
+}
+
 
 @media (max-width: 576px) {
 }

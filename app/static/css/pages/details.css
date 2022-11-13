@@ -1,0 +1,60 @@
+.container{
+
+}
+.productbox{
+}
+
+.productbox h1{
+    font-size: 3rem;
+}
+
+.productbox .price{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--main-cl)
+}
+
+.productbox .subprice{
+    font-size: 1.8rem;
+    vertical-align: top;
+    position: relative;
+    color: #4a4a4a;
+}
+.productbox .subprice::after{
+   content: '';
+   position: absolute;
+   top: 50%;
+   left: 0;
+   display: inline-block;
+   width: 100%;
+   height: 2px;
+   background-color: var(--main-cl);
+}
+
+.productbox__img{
+    position: relative;
+    height: 80vh;
+    padding: 2rem;
+    border: 1px solid var(--border-cl);
+}
+
+.productbox__img .img{
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+.productbox__img .img img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.description {
+    border: 1px solid var(--border-cl);
+    padding: var(--padding);
+    margin-top: 2rem;
+}

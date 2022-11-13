@@ -35,7 +35,7 @@ class Admin(User):
         pass
     def find_book(id): # tìm sách
         pass
-    def create_book_received_note(): # tạo phiếu nhập hàng
+    def create_received_note(): # tạo phiếu nhập hàng
         pass
     def change_rule(): # thay đổi quy định
         pass
@@ -62,7 +62,7 @@ class Customer(User):
     # RELATIONSHIP
     customer_receipt = relationship('receipt', backref='customer_receipt')
 
-    def order_books(): # đặt sách
+    def order_book(): # đặt sách
         pass
     def pay_receipt(): # thanh toán hóa đơn
         pass
