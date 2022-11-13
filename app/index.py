@@ -7,6 +7,8 @@ with app.app_context():
     app.add_url_rule('/login', view_func=routes.login)
     app.add_url_rule('/register', view_func=routes.register)
     app.add_url_rule('/product', view_func=routes.detail)
+    app.add_url_rule('/checkout', view_func=routes.checkout)
+    
 
 
 if __name__ == '__main__':

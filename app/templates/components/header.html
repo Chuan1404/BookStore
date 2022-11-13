@@ -14,6 +14,7 @@
 
       <div class="header__card col-md-2 col-6 d-flex justify-content-end">
         <div class="cardbox mx-4">
+          <a href="{{ url_for('checkout') }}">
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
             <g id="Layer_2" data-name="Layer 2">
               <path
@@ -26,6 +27,7 @@
               <path d="m22 8.75h-2v-1.75a4 4 0 0 0 -8 0v1.75h-2v-1.75a6 6 0 0 1 12 0z"></path>
             </g>
           </svg>
+        </a>
         </div>
         <div class="cardbox mx-4 d-none d-lg-block">
           <a href="{{url_for('login')}}">
