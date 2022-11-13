@@ -5,6 +5,9 @@ from sqlalchemy.orm import relationship
 from app import app, db
 
 class Rule(db.Model):
+    __tablename__='rule'
+    __table_args__ = {'extend_existing': True}
+    
     id = Column(Integer, primary_key=True, autoincrement=True)
     receipt_cancel_time = Column(Float, nullable=False, default=48)
     minimum_entry = Column(Integer, nullable=False, default=150)

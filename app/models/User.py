@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
-
-from app import app, db
+from app import app, db, path
 
 class User(db.Model):
     __abstract__=True
@@ -19,11 +18,16 @@ class User(db.Model):
 
 class Warehouse_manager(User):
     __tablename__='warehouse_manager'
+    __table_args__ = {'extend_existing': True}
 
     def book_entry(book_id, amount): # nhập sách
         pass
 class Admin(User):
     __tablename__='admin'
+    __table_args__ = {'extend_existing': True}
+
+    # RELATIONSHIP
+    received_note = relationship(f'{path["received_note"]}.Received_note', backref='admin', lazy=True)
 
     def statistical(view): # thống kê sách
         pass
@@ -40,14 +44,14 @@ class Admin(User):
     def change_rule(): # thay đổi quy định
         pass
 
-    # RELATIONSHIP
-    admin_recrived_note = relationship('received_note', backref='admin_recrived_note', lazy=True)
+    
 
 class Staff(User):
     __tablename__='staff'
+    __table_args__ = {'extend_existing': True}
 
     # RELATIONSHIP
-    staff_receipt = relationship('receipt', backref='staff_receipt')
+    staff_receipt = relationship(f'{path["receipt"]}.Receipt', backref='staff', lazy=True)
 
     def input_code(): # nhập mã
         pass
@@ -58,9 +62,10 @@ class Staff(User):
 
 class Customer(User):
     __tablename__='customer'
+    __table_args__ = {'extend_existing': True}
 
     # RELATIONSHIP
-    customer_receipt = relationship('receipt', backref='customer_receipt')
+    customer_receipt = relationship(f'{path["receipt"]}.Receipt', backref='customer', lazy=True)
 
     def order_book(): # đặt sách
         pass

@@ -2,10 +2,11 @@ from sqlalchemy import Column, Integer, DateTime, Float, ForeignKey
 from datetime import datetime
 from sqlalchemy.orm import relationship
 
-from app import app, db
+from app import app, db, path
 
 class Receipt(db.Model):
     __tablename__='receipt'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     created_at = Column(DateTime, default=datetime.now())
@@ -15,10 +16,11 @@ class Receipt(db.Model):
     customer_id = Column(Integer, ForeignKey('customer.id'))
 
     # RELATIONSHIP
-    receipt_book = relationship('receipt_detail', backref='receipt_book')
+    receipt_book = relationship(f'{path["receipt"]}.Receipt_detail', backref='receipt', lazy=True)
 
 class Receipt_detail(db.Model):
     __tablename__='receipt_detail'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     amount = Column(Integer, nullable=False, default=1)
