@@ -6,7 +6,6 @@ from app import app, db, path
 
 class Receipt(db.Model):
     __tablename__='receipt'
-    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     created_at = Column(DateTime, default=datetime.now())
@@ -20,7 +19,6 @@ class Receipt(db.Model):
 
 class Receipt_detail(db.Model):
     __tablename__='receipt_detail'
-    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     amount = Column(Integer, nullable=False, default=1)

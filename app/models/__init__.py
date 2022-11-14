@@ -1,5 +1,9 @@
 from app import app, db
-from . import User, Category_book, Receipt, Received_note, Rule
+from . import Category_book, Receipt, Received_note
+
+from app.models.User import Warehouse_manager
+
+from app.models.Rule import Rule 
 
 
 

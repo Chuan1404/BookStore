@@ -5,7 +5,6 @@ from app import db, path
 
 class Category(db.Model):
     __tablename__='category'
-    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
@@ -17,7 +16,6 @@ class Category(db.Model):
     
 class Book(db.Model):
     __tablename__='book'
-    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
@@ -32,7 +30,6 @@ class Book(db.Model):
 
 class Category_book(db.Model):
     __tablename__='category_book'
-    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, autoincrement=True)
 

@@ -4,6 +4,7 @@ from app import app, db, path
 
 class User(db.Model):
     __abstract__=True
+    
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
     username = Column(String(50), nullable=False)
@@ -18,7 +19,6 @@ class User(db.Model):
 
 class Warehouse_manager(User):
     __tablename__='warehouse_manager'
-    __table_args__ = {'extend_existing': True}
 
     def book_entry(book_id, amount): # nhập sách
         pass
@@ -48,7 +48,6 @@ class Admin(User):
 
 class Staff(User):
     __tablename__='staff'
-    __table_args__ = {'extend_existing': True}
 
     # RELATIONSHIP
     staff_receipt = relationship(f'{path["receipt"]}.Receipt', backref='staff', lazy=True)
@@ -62,7 +61,6 @@ class Staff(User):
 
 class Customer(User):
     __tablename__='customer'
-    __table_args__ = {'extend_existing': True}
 
     # RELATIONSHIP
     customer_receipt = relationship(f'{path["receipt"]}.Receipt', backref='customer', lazy=True)

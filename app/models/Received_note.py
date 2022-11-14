@@ -5,7 +5,6 @@ from app import db, path
 
 class Received_note(db.Model):
     __tablename__ = 'received_note'
-    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     created_at = Column(DateTime, default=datetime.now())
@@ -19,7 +18,6 @@ class Received_note(db.Model):
     
 class Received_note_detail(db.Model):
     __tablename__ = 'received_note_detail'
-    __table_args__ = {'extend_existing': True}
     
 
     id = Column(Integer, primary_key=True, autoincrement=True)
