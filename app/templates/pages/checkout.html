@@ -5,6 +5,90 @@ link %}
   href="{{url_for('static', filename='css/pages/login.css')}}"
 />
 {% endblock %} {% block content %}
-<h1>hello</h1>
+<div class="row">
+  <div class="col-1"></div>
+
+  <div class="col-6 background-white" style="padding: var(--padding)">
+    <a href="#">
+      <p class="heading-1 text-black">Boake - Book Store Shopify Theme</p>
+    </a>
+    <div class="flex-row">
+      <label class="text-black">Họ tên</label>
+      <input
+        type="text"
+        name=""
+        placeholder="Nhập họ tên"
+        maxlength="50"
+        class="text-black"
+      />
+    </div>
+    <div class="flex-row">
+      <label class="text-black">Điện thoại di động</label>
+      <input
+        type="text"
+        name=""
+        placeholder="Nhập số điện thoại"
+        class="text-black"
+      />
+    </div>
+    <div class="flex-row">
+      <label class="text-black">Tỉnh/Thành phố</label>
+      <input
+        type="text"
+        name=""
+        placeholder="Nhập tỉnh thành phố"
+        maxlength="50"
+        class="text-black"
+      />
+    </div>
+    <div class="flex-row">
+      <label class="text-black">Quận/Huyện</label>
+      <input
+        type="text"
+        name=""
+        placeholder="Nhập quận huyện"
+        maxlength="50"
+        class="text-black"
+      />
+    </div>
+    <div class="flex-row">
+      <label class="text-black">Phường/Xã</label>
+      <input
+        type="text"
+        name=""
+        placeholder="Nhập phường xã"
+        maxlength="50"
+        class="text-black"
+      />
+    </div>
+    <div class="flex-row">
+      <label class="text-black" style="width: 27%">Địa chỉ</label>
+      <textarea
+        type="textarea"
+        name=""
+        id=""
+        placeholder="Nhập địa chỉ"
+        class="text-black"
+      ></textarea>
+    </div>
+    <div class="flex-row">
+      <label></label>
+      <div>
+        <a href="#"><button class="button btn-transparent">Hủy bỏ</button></a>
+        <a href="#"
+          ><button
+            class="button btn-transparent"
+            style="margin: var(--padding)"
+          >
+            Cập nhật
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-4 background-white text-black">hello</div>
+
+  <div class="col-1"></div>
+</div>
 
 {% endblock %}

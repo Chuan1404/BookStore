@@ -1,32 +1,67 @@
 /* ----------cardbox---------- */
 .cardbox {
-    width: 2.5rem;
-    cursor: pointer;
+  width: 2.5rem;
+  cursor: pointer;
 }
 .cardbox svg {
-    width: 100%;
-    fill: var(--text-cl);
+  width: 100%;
+  fill: var(--text-cl);
 }
-.cardbox:hover svg,.cardbox.active svg {
-    fill: var(--main-cl);
-    transition: var(--t);
+.cardbox:hover svg,
+.cardbox.active svg {
+  fill: var(--main-cl);
+  transition: var(--t);
 }
 .cardbox-parent {
-    /* use this class when use cardbox.active */
-    /* use for parrent */
+  /* use this class when use cardbox.active */
+  /* use for parrent */
 }
 
 /* ---------text-black-------- */
 .text-black {
-    color: black;
+  color: black;
 }
 
-@media (max-width: 576px) {  }
+/* -------background-white--------- */
+.background-white {
+  background-color: white;
+}
 
-@media (max-width: 768px) {  }
+/* -----font-size-------- */
+.heading-1 {
+  font-size: 2em;
+}
 
-@media (max-width: 992px) {  }
+/* -----------label----------- */
+label {
+  cursor: default;
+}
 
-@media (max-width: 1200px) {  }
+/* -----------flex-row---------------- */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  padding: 0.7rem;
+}
+.flex-row > label {
+  width: 33%;
+}
 
-@media (max-width: 1400px) {  }
+/* ---------text-area-------- */
+textarea {
+  width: 66%;
+}
+@media (max-width: 576px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 1400px) {
+}
