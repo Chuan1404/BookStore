@@ -44,12 +44,18 @@ label {
   padding: 0.7rem;
 }
 .flex-row > label {
-  width: 33%;
+  width: 40%;
 }
-
+/* --------border----------- */
+.border-right {
+  border-right: 1px solid silver;
+}
+.border {
+  border: 1px solid silver;
+}
 /* ---------text-area-------- */
 textarea {
-  width: 66%;
+  width: 76%;
 }
 @media (max-width: 576px) {
 }
