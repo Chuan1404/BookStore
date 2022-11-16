@@ -57,6 +57,27 @@ label {
 textarea {
   width: 76%;
 }
+
+/* ------check-out----------- */
+.checkout-img {
+  width: 100%;
+  max-width: 6em;
+  margin: 0 1rem 1rem;
+}
+.checkout-margin {
+  margin-top: 5rem;
+}
+.free-ship {
+  font-weight: bold;
+  color: darkgreen;
+}
+.checkout-address:hover {
+  color: blue;
+}
+.checkout-svg svg {
+  fill: black;
+}
+
 @media (max-width: 576px) {
 }
 
