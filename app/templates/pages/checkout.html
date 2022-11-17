@@ -1,38 +1,20 @@
 {% extends 'pages/base.html' %} {% block title %}Login{% endblock %} {% block
 link %}
-<link
-  rel="stylesheet"
-  href="{{url_for('static', filename='css/pages/login.css')}}"
-/>
+<link rel="stylesheet" href="{{url_for('static', filename='css/pages/login.css')}}" />
 {% endblock %} {% block content %}
 <div class="row">
   <div class="col-1"></div>
-
-  <div
-    class="col-5 background-white border-right"
-    style="padding: var(--padding)"
-  >
+  <div class="col-5 background-white border-right" style="padding: var(--padding)">
     <a href="#">
       <p class="heading-1 text-black">Boake - Book Store Shopify Theme</p>
     </a>
     <div class="flex-row">
       <label class="text-black">Họ tên</label>
-      <input
-        type="text"
-        name=""
-        placeholder="Nhập họ tên"
-        maxlength="50"
-        class="text-black border mb-3"
-      />
+      <input type="text" name="" placeholder="Nhập họ tên" maxlength="50" class="text-black border mb-3" />
     </div>
     <div class="flex-row">
       <label class="text-black">Điện thoại di động</label>
-      <input
-        type="text"
-        name=""
-        placeholder="Nhập số điện thoại"
-        class="text-black border mb-3"
-      />
+      <input type="text" name="" placeholder="Nhập số điện thoại" class="text-black border mb-3" />
     </div>
     <div class="flex-row">
       <label class="text-black">Tỉnh/Thành phố</label>
@@ -43,11 +25,7 @@ link %}
         maxlength="50"
         class="text-black border"
       /> -->
-      <select
-        class="form-select form-select-lg mb-3"
-        aria-label="multiple select example"
-        style="font-size: 1.5rem"
-      >
+      <select class="form-select form-select-lg mb-3" aria-label="multiple select example" style="font-size: 1.5rem">
         <option class="text-black" selected>Tỉnh/Thành phố</option>
         <option class="text-black" value="1">Hồ Chí Minh</option>
         <option class="text-black" value="2">Hà Nội</option>
@@ -85,11 +63,7 @@ link %}
     </div>
     <div class="flex-row">
       <label class="text-black">Quận/Huyện</label>
-      <select
-        class="form-select form-select-lg mb-3"
-        aria-label="multiple select example"
-        style="font-size: 1.5rem"
-      >
+      <select class="form-select form-select-lg mb-3" aria-label="multiple select example" style="font-size: 1.5rem">
         <option class="text-black" selected>Tỉnh/Thành phố</option>
         <option class="text-black" value="1">Hồ Chí Minh</option>
         <option class="text-black" value="2">Hà Nội</option>
@@ -127,11 +101,7 @@ link %}
     </div>
     <div class="flex-row">
       <label class="text-black">Phường/Xã</label>
-      <select
-        class="form-select form-select-lg mb-3"
-        aria-label="multiple select example"
-        style="font-size: 1.5rem"
-      >
+      <select class="form-select form-select-lg mb-3" aria-label="multiple select example" style="font-size: 1.5rem">
         <option class="text-black" selected>Tỉnh/Thành phố</option>
         <option class="text-black" value="1">Hồ Chí Minh</option>
         <option class="text-black" value="2">Hà Nội</option>
@@ -169,23 +139,13 @@ link %}
     </div>
     <div class="flex-row">
       <label class="text-black" style="width: 30%">Địa chỉ</label>
-      <textarea
-        type="textarea"
-        name=""
-        id=""
-        placeholder="Nhập địa chỉ"
-        class="text-black"
-      ></textarea>
+      <textarea type="textarea" name="" id="" placeholder="Nhập địa chỉ" class="text-black"></textarea>
     </div>
     <div class="flex-row">
       <label></label>
       <div>
         <a href="#"><button class="button btn-transparent">Hủy bỏ</button></a>
-        <a href="#"
-          ><button
-            class="button btn-transparent"
-            style="margin: var(--padding)"
-          >
+        <a href="#"><button class="button btn-transparent" style="margin: var(--padding)">
             Cập nhật
           </button>
         </a>
