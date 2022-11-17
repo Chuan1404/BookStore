@@ -29,7 +29,7 @@ class BookView(ModelView):
     column_filters = ['name', 'price']
 
     # Thay đổi tên các cột
-    column_lables = {
+    column_labels = {
         'name': 'Tên sách',
         'price': 'Giá sách',
         'description': 'Mô tả',
