@@ -1,0 +1,29 @@
+{% extends 'admin/master.html' %} {% block head_css %} {{ super() }}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/libs/bootstrap.min.css')}}"
+/>
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/variable.css')}}"
+/>
+<link rel="stylesheet" href="{{url_for('static', filename='css/reset.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/components.css')}}"
+/>
+{% endblock %} {% block body %}
+<h1>Admin</h1>
+<div class="form">
+  <div class="form__group">
+    <label for="">Dang nhap</label>
+    <input class="input" type="text" />
+  </div>
+
+  <div class="form__group">
+    <label for="">Password</label>
+    <input class="input" type="password" />
+  </div>
+</div>
+{% endblock %}
