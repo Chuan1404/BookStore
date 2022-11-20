@@ -152,15 +152,15 @@ link %}
       </div>
     </div>
   </div>
-  <div class="col-5 background-white">
+  <form class="col-5 form background-white">
     <!-- Hinh 1 -->
     <div class="form__group d-flex align-items-center">
-      <label for="category" class="input input-checkbox me-2">
         <div class="row">
           <div class="col-1 checkout-margin">
-            <input id="category" type="checkbox" />
-            <div class="checkbox border">
-              <svg
+            <label for="category" class="input input-checkbox me-2 border">
+              <input id="category" type="checkbox" />
+              <div class="checkbox">
+                <svg
                 fill="#000000"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 30 30"
@@ -171,7 +171,13 @@ link %}
                   d="M 26.980469 5.9902344 A 1.0001 1.0001 0 0 0 26.292969 6.2929688 L 11 21.585938 L 4.7070312 15.292969 A 1.0001 1.0001 0 1 0 3.2929688 16.707031 L 10.292969 23.707031 A 1.0001 1.0001 0 0 0 11.707031 23.707031 L 27.707031 7.7070312 A 1.0001 1.0001 0 0 0 26.980469 5.9902344 z"
                 />
               </svg>
-            </div>
+              </div>
+            </label>
+
+            
+            <!-- <div class="checkbox border">
+              
+            </div> -->
           </div>
           <div class="col-2">
             <img
@@ -217,7 +223,8 @@ link %}
             </svg>
           </div>
         </div>
-      </label>
+
+      
     </div>
     <!-- Hinh 2 -->
     <div class="form__group d-flex align-items-center">
@@ -352,7 +359,7 @@ link %}
       </label>
     </div>
     <!-- End hinh -->
-  </div>
+  </form>
 </div>
 
 {% endblock %}
