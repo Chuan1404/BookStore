@@ -119,27 +119,11 @@ textarea {
   background-color: var(--main-cl);
 }
 @media (max-width: 576px) {
-  /* ----------login------------- */
-  .submit-btn__login {
-    width: 100%;
-  }
-  .margin-re__login {
-    margin: 0 1rem !important ;
-  }
-  /* ---------checkout---------- */
-  .re-label__checkout {
-    display: none;
-  }
-  .re-btn__checkout {
-  }
+  
 }
 
 @media (max-width: 768px) {
-  .re-btn__checkout {
-    font-size: 1.2rem;
-    padding: 10px;
-    margin-right: 10px !important;
-  }
+ 
 }
 
 @media (max-width: 992px) {
