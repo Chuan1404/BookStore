@@ -1,2 +1,1 @@
-from . import *
-print('This is controller')
+from .User import *
