@@ -1,24 +1,27 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from app import app, db, path
+from enum import Enum as UserEnum
+
+class User_role(UserEnum):
+    ADMIN = 0
+    CUSTOMMER = 1
+    WAREHOUSE_MANAGER = 2
+    STAFF = 3
 
 class User(db.Model):
     __abstract__=True
     
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
-    username = Column(String(50), nullable=False)
+    username = Column(String(50), nullable=False, unique=True)
     email = Column(String(100), nullable=False, unique=True)
     password = Column(String(100), nullable=False)
     phone_number = Column(String(10))
 
-    def login(email, password):
-        pass
-    def logout():
-        pass
-
 class Warehouse_manager(User):
     __tablename__='warehouse_manager'
+
 
     def book_entry(book_id, amount): # nhập sách
         pass
