@@ -39,6 +39,8 @@ export function activeCardbox() {
 }
 
 // function work with .accordion
+
+// .accordion
 export function accordion() {
   let accordion_titles = document.querySelectorAll(".accordion__title");
 

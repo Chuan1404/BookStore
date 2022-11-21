@@ -2,6 +2,8 @@ from app import login_manager
 from app.controllers import get_user_by_id, add_user
 from app.models.User import User_role 
 from flask import render_template, request, redirect
+from sqlalchemy.exc import IntegrityError
+
 
 def login():
     
@@ -17,8 +19,11 @@ def register():
         phone_number = request.form.get('phone_number')
         password = request.form.get('password')
 
-        add_user(username=username, name=name, email=email, phone_number=phone_number, password=password, role=User_role.CUSTOMMER)
 
+        try:
+            add_user(username=username, name=name, email=email, phone_number=phone_number, password=password, role=User_role.CUSTOMMER)
+        except IntegrityError:
+            err['username'] = 'IntegrityError'
         if err:
             return render_template('pages/register.html', err=err)
         else:
