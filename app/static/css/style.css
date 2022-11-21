@@ -80,6 +80,9 @@ textarea {
 .checkout-svg svg {
   fill: black;
 }
+.re-svg-none {
+  visibility: hidden;
+}
 @keyframes changecolor-checkout {
   from {
     color: darkgreen;
@@ -118,12 +121,11 @@ textarea {
   height: 2px;
   background-color: var(--main-cl);
 }
+
 @media (max-width: 576px) {
-  
 }
 
 @media (max-width: 768px) {
- 
 }
 
 @media (max-width: 992px) {

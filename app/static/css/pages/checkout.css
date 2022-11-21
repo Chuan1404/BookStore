@@ -15,8 +15,6 @@
 }
 
 @media (max-width: 768px) {
-  
-  
 }
 
 @media (max-width: 992px) {
@@ -28,6 +26,15 @@
 
   .checkout__content {
     flex-direction: column-reverse;
+  }
+  .re-svg__checkout svg {
+    fill: black;
+  }
+  .re-checkout__none {
+    display: none;
+  }
+  .re-svg-none {
+    visibility: visible;
   }
 }
 

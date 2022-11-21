@@ -6,12 +6,24 @@ link %}
 />
 {% endblock %} {% block content %}
 <main id="checkout">
-  <div class="container">
+  <div class="container background-white">
+    <p class="heading-1 text-black">Boake - Book Store Shopify Theme</p>
+    <div onclick="none_checkout()">
+      <div class="cardbox re-svg__checkout re-svg-none">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <polygon
+            points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707"
+          />
+        </svg>
+      </div>
+    </div>
     <div class="row checkout__content">
-      <div class="col-12 col-lg-6 background-white border-right p-4">
-        <a href="#">
-          <p class="heading-1 text-black">Boake - Book Store Shopify Theme</p>
-        </a>
+      <div class="col-12 col-lg-6 border-right p-4">
         <form action="">
           <div class="flex-row">
             <label class="text-black re-label__checkout">Họ tên</label>
@@ -24,7 +36,9 @@ link %}
             />
           </div>
           <div class="flex-row">
-            <label class="text-black re-label__checkout">Điện thoại di động</label>
+            <label class="text-black re-label__checkout"
+              >Điện thoại di động</label
+            >
             <input
               type="text"
               name=""
@@ -187,7 +201,10 @@ link %}
           </div>
         </form>
       </div>
-      <form class="col-12 col-lg-6 form background-white">
+      <form
+        class="col-12 col-lg-6 form background-white re-checkout__none"
+        id="re_checkout"
+      >
         <!-- Hinh 1 -->
         <div class="form__group d-flex align-items-center">
           <div class="row">
@@ -227,7 +244,9 @@ link %}
               <span class="text-black free-ship">Free ship toàn quốc</span>
             </div>
             <div class="col-3 productbox mt-5">
-              <span class="price text-black price__checkout">1.000.000 vnd</span>
+              <span class="price text-black price__checkout"
+                >1.000.000 vnd</span
+              >
               <span class="subprice text-black subprice__checkout"
                 >990.000 vnd</span
               >
@@ -296,7 +315,9 @@ link %}
               <span class="text-black free-ship">Free ship toàn quốc</span>
             </div>
             <div class="col-3 productbox mt-5">
-              <span class="price text-black price__checkout">1.000.000 vnd</span>
+              <span class="price text-black price__checkout"
+                >1.000.000 vnd</span
+              >
               <span class="subprice text-black subprice__checkout"
                 >990.000 vnd</span
               >
@@ -365,7 +386,9 @@ link %}
               <span class="text-black free-ship">Free ship toàn quốc</span>
             </div>
             <div class="col-3 productbox mt-5">
-              <span class="price text-black price__checkout">1.000.000 vnd</span>
+              <span class="price text-black price__checkout"
+                >1.000.000 vnd</span
+              >
               <span class="subprice text-black subprice__checkout"
                 >990.000 vnd</span
               >
@@ -399,6 +422,18 @@ link %}
       </form>
     </div>
   </div>
-  
 </main>
+<script>
+  function none_checkout() {
+    let re_checkout = document.querySelector("#re_checkout");
+    console.log("Hello");
+
+    re_checkout.classList.toggle("re-checkout__none");
+  }
+</script>
+{% endblock %}{% block script %}
+<script
+  type="module"
+  src="{{url_for('static', filename='js/pages/checkout.js')}}"
+></script>
 {% endblock %}
