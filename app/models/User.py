@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Enum
 from sqlalchemy.orm import relationship
 from app import app, db, path
 from enum import Enum as UserEnum
@@ -18,17 +18,19 @@ class User(db.Model):
     email = Column(String(100), nullable=False, unique=True)
     password = Column(String(100), nullable=False)
     phone_number = Column(String(10))
+    user_role = Column(Enum(User_role), nullable=False) 
 
 class Warehouse_manager(User):
     __tablename__='warehouse_manager'
 
-
+    user_role = Column(Enum(User_role), nullable=False, default=User_role.WAREHOUSE_MANAGER)
     def book_entry(book_id, amount): # nhập sách
         pass
 class Admin(User):
     __tablename__='admin'
     __table_args__ = {'extend_existing': True}
 
+    user_role = Column(Enum(User_role), nullable=False, default=User_role.ADMIN) 
     # RELATIONSHIP
     received_note = relationship(f'{path["received_note"]}.Received_note', backref='admin', lazy=True)
 
@@ -52,6 +54,7 @@ class Admin(User):
 class Staff(User):
     __tablename__='staff'
 
+    user_role = Column(Enum(User_role), nullable=False, default=User_role.STAFF)
     # RELATIONSHIP
     staff_receipt = relationship(f'{path["receipt"]}.Receipt', backref='staff', lazy=True)
 
@@ -65,6 +68,7 @@ class Staff(User):
 class Customer(User):
     __tablename__='customer'
 
+    user_role = Column(Enum(User_role), nullable=False, default=User_role.CUSTOMMER)
     # RELATIONSHIP
     customer_receipt = relationship(f'{path["receipt"]}.Receipt', backref='customer', lazy=True)
 

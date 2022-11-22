@@ -39,8 +39,6 @@ export function activeCardbox() {
 }
 
 // function work with .accordion
-
-// .accordion
 export function accordion() {
   let accordion_titles = document.querySelectorAll(".accordion__title");
 
@@ -74,4 +72,33 @@ export function none_checkout() {
   console.log("Hello");
 
   re_checkout.classList.toggle("re-checkout__none");
+}
+
+// function work with form
+export function validate({ form, nameInputList = [], options = {} }) {
+  let emailRegex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  let phoneRegex =
+    /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+  let errs = {};
+  nameInputList.forEach((name) => {
+    let currentInput = form.querySelector(`input[name=${name}]`);
+
+    if (!currentInput.value) errs[name] = "This field must not be blank";
+    else if (name == "username" && currentInput.value.length < 6)
+      errs[name] = "6 characters at least";
+    else if (name == "email" && !emailRegex.test(currentInput.value))
+      errs.email = "Invalid email";
+    else if (name == "phone_number" && !phoneRegex.test(currentInput.value))
+      errs[name] = "Invalid phone number";
+    else if (name == "password" && currentInput.value.length < 3)
+      errs[name] = "3 characters at least";
+    else if (name == "confirm") {
+      let password = form.querySelector('input[name="password"').value;
+      if (currentInput.value != password)
+        errs.confirm = "Password and confirm password are not the same";
+    }
+  });
+
+  return errs;
 }

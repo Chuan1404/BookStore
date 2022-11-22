@@ -3,6 +3,7 @@ content %}
 <div class="row">
   <div class="col-lg-6 offset-lg-3">
     <form
+      id="register"
       action="{{url_for('register')}}"
       method="post"
       class="form form__login form-bg-white mx-auto margin-re__login"
@@ -13,43 +14,50 @@ content %}
       </div>
 
       <input
-      type="text"
-      class="input input-bg-white mb-4 text-black"
-      placeholder="User name"
-      name="username"
-    />
-    {% if err %} <p class="text-danger">{{ err.get('username') }}</p> {% endif %}
+        type="text"
+        class="input input-bg-white mb-4 text-black"
+        placeholder="User name"
+        name="username"
+      />
+      {% if err %}
+      <p class="text-danger">{{ err.get('username') }}</p>
+      {% endif %}
 
-    <input
-      type="text"
-      class="input input-bg-white mb-4 text-black"
-      placeholder="Name"
-      name="name"
-    />
-    <input
-      type="email"
-      class="input input-bg-white mb-4 text-black"
-      placeholder="Email"
-      name="email"
-    />
-    <input
-      type="text"
-      class="input input-bg-white mb-4 text-black"
-      placeholder="Phone number"
-      name="phone_number"
-    />
-    <input
-      type="text"
-      class="input input-bg-white mb-4 text-black"
-      placeholder="Password"
-      name="password"
-    />
-    <input
-      type="text"
-      class="input input-bg-white mb-4 text-black"
-      placeholder="Confirm password"
-      name="confirm"
-    />
+      <input
+        type="text"
+        class="input input-bg-white mb-4 text-black"
+        placeholder="Name"
+        name="name"
+      />
+
+      <input
+        type="email"
+        class="input input-bg-white mb-4 text-black"
+        placeholder="Email"
+        name="email"
+      />
+
+      <input
+        type="text"
+        class="input input-bg-white mb-4 text-black"
+        placeholder="Phone number"
+        name="phone_number"
+      />
+
+      <input
+        type="text"
+        class="input input-bg-white mb-4 text-black"
+        placeholder="Password"
+        name="password"
+      />
+
+      <input
+        type="text"
+        class="input input-bg-white mb-4 text-black"
+        placeholder="Confirm password"
+        name="confirm"
+      />
+
       <div>
         <button class="button btn-org-to-white my-4 submit-btn__login">
           Create
@@ -60,4 +68,9 @@ content %}
   </div>
 </div>
 
+{% endblock %} {% block script %}
+<script
+  type="module"
+  src="{{url_for('static', filename='js/pages/register.js')}}"
+></script>
 {% endblock %}

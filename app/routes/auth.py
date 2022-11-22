@@ -11,8 +11,6 @@ def login():
 
 def register():
     if request.method.__eq__('POST'):
-        err = {}
-
         username = request.form.get('username')
         name = request.form.get('name')
         email = request.form.get('email')
@@ -20,14 +18,12 @@ def register():
         password = request.form.get('password')
 
 
-        try:
-            add_user(username=username, name=name, email=email, phone_number=phone_number, password=password, role=User_role.CUSTOMMER)
-        except IntegrityError:
-            err['username'] = 'IntegrityError'
-        if err:
-            return render_template('pages/register.html', err=err)
+        result = add_user(username=username, name=name, email=email, phone_number=phone_number, password=password)
+        if result.get('status'):
+            return render_template('pages/login.html')
         else:
-            return redirect('/login')
+            return render_template('pages/register.html', err=result.get('err'))
+    
     return render_template('pages/register.html')
 
 @login_manager.user_loader
