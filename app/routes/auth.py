@@ -10,11 +10,11 @@ def login():
 
         result = auth_user(username=username, password=password)
 
-        if result.status:
-            login_user(result.user)
+        if result.get('status'):
+            login_user(result.get('user'))
             return redirect('/')
         else:
-            return render_template('pages/login.html')
+            return render_template('pages/login.html', err=result.get('err'))
 
     return render_template('pages/login.html')
 

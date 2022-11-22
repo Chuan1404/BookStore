@@ -29,17 +29,17 @@ def add_user(username, name, email, phone_number, password):
 def auth_user(username, password):
     hash_password = hashlib.md5(password.strip().encode('utf-8')).hexdigest()
 
+    user = Customer.query.filter_by(username=username, password=hash_password).first()
 
-    try:
-        user = Customer.query.filter_by(username=username, password=hash_password).first()
+    if(user):
         return {
-            'status': 1,
-            'user': user
-        }
-    except:
-        return {
-            'status': 0,
-            'err': 'Username or password not correct'
-        }
+        'status': 1,
+        'user': user
+    }
+    return {
+        'status': 0,
+        'err': 'Username or password not correct'
+    }
+    
 
         
