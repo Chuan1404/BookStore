@@ -1,8 +1,10 @@
 from app import login_manager
 from app.controllers import get_user_by_id, add_user, auth_user
+from app.decorators import anonymous_user
 from flask import render_template, request, redirect
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
+@anonymous_user
 def login():
     if request.method.__eq__('POST'):
         username = request.form.get('username')
@@ -34,6 +36,11 @@ def register():
             return render_template('pages/register.html', err=result.get('err'))
     
     return render_template('pages/register.html')
+
+def logout():
+    logout_user()
+    return redirect('/login')
+
 
 @login_manager.user_loader
 def load_user(id):
