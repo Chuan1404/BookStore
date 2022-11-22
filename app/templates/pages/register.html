@@ -19,8 +19,8 @@ content %}
         placeholder="User name"
         name="username"
       />
-      {% if err %}
-      <p class="text-danger">{{ err.get('username') }}</p>
+      {% if errs %}
+      <p class="text-danger">{{ errs.get('username') }}</p>
       {% endif %}
 
       <input

@@ -1,7 +1,8 @@
 from sqlalchemy import Column, Integer, String, Enum
 from sqlalchemy.orm import relationship
-from app import app, db, path
+from app import db, path
 from enum import Enum as UserEnum
+from flask_login import UserMixin
 
 class User_role(UserEnum):
     ADMIN = 0
@@ -15,7 +16,7 @@ class User(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
     username = Column(String(50), nullable=False, unique=True)
-    email = Column(String(100), nullable=False, unique=True)
+    email = Column(String(100), nullable=False)
     password = Column(String(100), nullable=False)
     phone_number = Column(String(10))
     user_role = Column(Enum(User_role), nullable=False) 
@@ -65,7 +66,7 @@ class Staff(User):
     def payment_confirm(id): # xác nhận thanh toán hóa đơn
         pass
 
-class Customer(User):
+class Customer(User, UserMixin):
     __tablename__='customer'
 
     user_role = Column(Enum(User_role), nullable=False, default=User_role.CUSTOMMER)

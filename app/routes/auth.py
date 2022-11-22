@@ -1,12 +1,21 @@
 from app import login_manager
-from app.controllers import get_user_by_id, add_user
-from app.models.User import User_role 
+from app.controllers import get_user_by_id, add_user, auth_user
 from flask import render_template, request, redirect
-from sqlalchemy.exc import IntegrityError
-
+from flask_login import login_user
 
 def login():
-    
+    if request.method.__eq__('POST'):
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        result = auth_user(username=username, password=password)
+
+        if result.status:
+            login_user(result.user)
+            return redirect('/')
+        else:
+            return render_template('pages/login.html')
+
     return render_template('pages/login.html')
 
 def register():

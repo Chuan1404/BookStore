@@ -1,5 +1,5 @@
 from app import app
-import admin, routes
+import routes
 
 
 

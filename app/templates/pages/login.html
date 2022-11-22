@@ -6,6 +6,8 @@ link %}
 />
 {% endblock %} {% block content %}
 <div class="row">
+  {% if err %}{% endif %}
+
   <div class="col-lg-6 offset-lg-3">
     <form
       action="{{url_for('login')}}"
@@ -17,14 +19,14 @@ link %}
         <p>Please login using account detail bellow.</p>
       </div>
       <input
-        name="email"
+        name="username"
         type="text"
         class="input input-bg-white mb-4 text-black"
-        placeholder="Email / Number"
+        placeholder="Username"
       />
       <input
         name="password"
-        type="text"
+        type="password"
         class="input input-bg-white mb-4 text-black"
         placeholder="Password"
       />
