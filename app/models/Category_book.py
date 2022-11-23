@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship
-from app import db, path
+from app import db
 
 
 class Category(db.Model):
@@ -11,7 +11,7 @@ class Category(db.Model):
     description = Column(String(200))
 
     # RELATIONSHIP
-    category_book = relationship(f'{path["category_book"]}.Category_book', backref='category', lazy=True)
+    category_book = relationship('Category_book', backref='category', lazy=True)
 
     
 class Book(db.Model):
@@ -24,9 +24,9 @@ class Book(db.Model):
     author = Column(String(50))
 
     # RELATIONSHIP
-    book_received_note = relationship(f'{path["received_note"]}.Received_note_detail', backref='book', lazy=True)
-    book_category = relationship(f'{path["category_book"]}.Category_book', backref='book', lazy=True)
-    book_receipt = relationship(f'{path["receipt"]}.Receipt_detail', backref='book', lazy=True)
+    book_received_note = relationship('Received_note_detail', backref='book', lazy=True)
+    book_category = relationship('Category_book', backref='book', lazy=True)
+    book_receipt = relationship('Receipt_detail', backref='book', lazy=True)
 
 class Category_book(db.Model):
     __tablename__='category_book'

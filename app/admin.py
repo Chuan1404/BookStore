@@ -2,11 +2,7 @@ from app import app, db
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 
-from app.models import Warehouse_manager, Staff, Customer
-from app.models import Rule
-from app.models import Book, Category
-from app.models import Receipt, Receipt_detail
-from app.models import Received_note, Received_note_detail
+from app.models import Rule, Book, Category, Receipt, Receipt_detail, Received_note, Received_note_detail, User
 
 class RuleView(ModelView):
     can_export = True
@@ -17,44 +13,19 @@ class RuleView(ModelView):
         'minimum_inventory': 'Số lượng tồn kho tối thiểu'
     }
 
-class WarehouseView(ModelView):
+class UserView(ModelView):
     column_display_pk = True
     can_view_details = True
     can_export = True
     column_sortable_list = ['id', 'name', 'username']
     column_searchable_list = ['name', 'username']
     column_labels = {
-        'id': 'ID NV Kho',
+        'id': 'ID User',
         'name': 'Họ và tên',
         'username': 'Tên đăng nhập',
         'phone_number': 'Số điện thoại'
     }
 
-class StaffView(ModelView):
-    column_display_pk = True
-    can_view_details = True
-    can_export = True
-    column_sortable_list = ['id', 'name', 'username']
-    column_searchable_list = ['name', 'username']
-    column_labels = {
-        'id': 'ID NV Bán hàng',
-        'name': 'Họ và tên',
-        'username': 'Tên đăng nhập',
-        'phone_number': 'Số điện thoại'
-    }
-
-class CustomerView(ModelView):
-    column_display_pk = True
-    can_view_details = True
-    can_export = True
-    column_sortable_list = ['id', 'name', 'username']
-    column_searchable_list = ['name', 'username']
-    column_labels = {
-        'id': 'ID Khách hàng',
-        'name': 'Họ và tên',
-        'username': 'Tên đăng nhập',
-        'phone_number': 'Số điện thoại'
-    }
 
 class BookView(ModelView):
     # Hiện id sách
@@ -147,9 +118,7 @@ admin = Admin(app=app, name='Bookstore', template_mode='bootstrap4')
 
 admin.add_view(RuleView(Rule, db.session, name='Rule'))
 
-admin.add_view(WarehouseView(Warehouse_manager, db.session, name='Warehouse_manager'))
-admin.add_view(StaffView(Staff, db.session, name='Staff'))
-admin.add_view(CustomerView(Customer, db.session, name='Customer'))
+admin.add_view(UserView(User, db.session, name='User'))
 
 admin.add_view(BookView(Book, db.session, name='Book'))
 admin.add_view(CategoryView(Category, db.session, name='Category'))

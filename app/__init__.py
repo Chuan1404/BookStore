@@ -5,14 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from urllib.parse import quote
 from flask_login import LoginManager
 
-# variable
-path = {
-    'category_book': 'app.models.Category_book',
-    'receipt': 'app.models.Receipt',
-    'received_note': 'app.models.Received_note',
-    'rule': 'app.models.Rule',
-    'user': 'app.models.User',
-}
+
 
 # load env file
 load_dotenv()

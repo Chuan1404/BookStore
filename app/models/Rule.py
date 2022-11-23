@@ -1,8 +1,7 @@
-from sqlalchemy import Column, Integer, String, DateTime, Float, ForeignKey
-from datetime import datetime
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Float, Integer
 
-from app import app, db
+from app import db
+
 
 class Rule(db.Model):
     __tablename__='rule'

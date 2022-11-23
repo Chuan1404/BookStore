@@ -1,15 +1,14 @@
 from app import db
-from app.models.User import Customer
+from app.models import User
 import hashlib
-from flask_login import login_user
 
 def get_user_by_id(id):
-    return Customer.query.get(id)
+    return User.query.get(id)
 
 def add_user(username, name, email, phone_number, password):
     errs = {}
     # validate form
-    exist_user = Customer.query.filter_by(username=username).first()
+    exist_user = User.query.filter_by(username=username).first()
     if exist_user:
         errs['username'] = 'This username has exist on database'
         return {
@@ -19,7 +18,7 @@ def add_user(username, name, email, phone_number, password):
     else: 
         hash_password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
 
-        user = Customer(username=username, name=name, email=email, phone_number=phone_number, password=hash_password)
+        user = User(username=username, name=name, email=email, phone_number=phone_number, password=hash_password)
         db.session.add(user)
         db.session.commit()
         return {
@@ -29,7 +28,7 @@ def add_user(username, name, email, phone_number, password):
 def auth_user(username, password):
     hash_password = hashlib.md5(password.strip().encode('utf-8')).hexdigest()
 
-    user = Customer.query.filter_by(username=username, password=hash_password).first()
+    user = User.query.filter_by(username=username, password=hash_password).first()
 
     if(user):
         return {

@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, DateTime, Float, ForeignKey
 from datetime import datetime
 from sqlalchemy.orm import relationship
 
-from app import app, db, path
+from app import db
 
 class Receipt(db.Model):
     __tablename__='receipt'
@@ -11,11 +11,11 @@ class Receipt(db.Model):
     created_at = Column(DateTime, default=datetime.now())
 
     # FOREIGN KEYS
-    staff_id = Column(Integer, ForeignKey('staff.id'), nullable=False)
-    customer_id = Column(Integer, ForeignKey('customer.id'))
+    staf_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    customer_id = Column(Integer, ForeignKey('user.id'))
 
     # RELATIONSHIP
-    receipt_book = relationship(f'{path["receipt"]}.Receipt_detail', backref='receipt', lazy=True)
+    receipt_book = relationship('Receipt_detail', backref='receipt', lazy=True)
 
 class Receipt_detail(db.Model):
     __tablename__='receipt_detail'
