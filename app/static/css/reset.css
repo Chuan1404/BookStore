@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-size: 1.6rem;
   color: var(--text-cl);
+  user-select: none;
 }
 
 html,
@@ -56,4 +57,6 @@ input[type='checkbox'] {
 /* ----------ul li---------- */
 ul {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 }

@@ -1,13 +1,45 @@
 /* ----------header---------- */
 #header {
   background-color: var(--main-bg);
-  padding: var(--padding) 0;
   border-bottom: 1px solid var(--border-cl);
+}
+
+#header .container {
+  position: relative;
+  padding: var(--padding) 0;
+
 }
 
 .header__logo img {
   max-width: 125px;
   width: 100%;
+}
+
+.header__box {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding: var(--padding);
+  background-color: #00001d;
+  box-shadow: 10px 25px 80px #96969626;
+  max-width: 30rem;
+  width: 100%;
+  display: none !important;
+}
+
+.header__box.active {
+  display: block !important;
+}
+
+.header__box h4 {
+  font-size: 2rem;
+  border-bottom: 1px solid white;
+  padding: 1rem 0;
+}
+.header__box a {
+  display: block;
+  padding: 1rem 0;
+  text-transform: capitalize;
 }
 
 /* ----------footer---------- */

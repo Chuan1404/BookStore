@@ -102,3 +102,4 @@ export function validate({ form, nameInputList = [], options = {} }) {
 
   return errs;
 }
+
