@@ -5,7 +5,7 @@ import hashlib
 def get_user_by_id(id):
     return User.query.get(id)
 
-def add_user(username, name, email, phone_number, password):
+def add_user(username, name, email, phone_number, password, user_role):
     errs = {}
     # validate form
     exist_user = User.query.filter_by(username=username).first()
@@ -18,7 +18,7 @@ def add_user(username, name, email, phone_number, password):
     else: 
         hash_password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
 
-        user = User(username=username, name=name, email=email, phone_number=phone_number, password=hash_password)
+        user = User(username=username, name=name, email=email, phone_number=phone_number, password=hash_password, user_role=user_role)
         db.session.add(user)
         db.session.commit()
         return {

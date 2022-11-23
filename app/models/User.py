@@ -21,8 +21,8 @@ class User(db.Model, UserMixin):
     user_role = Column(Enum(User_role), nullable=False)
 
     # RELATION SHIP
-    customer_receipt = relationship('Receipt', backref='customer_receipt', lazy=True)
-    staff_receipt = relationship('Receipt', backref='staff_receipt', lazy=True)
+    customer_receipt = relationship('Receipt', foreign_keys='Receipt.customer_id', backref='customer_receipt', lazy=True)
+    staff_receipt = relationship('Receipt', foreign_keys='Receipt.staff_id', backref='staff_receipt', lazy=True)
 
     admin_received_note = relationship('Received_note', backref='admin_received_note', lazy=True)
 

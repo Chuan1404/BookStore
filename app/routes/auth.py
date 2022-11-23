@@ -1,5 +1,6 @@
 from app import login_manager
 from app.controllers import get_user_by_id, add_user, auth_user
+from app.models import User_role
 from app.decorators import anonymous_user
 from flask import render_template, request, redirect
 from flask_login import login_user, logout_user
@@ -29,7 +30,7 @@ def register():
         password = request.form.get('password')
 
 
-        result = add_user(username=username, name=name, email=email, phone_number=phone_number, password=password)
+        result = add_user(username=username, name=name, email=email, phone_number=phone_number, password=password, user_role=User_role.CUSTOMMER)
         if result.get('status'):
             return render_template('pages/login.html')
         else:
