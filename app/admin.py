@@ -1,10 +1,16 @@
 from app import app, db
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
+from flask_login import current_user
+from app.models import User_role
 
 from app.models import Rule, Book, Category, Receipt, Receipt_detail, Received_note, Received_note_detail, User
 
-class RuleView(ModelView):
+class AdminView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated and current_user.user_role.__eq__(User_role.ADMIN)
+
+class RuleView(AdminView):
     can_export = True
     column_sortable_list = ['minimum_entry', 'minimum_inventory']
     column_labels = {
@@ -13,7 +19,7 @@ class RuleView(ModelView):
         'minimum_inventory': 'Số lượng tồn kho tối thiểu'
     }
 
-class UserView(ModelView):
+class UserView(AdminView):
     column_display_pk = True
     can_view_details = True
     can_export = True
@@ -26,8 +32,7 @@ class UserView(ModelView):
         'phone_number': 'Số điện thoại'
     }
 
-
-class BookView(ModelView):
+class BookView(AdminView):
     # Hiện id sách
     column_display_pk = True
 
@@ -55,7 +60,7 @@ class BookView(ModelView):
     # Sắp xếp thứ tự theo id, tên, giá
     column_sortable_list = ['id', 'name', 'price', 'author']
 
-class CategoryView(ModelView):
+class CategoryView(AdminView):
     column_display_pk = True
     can_view_details = True
     column_searchable_list = ['name', 'description']
@@ -67,7 +72,7 @@ class CategoryView(ModelView):
         'description': 'Mô tả'
     }
 
-class ReceiptView(ModelView):
+class ReceiptView(AdminView):
     column_display_pk = True
     can_view_details = True
     can_export = True
@@ -78,7 +83,7 @@ class ReceiptView(ModelView):
         'created_at': 'Thời gian lập'
     }
 
-class ReceiptDetailsView(ModelView):
+class ReceiptDetailsView(AdminView):
     column_display_pk = True
     can_view_details = True
     can_export = True
@@ -90,7 +95,7 @@ class ReceiptDetailsView(ModelView):
         'unit_price': 'Tổng tiền'
     }
 
-class ReceiptNoteView(ModelView):
+class ReceiptNoteView(AdminView):
     column_display_pk = True
     can_view_details = True
     can_export = True
@@ -102,7 +107,7 @@ class ReceiptNoteView(ModelView):
         'updated_at': 'Ngày cập nhật'
     }
 
-class ReceiptNoteDetailsView(ModelView):
+class ReceiptNoteDetailsView(AdminView):
     column_display_pk = True
     can_view_details = True
     can_export = True

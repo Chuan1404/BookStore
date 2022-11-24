@@ -1,5 +1,5 @@
 from app import db
-from app.models import User
+from app.models import User, User_role
 import hashlib
 
 def get_user_by_id(id):
@@ -25,11 +25,11 @@ def add_user(username, name, email, phone_number, password, user_role):
             'status': 1
         }
 
-def auth_user(username, password):
+def auth_user(username, password, user_role=User_role.CUSTOMMER):
     hash_password = hashlib.md5(password.strip().encode('utf-8')).hexdigest()
 
-    user = User.query.filter_by(username=username, password=hash_password).first()
-
+    user = User.query.filter_by(username=username, password=hash_password, user_role=user_role).first()
+    
     if(user):
         return {
         'status': 1,
@@ -37,7 +37,7 @@ def auth_user(username, password):
     }
     return {
         'status': 0,
-        'err': 'Username or password not correct'
+        'err': 'Username or password not correct',
     }
     
 

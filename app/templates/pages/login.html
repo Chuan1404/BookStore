@@ -19,18 +19,23 @@ link %}
       {% if err %}
       <p class="text-danger">{{err}}</p>
       {% endif %}
-      <input
+      <div class="form__group">
+        <input
         name="username"
         type="text"
         class="input input-bg-white mb-4 text-black"
         placeholder="Username"
       />
-      <input
+      </div>
+      
+      <div class="form__group">
+        <input
         name="password"
         type="password"
         class="input input-bg-white mb-4 text-black"
         placeholder="Password"
       />
+      </div>
 
       <div class="my-4 align-items-center">
         <button type="submit" class="button btn-org-to-white submit-btn__login">

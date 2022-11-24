@@ -11,7 +11,7 @@ class Receipt(db.Model):
     created_at = Column(DateTime, default=datetime.now())
 
     # FOREIGN KEYS
-    staff_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    saler_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     customer_id = Column(Integer, ForeignKey('user.id'))
 
     # RELATIONSHIP

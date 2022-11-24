@@ -14,7 +14,7 @@ load_dotenv()
 sys.path.append('./')
 
 # create app
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__)
 
 #Admin su dung bien de save san pham
 app.secret_key = '*&^%(&^%##&())&&^%$&%$^^'

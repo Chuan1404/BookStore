@@ -115,9 +115,12 @@
 }
 /* ----------form---------- */
 .form {
-  /* padding: 3.7rem 4.7rem; */
-  /* margin: 10rem; */
+  
 }
+.form .input {
+  border: 1px solid #dee2e6;
+}
+
 .form__login {
   padding: 3.7rem 4.7rem;
   margin: 10rem;

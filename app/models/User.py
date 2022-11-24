@@ -8,7 +8,7 @@ class User_role(UserEnum):
     ADMIN = 0
     CUSTOMMER = 1
     WAREHOUSE_MANAGER = 2
-    STAFF = 3
+    SALER = 3
 
 class User(db.Model, UserMixin):
     
@@ -22,7 +22,7 @@ class User(db.Model, UserMixin):
 
     # RELATION SHIP
     customer_receipt = relationship('Receipt', foreign_keys='Receipt.customer_id', backref='customer_receipt', lazy=True)
-    staff_receipt = relationship('Receipt', foreign_keys='Receipt.staff_id', backref='staff_receipt', lazy=True)
+    saler_receipt = relationship('Receipt', foreign_keys='Receipt.saler_id', backref='saler_receipt', lazy=True)
 
     admin_received_note = relationship('Received_note', backref='admin_received_note', lazy=True)
 
