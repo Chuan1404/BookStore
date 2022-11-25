@@ -1,5 +1,4 @@
-from app import login_manager
-from app.controllers import get_user_by_id, add_user, auth_user
+from app.controllers import add_user, auth_user
 from app.models import User_role
 from app.decorators import anonymous_user
 from flask import render_template, request, redirect
@@ -20,27 +19,6 @@ def login():
             return render_template('pages/login.html', err=result.get('err'))
 
     return render_template('pages/login.html')
-
-
-def login_staff():
-    if request.method.__eq__('POST'):
-        username = request.form.get('username')
-        password = request.form.get('password')
-        user_role = request.form.get('role')
-
-        if user_role == '0': user_role = User_role.ADMIN
-        elif user_role == '2': user_role = User_role.WAREHOUSE_MANAGER
-        elif user_role == '3': user_role = User_role.SALER
-
-        result = auth_user(username=username, password=password,user_role=user_role)
-
-        if result.get('status'):
-            login_user(result.get('user'))
-            return redirect('/admin')
-        else:
-            return render_template('admin/index.html', err=result.get('err'))
-
-    return render_template('admin/index.html')
 
 
 def register():
@@ -64,7 +42,3 @@ def logout():
     logout_user()
     return redirect('/login')
 
-
-@login_manager.user_loader
-def load_user(id):
-    return get_user_by_id(id)
