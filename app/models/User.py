@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
     email = Column(String(100), nullable=False)
     password = Column(String(100), nullable=False)
     phone_number = Column(String(10))
+    avatar = Column(String(100))
     user_role = Column(Enum(User_role), nullable=False)
 
     # RELATION SHIP

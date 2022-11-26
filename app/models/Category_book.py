@@ -22,6 +22,7 @@ class Book(db.Model):
     price = Column(Float, nullable=False, default=0)
     description = Column(String(200))
     author = Column(String(50))
+    img = Column(String(100), nullable=False)
 
     # RELATIONSHIP
     book_received_note = relationship('Received_note_detail', backref='book', lazy=True)

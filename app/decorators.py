@@ -17,7 +17,7 @@ def anonymous_staff(f):
     @wraps(f)
     def decorate_func(*args, **kwargs):
         if current_user.is_authenticated and current_user.user_role != User_role.CUSTOMMER:
-            return redirect('/')
+            return redirect('/admin/')
         return f(*args, **kwargs)
     return decorate_func
 

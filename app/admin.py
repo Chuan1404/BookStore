@@ -9,8 +9,8 @@ from flask_admin import Admin
 
     
 admin = Admin(app=app, name='Bookstore', template_mode='bootstrap4', index_view=IndexView())
-admin.add_view(LoginView(endpoint='/login'))
 
+admin.add_view(LoginView(endpoint='/login'))
 
 admin.add_view(RuleView(Rule, db.session, name='Rule'))
 
