@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Action",
+        "description": "Thể loại này thường có nội dung về đánh nhau, bạo lực, hỗn loạn, với diễn biến nhanh"
+    },
+    {
+        "id": 2,
+        "name": "Adventure",
+        "description": "Thể loại phiêu lưu, mạo hiểm, thường là hành trình của các nhân vật"
+    },
+    {
+        "id": 3,
+        "name": "Horror",
+        "description": "Horror là: rùng rợn, nghe cái tên là bạn đã hiểu thể loại này có nội dung thế nào. Nó làm cho bạn kinh hãi, khiếp sợ, ghê tởm, run rẩy, có thể gây sock - một thể loại không dành cho người yếu tim"
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Harry Potter",
+        "price": 110,
+        "description": "Mình đọc bộ này từ khá nhiều năm trước , phải nói đây là bộ SA đầu tiên mình đọc , cũng là bộ vỡ lòng trên con đường dammei . Hôm trước tìm lại ko thấy trang nào đăng online , mình mạn phép xin được c",
+        "author": "Akainu",
+        "img": "https://bizweb.dktcdn.net/thumb/large/100/441/742/products/8fb425e1-d387-4070-9508-4f9ee0dc42e3.jpg?"
+    },
+    {
+        "id": 2,
+        "name": "Lui Lui Lui Lui Ra!",
+        "price": 300,
+        "description": "Chỉ vì một câu nói vô ý sáu năm trước, Lạc Phách trưởng công chúa vậy mà bị ép gả cho Đông Xưởng Đề Đốc của Quyền Khuynh Triều Dã? Công chúa thật và thái giám giả, thật sự là oan gia ngõ hẹp! Vào đêm",
+        "author": "Akainu",
+        "img": "https://i.truyenvua.com/ebook/190x247/lui-lui-lui-lui-ra_1612776015.jpg?gf=hdfgdfg&mobile=2"
+    },
+    {
+        "id": 3,
+        "name": "Ôm Khẩn Tiểu Mã Giáp Của Tôi",
+        "price": 124,
+        "description": "Nhà giàu Lục Gia gặp cảnh trớ trêu rằng đứa con gái nuôi hơn chục năm hóa ra chỉ là đồ giả! Hoắc Yểu vừa mới xuyên qua liền xách hành lý cùng thiên kim tiểu thư hang thật mỗi người ai trở về nhà nấy.",
+        "author": "Akainu",
+        "img": "https://i.truyenvua.com/ebook/190x247/om-khan-tieu-ma-giap-cua-toi_1644148715.jpg?gf=hdfgdfg&mobile="
+    }
+]
