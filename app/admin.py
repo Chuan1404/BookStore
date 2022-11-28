@@ -1,6 +1,5 @@
 from app import app, db
 from app.models import *
-from app.routes import *
 
 from flask_admin import Admin
 

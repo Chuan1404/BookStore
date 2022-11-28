@@ -14,8 +14,17 @@ class AdminView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.ADMIN
 
+class WarehouseView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated and current_user.user_role == User_role.WAREHOUSE_MANAGER
+
+
+class SalerView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated and current_user.user_role == User_role.SALER
+
 class IndexView(AdminIndexView):
-    @expose('/')
+    @expose('/')    
     @login_required
     def index(self):
         return self.render('admin/index.html')

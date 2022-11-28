@@ -10,6 +10,8 @@ from app.models.Receipt import *
 
 from app.models.Received_note import *
 
+from app.models.Admin import *
+
 
 with app.app_context():
     db.create_all()
