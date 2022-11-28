@@ -13,6 +13,8 @@ with app.app_context():
     app.add_url_rule('/register', view_func=routes.register, methods=['GET', 'POST'])
     app.add_url_rule('/product/<id>', view_func=routes.detail)
     app.add_url_rule('/checkout', view_func=routes.checkout)
+
+
     
 
 

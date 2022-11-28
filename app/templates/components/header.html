@@ -2,7 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="header__logo col-md-2 col-6 d-flex align-items-center">
-        <a href="/"><img src="{{url_for('static', filename='imgs/logo.png')}}" alt="" /></a>
+        <a href="/"
+          ><img src="{{url_for('static', filename='imgs/logo.png')}}" alt=""
+        /></a>
       </div>
 
       <div class="header__search col-md-8 d-none d-md-flex align-items-center">
@@ -28,6 +30,7 @@
                 ></path>
               </g>
             </svg>
+            <span class="badge badge-info" id="cartCounter">0</span>
           </a>
         </div>
         <div class="cardbox mx-4 user">
@@ -56,7 +59,7 @@
         </ul>
       </div>
       {% endif %}
-      
+
       <div class="header__box--item d-block d-md-none">
         <h4>Search</h4>
         <form action="" class="my-4 w-100">

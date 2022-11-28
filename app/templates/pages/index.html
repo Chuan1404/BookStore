@@ -73,9 +73,6 @@ content %}
                 </label>
               </div>
               {% endfor %}
-              
-
-              
             </div>
           </div>
           {% endif %}
@@ -176,52 +173,55 @@ content %}
           </ul>
         </div>
         <div class="home__shop--bottom row grid">
-
-          {% if products %}
-            {% for pro in products %}
-            <div class="product p-4 col-12 col-md-6 col-lg-4">
-              <div class="product__img position-relative">
-                <div class="img position-relative">
-                  <img
-                    src="{{pro.img}}"
-                    class="position-absolute top-50 start-50 translate-middle"
-                    alt=""
-                  />
-                </div>
-                <div class="btn-box position-absolute top-50 start-50 p-4">
-                  <button class="button btn-transparent white-border">
-                    Add to cart
-                  </button>
-                </div>
+          {% if products %} {% for pro in products %}
+          <div class="product p-4 col-12 col-md-6 col-lg-4">
+            <div class="product__img position-relative">
+              <div class="img position-relative">
+                <img
+                  src="{{pro.img}}"
+                  class="position-absolute top-50 start-50 translate-middle"
+                  alt=""
+                />
               </div>
-              <div class="product__info">
-                <h3 class="my-4"><a href="/product/{{pro.id}}">{{pro.name}}</a></h3>
-  
-                <!-- <p class="description my-4">
+              <div class="btn-box position-absolute top-50 start-50 p-4">
+                <button
+                  class="button btn-transparent white-border"
+                  onclick="addToCart({{pro.id}},'{{pro.name}}',{{pro.price}})"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </div>
+            <div class="product__info">
+              <h3 class="my-4">
+                <a href="/product/{{pro.id}}">{{pro.name}}</a>
+              </h3>
+
+              <!-- <p class="description my-4">
                                   Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
                                   piece of classical Latin literature from 45 BC, making it over 2000 years old.
                                   Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
                               </p> -->
-  
-                <span class="subprice">$130.00</span>
-                <span class="price">${{pro.price}}</span>
-                <div class="rate d-flex">
-                  <div class="cardbox mx-2">
-                    <svg
-                      version="1.1"
-                      id="Capa_1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style="fill: #fdb819"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      x="0px"
-                      y="0px"
-                      viewBox="0 0 217.929 217.929"
-                      style="enable-background: new 0 0 217.929 217.929"
-                      xml:space="preserve"
-                    >
-                      <g>
-                        <path
-                          d="M212.39,101.703c5.023-4.897,6.797-12.083,4.629-18.755s-7.827-11.443-14.769-12.452l-52.969-7.697
+
+              <span class="subprice">$130.00</span>
+              <span class="price">${{pro.price}}</span>
+              <div class="rate d-flex">
+                <div class="cardbox mx-2">
+                  <svg
+                    version="1.1"
+                    id="Capa_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="fill: #fdb819"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 217.929 217.929"
+                    style="enable-background: new 0 0 217.929 217.929"
+                    xml:space="preserve"
+                  >
+                    <g>
+                      <path
+                        d="M212.39,101.703c5.023-4.897,6.797-12.083,4.629-18.755s-7.827-11.443-14.769-12.452l-52.969-7.697
       c-0.097-0.014-0.18-0.075-0.223-0.162L125.371,14.64C122.267,8.349,115.98,4.44,108.964,4.44S95.662,8.349,92.558,14.64
       L68.87,62.637c-0.043,0.087-0.126,0.147-0.223,0.162l-52.968,7.697c-6.942,1.009-12.601,5.78-14.769,12.452
       s-0.394,13.858,4.629,18.755l38.328,37.361c0.07,0.068,0.102,0.166,0.085,0.262l-9.048,52.755
@@ -234,41 +234,41 @@ content %}
       l52.968-7.697c5.961-0.866,11.111-4.607,13.776-10.008l23.688-47.998c0.063-0.126,0.081-0.165,0.265-0.165s0.203,0.039,0.265,0.165
       l23.688,47.998c2.666,5.401,7.815,9.143,13.776,10.008l52.968,7.697c0.14,0.021,0.182,0.027,0.239,0.202
       c0.057,0.175,0.026,0.205-0.075,0.303l-38.328,37.361C157.185,130.378,155.218,136.432,156.235,142.368z"
-                        />
-                      </g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                    </svg>
-                  </div>
-                  <div class="cardbox mx-2">
-                    <svg
-                      version="1.1"
-                      id="Capa_1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style="fill: #fdb819"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      x="0px"
-                      y="0px"
-                      viewBox="0 0 217.929 217.929"
-                      style="enable-background: new 0 0 217.929 217.929"
-                      xml:space="preserve"
-                    >
-                      <g>
-                        <path
-                          d="M212.39,101.703c5.023-4.897,6.797-12.083,4.629-18.755s-7.827-11.443-14.769-12.452l-52.969-7.697
+                      />
+                    </g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                  </svg>
+                </div>
+                <div class="cardbox mx-2">
+                  <svg
+                    version="1.1"
+                    id="Capa_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="fill: #fdb819"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 217.929 217.929"
+                    style="enable-background: new 0 0 217.929 217.929"
+                    xml:space="preserve"
+                  >
+                    <g>
+                      <path
+                        d="M212.39,101.703c5.023-4.897,6.797-12.083,4.629-18.755s-7.827-11.443-14.769-12.452l-52.969-7.697
       c-0.097-0.014-0.18-0.075-0.223-0.162L125.371,14.64C122.267,8.349,115.98,4.44,108.964,4.44S95.662,8.349,92.558,14.64
       L68.87,62.637c-0.043,0.087-0.126,0.147-0.223,0.162l-52.968,7.697c-6.942,1.009-12.601,5.78-14.769,12.452
       s-0.394,13.858,4.629,18.755l38.328,37.361c0.07,0.068,0.102,0.166,0.085,0.262l-9.048,52.755
@@ -281,41 +281,41 @@ content %}
       l52.968-7.697c5.961-0.866,11.111-4.607,13.776-10.008l23.688-47.998c0.063-0.126,0.081-0.165,0.265-0.165s0.203,0.039,0.265,0.165
       l23.688,47.998c2.666,5.401,7.815,9.143,13.776,10.008l52.968,7.697c0.14,0.021,0.182,0.027,0.239,0.202
       c0.057,0.175,0.026,0.205-0.075,0.303l-38.328,37.361C157.185,130.378,155.218,136.432,156.235,142.368z"
-                        />
-                      </g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                    </svg>
-                  </div>
-                  <div class="cardbox mx-2">
-                    <svg
-                      version="1.1"
-                      id="Capa_1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style="fill: #fdb819"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      x="0px"
-                      y="0px"
-                      viewBox="0 0 217.929 217.929"
-                      style="enable-background: new 0 0 217.929 217.929"
-                      xml:space="preserve"
-                    >
-                      <g>
-                        <path
-                          d="M212.39,101.703c5.023-4.897,6.797-12.083,4.629-18.755s-7.827-11.443-14.769-12.452l-52.969-7.697
+                      />
+                    </g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                  </svg>
+                </div>
+                <div class="cardbox mx-2">
+                  <svg
+                    version="1.1"
+                    id="Capa_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="fill: #fdb819"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 217.929 217.929"
+                    style="enable-background: new 0 0 217.929 217.929"
+                    xml:space="preserve"
+                  >
+                    <g>
+                      <path
+                        d="M212.39,101.703c5.023-4.897,6.797-12.083,4.629-18.755s-7.827-11.443-14.769-12.452l-52.969-7.697
       c-0.097-0.014-0.18-0.075-0.223-0.162L125.371,14.64C122.267,8.349,115.98,4.44,108.964,4.44S95.662,8.349,92.558,14.64
       L68.87,62.637c-0.043,0.087-0.126,0.147-0.223,0.162l-52.968,7.697c-6.942,1.009-12.601,5.78-14.769,12.452
       s-0.394,13.858,4.629,18.755l38.328,37.361c0.07,0.068,0.102,0.166,0.085,0.262l-9.048,52.755
@@ -328,41 +328,41 @@ content %}
       l52.968-7.697c5.961-0.866,11.111-4.607,13.776-10.008l23.688-47.998c0.063-0.126,0.081-0.165,0.265-0.165s0.203,0.039,0.265,0.165
       l23.688,47.998c2.666,5.401,7.815,9.143,13.776,10.008l52.968,7.697c0.14,0.021,0.182,0.027,0.239,0.202
       c0.057,0.175,0.026,0.205-0.075,0.303l-38.328,37.361C157.185,130.378,155.218,136.432,156.235,142.368z"
-                        />
-                      </g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                    </svg>
-                  </div>
-                  <div class="cardbox mx-2">
-                    <svg
-                      version="1.1"
-                      id="Capa_1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style="fill: #fdb819"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      x="0px"
-                      y="0px"
-                      viewBox="0 0 217.929 217.929"
-                      style="enable-background: new 0 0 217.929 217.929"
-                      xml:space="preserve"
-                    >
-                      <g>
-                        <path
-                          d="M212.39,101.703c5.023-4.897,6.797-12.083,4.629-18.755s-7.827-11.443-14.769-12.452l-52.969-7.697
+                      />
+                    </g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                  </svg>
+                </div>
+                <div class="cardbox mx-2">
+                  <svg
+                    version="1.1"
+                    id="Capa_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="fill: #fdb819"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 217.929 217.929"
+                    style="enable-background: new 0 0 217.929 217.929"
+                    xml:space="preserve"
+                  >
+                    <g>
+                      <path
+                        d="M212.39,101.703c5.023-4.897,6.797-12.083,4.629-18.755s-7.827-11.443-14.769-12.452l-52.969-7.697
       c-0.097-0.014-0.18-0.075-0.223-0.162L125.371,14.64C122.267,8.349,115.98,4.44,108.964,4.44S95.662,8.349,92.558,14.64
       L68.87,62.637c-0.043,0.087-0.126,0.147-0.223,0.162l-52.968,7.697c-6.942,1.009-12.601,5.78-14.769,12.452
       s-0.394,13.858,4.629,18.755l38.328,37.361c0.07,0.068,0.102,0.166,0.085,0.262l-9.048,52.755
@@ -375,41 +375,41 @@ content %}
       l52.968-7.697c5.961-0.866,11.111-4.607,13.776-10.008l23.688-47.998c0.063-0.126,0.081-0.165,0.265-0.165s0.203,0.039,0.265,0.165
       l23.688,47.998c2.666,5.401,7.815,9.143,13.776,10.008l52.968,7.697c0.14,0.021,0.182,0.027,0.239,0.202
       c0.057,0.175,0.026,0.205-0.075,0.303l-38.328,37.361C157.185,130.378,155.218,136.432,156.235,142.368z"
-                        />
-                      </g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                    </svg>
-                  </div>
-                  <div class="cardbox mx-2">
-                    <svg
-                      version="1.1"
-                      id="Capa_1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style="fill: #fdb819"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      x="0px"
-                      y="0px"
-                      viewBox="0 0 217.929 217.929"
-                      style="enable-background: new 0 0 217.929 217.929"
-                      xml:space="preserve"
-                    >
-                      <g>
-                        <path
-                          d="M212.39,101.703c5.023-4.897,6.797-12.083,4.629-18.755s-7.827-11.443-14.769-12.452l-52.969-7.697
+                      />
+                    </g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                  </svg>
+                </div>
+                <div class="cardbox mx-2">
+                  <svg
+                    version="1.1"
+                    id="Capa_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="fill: #fdb819"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 217.929 217.929"
+                    style="enable-background: new 0 0 217.929 217.929"
+                    xml:space="preserve"
+                  >
+                    <g>
+                      <path
+                        d="M212.39,101.703c5.023-4.897,6.797-12.083,4.629-18.755s-7.827-11.443-14.769-12.452l-52.969-7.697
       c-0.097-0.014-0.18-0.075-0.223-0.162L125.371,14.64C122.267,8.349,115.98,4.44,108.964,4.44S95.662,8.349,92.558,14.64
       L68.87,62.637c-0.043,0.087-0.126,0.147-0.223,0.162l-52.968,7.697c-6.942,1.009-12.601,5.78-14.769,12.452
       s-0.394,13.858,4.629,18.755l38.328,37.361c0.07,0.068,0.102,0.166,0.085,0.262l-9.048,52.755
@@ -422,31 +422,30 @@ content %}
       l52.968-7.697c5.961-0.866,11.111-4.607,13.776-10.008l23.688-47.998c0.063-0.126,0.081-0.165,0.265-0.165s0.203,0.039,0.265,0.165
       l23.688,47.998c2.666,5.401,7.815,9.143,13.776,10.008l52.968,7.697c0.14,0.021,0.182,0.027,0.239,0.202
       c0.057,0.175,0.026,0.205-0.075,0.303l-38.328,37.361C157.185,130.378,155.218,136.432,156.235,142.368z"
-                        />
-                      </g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                      <g></g>
-                    </svg>
-                  </div>
+                      />
+                    </g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                  </svg>
                 </div>
               </div>
             </div>
-            {% endfor %}
-          {% else %}
-            <h1>Không có sản phẩm phù hợp</h1>
+          </div>
+          {% endfor %} {% else %}
+          <h1>Không có sản phẩm phù hợp</h1>
           {% endif %}
         </div>
       </div>
@@ -454,10 +453,13 @@ content %}
   </div>
 </main>
 {% endblock %} {% block script %}
+<script src="{{url_for('static', filename='js/pages/checkout.js')}}"></script>
+
 <script
   type="module"
   src="{{url_for('static', filename='js/pages/index.js')}}"
 ></script>
+
 {% endblock %}
 
 <!-- 
