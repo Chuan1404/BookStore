@@ -4,6 +4,7 @@ from app.decorators import anonymous_user
 from flask import render_template, request, redirect
 from flask_login import login_user, logout_user
 
+
 @anonymous_user
 def login():
     if request.method.__eq__('POST'):
