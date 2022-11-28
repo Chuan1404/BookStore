@@ -1,0 +1,2 @@
+[{"id":1, "name":"ADMINISTRATOR", "username":"admin", "email":"admin123@gmail.com", "password":"21232f297a57a5a743894a0e4a801fc3", "phone_number":"0392819389", "avatar":"None", "user_role":"ADMIN"},
+ {"id":6, "name":"WAREHOUSE_MANAGER", "username":"warehouse", "email":"warehouse123@gmail.com", "password":"372d30dd2849813ef674855253900679", "phone_number":"0974568392", "avatar":"", "user_role":"CUSTOMMER"}] 

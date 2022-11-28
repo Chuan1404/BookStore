@@ -32,10 +32,11 @@ def register():
 
 
         result = add_user(username=username, name=name, email=email, phone_number=phone_number, password=password, user_role=User_role.CUSTOMMER)
+        print(result)
         if result.get('status'):
             return render_template('pages/login.html')
         else:
-            return render_template('pages/register.html', err=result.get('err'))
+            return render_template('pages/register.html', errs=result.get('errs'))
     
     return render_template('pages/register.html')
 

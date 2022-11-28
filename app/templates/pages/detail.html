@@ -13,30 +13,28 @@
         <div class="productbox row">
             <div class="productbox__img col-12 col-md-6">
                 <div class="img">
-                    <img src="https://www.vinabook.com/images/thumbnails/product/240x/372414_p96096mscreenshot20220824093746.jpg"
+                    <img src="{{product.img}}"
                         alt="">
                 </div>
             </div>
 
             <div class="productbox__info col-12 col-md-6">
-                <h1>Product name</h1>
+                <h1>{{product.name}}</h1>
 
-                <span class="price">1.000.000 vnd</span>
+                <span class="price">${{product.price}}</span>
                 <span class="subprice">990.000 vnd</span>
 
                 <p>Type: Category</p>
-                <p>A long established fact that a reader will be distracted by the readable content of a page when
-                    looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                    distribution of letters, as opposed...</p>
+                <p>{{product.description}}</p>
 
                 <table class="table my-4">
                     <tr>
                         <td>Book name</td>
-                        <td>New and sale badge product</td>
+                        <td>{{product.name}}</td>
                     </tr>
                     <tr>
                         <td>Author</td>
-                        <td>Nguyen Van A</td>
+                        <td>{{product.author}}</td>
                     </tr>
                     <tr>
                         <td>Category</td>

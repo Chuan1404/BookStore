@@ -85,8 +85,8 @@ export function validate({ form, nameInputList = [], options = {} }) {
     let currentInput = form.querySelector(`input[name=${name}]`);
 
     if (!currentInput.value) errs[name] = "This field must not be blank";
-    else if (name == "username" && currentInput.value.length < 6)
-      errs[name] = "6 characters at least";
+    else if (name == "username" && currentInput.value.length < 3)
+      errs[name] = "3 characters at least";
     else if (name == "email" && !emailRegex.test(currentInput.value))
       errs.email = "Invalid email";
     else if (name == "phone_number" && !phoneRegex.test(currentInput.value))

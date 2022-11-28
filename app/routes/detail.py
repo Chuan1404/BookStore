@@ -1,8 +1,9 @@
-from app import app
+from app.controllers import get_book_by_id
 from flask import render_template
 
-def detail():
-    return render_template('pages/detail.html')
+def detail(id):
+    product = get_book_by_id(id)
+    return render_template('pages/detail.html', product=product) 
 
    
 

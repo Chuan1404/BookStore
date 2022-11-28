@@ -12,7 +12,6 @@ window.addEventListener('load', () => {
 
         // validate form
         let errs = validate({form: form, nameInputList: ['username', 'name', 'password', 'confirm', 'phone_number', 'email']})
-        console.log(Object.keys(errs).length)
         if (Object.keys(errs).length) {
             Object.keys(errs).forEach(name => {
                 let input = form.querySelector(`input[name=${name}]`)
