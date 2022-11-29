@@ -9,6 +9,7 @@ from flask_admin import Admin
     
 admin = Admin(app=app, name='Bookstore', template_mode='bootstrap4', index_view=IndexView())
 
+
 admin.add_view(LoginView(endpoint='/login'))
 
 admin.add_view(RuleView(Rule, db.session, name='Rule'))
@@ -23,3 +24,5 @@ admin.add_view(ReceiptDetailsView(Receipt_detail, db.session, name='Receipt_deta
 
 admin.add_view(ReceiptNoteView(Received_note,db.session, name='Received_note'))
 admin.add_view(ReceiptNoteDetailsView(Received_note_detail,db.session, name='Received_note_detail'))
+
+admin.add_view(LogoutView(name='Log out'))

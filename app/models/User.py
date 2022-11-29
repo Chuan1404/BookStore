@@ -27,5 +27,8 @@ class User(db.Model, UserMixin):
 
     admin_received_note = relationship('Received_note', backref='admin_received_note', lazy=True)
 
+    def __str__(self):
+        return self.username
+
     
 

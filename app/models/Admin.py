@@ -1,7 +1,7 @@
 from flask import request, redirect
 from flask_admin import AdminIndexView, BaseView, expose
 from flask_admin.contrib.sqla import ModelView
-from flask_login import login_user, current_user, login_required
+from flask_login import login_user, current_user, login_required, logout_user
 
 from app.decorators import anonymous_staff
 
@@ -9,7 +9,11 @@ from app.decorators import anonymous_staff
 from app.models import User_role
 from app.controllers import auth_user
 
-    
+# Admin, Warehouse, Saler View
+class AuthenticatedView(BaseView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+
 class AdminView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.ADMIN
@@ -18,11 +22,11 @@ class WarehouseView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.WAREHOUSE_MANAGER
 
-
 class SalerView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.SALER
 
+# Index Admin View
 class IndexView(AdminIndexView):
     @expose('/')    
     @login_required
@@ -33,6 +37,7 @@ class IndexView(AdminIndexView):
     def inaccessible_callback(self, name, **kwargs):
         return redirect('/admin/login')
 
+# Login View
 class LoginView(BaseView):
     @expose('/', methods=('GET', 'POST'))
     @anonymous_staff
@@ -55,6 +60,16 @@ class LoginView(BaseView):
                 return self.render('admin/login.html', err = result.get('err'))
         return self.render('admin/login.html')
 
+# ImportBook view
+class ImportBook(WarehouseView):
+    pass
+
+# Logout View
+class LogoutView(AuthenticatedView):
+    @expose('/')
+    def index(self):
+        logout_user()
+        return redirect('/admin')
 
 
 class RuleView(AdminView):
@@ -153,7 +168,6 @@ class ReceiptNoteView(AdminView):
         'created_at': 'Ngày tạo hoá đơn',
         'updated_at': 'Ngày cập nhật'
     }
-
 class ReceiptNoteDetailsView(AdminView):
     column_display_pk = True
     can_view_details = True
