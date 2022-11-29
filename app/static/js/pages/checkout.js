@@ -12,11 +12,12 @@ function none_checkout() {
   re_checkout.classList.toggle("re-checkout__none");
 }
 
-function addToCart(id, name, price) {
+function addToCart(id, img, name, price) {
   fetch("/api/add-cart", {
     method: "post",
     body: JSON.stringify({
       id: id,
+      img: img,
       name: name,
       price: price,
     }),

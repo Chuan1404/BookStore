@@ -43,10 +43,14 @@ link %}
           </div>
         </div>
         <div class="accordion__panel">
+          {% if 'cart' in session and session['cart'] %}
+
           <form
             class="col-12 col-lg-6 d-md-block form background-white"
             action=""
           >
+            {% for c in session['cart'].values() %}
+
             <!-- Hinh 1 -->
             <div class="form__group d-flex align-items-center">
               <div class="row">
@@ -70,16 +74,13 @@ link %}
                 </div>
                 <div class="col-2">
                   <a href="#">
-                    <img
-                      src="https://bizweb.dktcdn.net/thumb/large/100/441/742/products/8fb425e1-d387-4070-9508-4f9ee0dc42e3.jpg?v=1654826957000"
-                      alt=""
-                      class="checkout-img"
+                    <img src="{{ c.img }}" alt="" class="checkout-img"
                   /></a>
                 </div>
                 <div class="col-3">
                   <span class="checkout-span">
                     <a href="#" class="text-black checkout-address"
-                      >Nỗi buồn chiến tranh</a
+                      >{{ c.name }}</a
                     ></span
                   ><br />
                   <br />
@@ -87,16 +88,17 @@ link %}
                 </div>
                 <div class="col-3 productbox mt-5">
                   <span class="price text-black price__checkout"
-                    >1.000.000 vnd</span
-                  >
-                  <span class="subprice text-black subprice__checkout"
-                    >990.000 vnd</span
+                    >{{ c.price }} vnd</span
                   >
                 </div>
                 <div class="col-2">
                   <div class="input input-amount mt-5">
                     <button class="text-black">-</button>
-                    <input type="text" value="1" style="color: black" />
+                    <input
+                      type="text"
+                      value="{{ c.quantity }}"
+                      style="color: black"
+                    />
                     <button class="text-black">+</button>
                   </div>
                 </div>
@@ -118,7 +120,7 @@ link %}
                 </div>
               </div>
             </div>
-            <!-- Hinh 2 -->
+            <!-- Hinh 2
             <div class="form__group d-flex align-items-center">
               <div class="row">
                 <div class="col-1 checkout-margin">
@@ -189,7 +191,7 @@ link %}
                 </div>
               </div>
             </div>
-            <!-- Hinh 3 -->
+            Hinh 3
             <div class="form__group d-flex align-items-center">
               <div class="row">
                 <div class="col-1 checkout-margin">
@@ -259,9 +261,21 @@ link %}
                   </svg>
                 </div>
               </div>
-            </div>
+            </div> -->
+            {% endfor %}
             <!-- End hinh -->
+            <div class="alert alert-info">
+              <h4 class="text-black">
+                Tổng sản phẩm: {{ stats.total_quantity }}
+              </h4>
+              <h4 class="text-black">Tổng tiền: {{ stats.total_amount }}</h4>
+            </div>
           </form>
+          {% else %}
+          <p class="text-danger col-lg-6 d-none d-lg-block">
+            Không có sản phẩm nào trong giỏ
+          </p>
+          {% endif %}
         </div>
       </div>
 
@@ -443,7 +457,10 @@ link %}
           </div>
         </form>
       </div>
+      {% if 'cart' in session and session['cart'] %}
+
       <form class="col-12 col-lg-6 d-none d-lg-block form background-white">
+        {% for c in session['cart'].values() %}
         <!-- Hinh 1 -->
         <div class="form__group d-flex align-items-center">
           <div class="row">
@@ -467,16 +484,13 @@ link %}
             </div>
             <div class="col-2">
               <a href="#">
-                <img
-                  src="https://bizweb.dktcdn.net/thumb/large/100/441/742/products/8fb425e1-d387-4070-9508-4f9ee0dc42e3.jpg?v=1654826957000"
-                  alt=""
-                  class="checkout-img"
+                <img src="{{ c.img }}" alt="" class="checkout-img"
               /></a>
             </div>
             <div class="col-3">
               <span class="checkout-span">
                 <a href="#" class="text-black checkout-address"
-                  >Nỗi buồn chiến tranh</a
+                  >{{ c.name }}</a
                 ></span
               ><br />
               <br />
@@ -484,16 +498,17 @@ link %}
             </div>
             <div class="col-3 productbox mt-5">
               <span class="price text-black price__checkout"
-                >1.000.000 vnd</span
-              >
-              <span class="subprice text-black subprice__checkout"
-                >990.000 vnd</span
+                >{{ c.price }} vnd</span
               >
             </div>
             <div class="col-2">
               <div class="input input-amount mt-5">
                 <button class="text-black">-</button>
-                <input type="text" value="1" style="color: black" />
+                <input
+                  type="text"
+                  value="{{ c.quantity }}"
+                  style="color: black"
+                />
                 <button class="text-black">+</button>
               </div>
             </div>
@@ -515,7 +530,7 @@ link %}
             </div>
           </div>
         </div>
-        <!-- Hinh 2 -->
+        <!-- Hinh 2
         <div class="form__group d-flex align-items-center">
           <div class="row">
             <div class="col-1 checkout-margin">
@@ -585,8 +600,8 @@ link %}
               </svg>
             </div>
           </div>
-        </div>
-        <!-- Hinh 3 -->
+        </div> -->
+        <!-- Hinh 3
         <div class="form__group d-flex align-items-center">
           <div class="row">
             <div class="col-1 checkout-margin">
@@ -656,9 +671,20 @@ link %}
               </svg>
             </div>
           </div>
-        </div>
+        </div> -->
+        {% endfor %}
         <!-- End hinh -->
+        <div class="alert alert-info">
+          <h4 class="text-black">Tổng sản phẩm: {{ stats.total_quantity }}</h4>
+          <h4 class="text-black">Tổng tiền: {{ stats.total_amount }}</h4>
+        </div>
       </form>
+
+      {% else %}
+      <p class="text-danger col-lg-6 d-none d-lg-block">
+        Không có sản phẩm nào trong giỏ
+      </p>
+      {% endif %}
     </div>
   </div>
 </main>

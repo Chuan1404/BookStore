@@ -1,5 +1,6 @@
 from app import app, admin, login_manager
 from app.controllers import get_user_by_id
+from flask import session
 import routes
 
 from flask import request, redirect
@@ -27,6 +28,12 @@ def unauthorized_handler():
     if request.path.__eq__('/admin/'):
         return redirect('/admin/login')
     return redirect('/login')
+
+@app.context_processor
+def common_response():
+    return {
+        'cart_stats': routes.count_cart(session.get('cart'))
+    }
     
 if __name__ == '__main__':
     app.run(debug=True)
