@@ -25,9 +25,9 @@ class Book(db.Model):
     img = Column(String(100), nullable=False)
 
     # RELATIONSHIP
-    book_category = relationship('Category', secondary='category_book', lazy='subquery', backref=backref('book', lazy=True))
-    book_received_note = relationship('Received_note_detail', backref='book', lazy=True)
-    book_receipt = relationship('Receipt_detail', backref='book', lazy=True)
+    category = relationship('Category', secondary='category_book', lazy='subquery', backref=backref('book', lazy=True))
+    note = relationship('Note_detail', backref='book', lazy=True)
+    receipt = relationship('Receipt_detail', backref='book', lazy=True)
 
     def __str__(self):
         return self.name

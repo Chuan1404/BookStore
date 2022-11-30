@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
     customer_receipt = relationship('Receipt', foreign_keys='Receipt.customer_id', backref='customer_receipt', lazy=True)
     saler_receipt = relationship('Receipt', foreign_keys='Receipt.saler_id', backref='saler_receipt', lazy=True)
 
-    admin_received_note = relationship('Received_note', backref='admin_received_note', lazy=True)
+    admin_note = relationship('Note', backref='admin_note', lazy=True)
 
     def __str__(self):
         return self.username

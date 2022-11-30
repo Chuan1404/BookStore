@@ -52,8 +52,11 @@ input[type='password']  {
 input[type='checkbox'] {
   appearance: none;
 }
-
-
+input[type='date'] {
+  outline: none;
+  border: none;
+}
+ 
 /* ----------ul li---------- */
 ul {
   list-style-type: none;

@@ -8,7 +8,7 @@ from app.models.Category_book import *
 
 from app.models.Receipt import *
 
-from app.models.Received_note import *
+from app.models.Note import *
 
 from app.models.Admin import *
 

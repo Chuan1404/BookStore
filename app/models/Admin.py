@@ -1,43 +1,52 @@
-from flask import request, redirect
+from flask import request, redirect, flash
 from flask_admin import AdminIndexView, BaseView, expose
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_user, current_user, login_required, logout_user
 
 from app.decorators import anonymous_staff
+from app.models import *
+from app.controllers import *
 
-
-from app.models import User_role
-from app.controllers import auth_user
+from app import db
 
 # Admin, Warehouse, Saler View
 class AuthenticatedView(BaseView):
     def is_accessible(self):
         return current_user.is_authenticated
 
+
 class AdminView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.ADMIN
 
-class WarehouseView(ModelView):
+
+class WarehouseView(BaseView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.WAREHOUSE_MANAGER
+
 
 class SalerView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.SALER
 
 # Index Admin View
+
+
 class IndexView(AdminIndexView):
-    @expose('/')    
+    @expose('/')
     @login_required
     def index(self):
         return self.render('admin/index.html')
+
     def is_accessible(self):
-            return current_user.is_authenticated and current_user.user_role != User_role.CUSTOMMER
+        return current_user.is_authenticated and current_user.user_role != User_role.CUSTOMMER
+
     def inaccessible_callback(self, name, **kwargs):
         return redirect('/admin/login')
 
 # Login View
+
+
 class LoginView(BaseView):
     @expose('/', methods=('GET', 'POST'))
     @anonymous_staff
@@ -47,24 +56,41 @@ class LoginView(BaseView):
             password = request.form.get('password')
             user_role = request.form.get('role')
 
-            if user_role == '0': user_role = User_role.ADMIN
-            elif user_role == '2': user_role = User_role.WAREHOUSE_MANAGER
-            elif user_role == '3': user_role = User_role.SALER
+            if user_role == '0':
+                user_role = User_role.ADMIN
+            elif user_role == '2':
+                user_role = User_role.WAREHOUSE_MANAGER
+            elif user_role == '3':
+                user_role = User_role.SALER
 
-            result = auth_user(username=username, password=password,user_role=user_role)
+            result = auth_user(username=username,
+                               password=password, user_role=user_role)
 
             if result.get('status'):
                 login_user(result.get('user'))
                 return redirect('/admin/')
             else:
-                return self.render('admin/login.html', err = result.get('err'))
+                return self.render('admin/login.html', err=result.get('err'))
         return self.render('admin/login.html')
 
-# ImportBook view
-class ImportBook(WarehouseView):
-    pass
+class ImportBookView(WarehouseView):
+    @expose('/', methods=('GET', 'POST'))
+    def index(self):
+        # 2022-11-29 19:57:12
+        current_date = request.args.get('current_date')
+        if current_date:
+            date_split = current_date.split('-')
+            res = data_import_page(date=datetime(
+                int(date_split[0]), int(date_split[1]), int(date_split[2])))
+        else:
+            res = data_import_page()
+        if res:
+            return self.render('admin/import_book.html', note_detail=res)
+        return self.render('admin/import_book.html')
 
 # Logout View
+
+
 class LogoutView(AuthenticatedView):
     @expose('/')
     def index(self):
@@ -81,6 +107,7 @@ class RuleView(AdminView):
         'minimum_inventory': 'Số lượng tồn kho tối thiểu'
     }
 
+
 class UserView(AdminView):
     column_display_pk = True
     can_view_details = True
@@ -93,6 +120,7 @@ class UserView(AdminView):
         'username': 'Tên đăng nhập',
         'phone_number': 'Số điện thoại'
     }
+
 
 class BookView(AdminView):
     # Hiện id sách
@@ -116,11 +144,12 @@ class BookView(AdminView):
         'name': 'Tên sách',
         'price': 'Giá sách',
         'description': 'Mô tả',
-        'author':'Tác giả'
+        'author': 'Tác giả'
     }
 
     # Sắp xếp thứ tự theo id, tên, giá
     column_sortable_list = ['id', 'name', 'price', 'author']
+
 
 class CategoryView(AdminView):
     column_display_pk = True
@@ -134,6 +163,7 @@ class CategoryView(AdminView):
         'description': 'Mô tả'
     }
 
+
 class ReceiptView(AdminView):
     column_display_pk = True
     can_view_details = True
@@ -144,6 +174,7 @@ class ReceiptView(AdminView):
         'id': 'ID',
         'created_at': 'Thời gian lập'
     }
+
 
 class ReceiptDetailsView(AdminView):
     column_display_pk = True
@@ -157,18 +188,22 @@ class ReceiptDetailsView(AdminView):
         'unit_price': 'Tổng tiền'
     }
 
-class ReceiptNoteView(AdminView):
+
+class NoteView(AdminView):
     column_display_pk = True
     can_view_details = True
     can_export = True
     column_searchable_list = ['created_at', 'updated_at']
-    column_sortable_list = ['id','created_at','updated_at']
+    column_sortable_list = ['id', 'created_at', 'updated_at']
     column_labels = {
         'id': 'ID',
+        'import_at': 'Ngày nhập',
         'created_at': 'Ngày tạo hoá đơn',
         'updated_at': 'Ngày cập nhật'
     }
-class ReceiptNoteDetailsView(AdminView):
+
+
+class NoteDetailsView(AdminView):
     column_display_pk = True
     can_view_details = True
     can_export = True
@@ -178,3 +213,13 @@ class ReceiptNoteDetailsView(AdminView):
         'id': 'ID',
         'amount': 'Tổng số sách'
     }
+
+    def on_model_change(self, form, model, is_created):
+        if is_created:
+            if model.amount <= 150:
+                flash('test', 'success')
+                self.delete_model(model)
+            else:
+                return
+        else:
+            return

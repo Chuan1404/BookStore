@@ -1,4 +1,4 @@
 from .index import *
 from .auth import *
-from .detail import *
+from .book import *
 from .checkout import *

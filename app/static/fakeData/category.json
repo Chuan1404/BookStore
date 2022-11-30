@@ -1,17 +1,8 @@
-[
-    {
-        "id": 1,
-        "name": "Action",
-        "description": "Thể loại này thường có nội dung về đánh nhau, bạo lực, hỗn loạn, với diễn biến nhanh"
-    },
-    {
-        "id": 2,
-        "name": "Adventure",
-        "description": "Thể loại phiêu lưu, mạo hiểm, thường là hành trình của các nhân vật"
-    },
-    {
-        "id": 3,
-        "name": "Horror",
-        "description": "Horror là: rùng rợn, nghe cái tên là bạn đã hiểu thể loại này có nội dung thế nào. Nó làm cho bạn kinh hãi, khiếp sợ, ghê tởm, run rẩy, có thể gây sock - một thể loại không dành cho người yếu tim"
-    }
-]
+[{"id":1, "name":"Action", "description":"Th\u1ec3 lo\u1ea1i n\u00e0y th\u01b0\u1eddng c\u00f3 n\u1ed9i dung v\u1ec1 \u0111\u00e1nh nhau, b\u1ea1o l\u1ef1c, h\u1ed7n lo\u1ea1n, v\u1edbi di\u1ec5n bi\u1ebfn nhanh"},
+ {"id":2, "name":"Adult", "description":"Th\u1ec3 lo\u1ea1i c\u00f3 \u0111\u1ec1 c\u1eadp \u0111\u1ebfn v\u1ea5n \u0111\u1ec1 nh\u1ea1y c\u1ea3m, ch\u1ec9 d\u00e0nh cho tu\u1ed5i 17+"},
+ {"id":3, "name":"Adventure", "description":"Th\u1ec3 lo\u1ea1i phi\u00eau l\u01b0u, m\u1ea1o hi\u1ec3m, th\u01b0\u1eddng l\u00e0 h\u00e0nh tr\u00ecnh c\u1ee7a c\u00e1c nh\u00e2n v\u1eadt"},
+ {"id":4, "name":"Anime", "description":"Truy\u1ec7n \u0111\u00e3 \u0111\u01b0\u1ee3c chuy\u1ec3n th\u1ec3 th\u00e0nh film Anime"},
+ {"id":5, "name":"Chuy\u1ec3n sinh", "description":"Th\u1ec3 lo\u1ea1i n\u00e0y l\u00e0 nh\u1eefng c\u00e2u chuy\u1ec7n v\u1ec1 ng\u01b0\u1eddi \u1edf m\u1ed9t th\u1ebf gi\u1edbi n\u00e0y xuy\u00ean \u0111\u1ebfn m\u1ed9t th\u1ebf gi\u1edbi kh\u00e1c, c\u00f3 th\u1ec3 l\u00e0 th\u1ebf gi\u1edbi mang phong c\u00e1ch trung c\u1ed5 v\u1edbi ki\u1ebfm s\u0129 v\u00e0 ma thu\u1eadt, hay th\u1ebf gi\u1edbi trong game"},
+ {"id":6, "name":"C\u1ed5 \u0111\u1ea1i", "description":"Truy\u1ec7n c\u00f3 n\u1ed9i dung x\u1ea3y ra \u1edf th\u1eddi c\u1ed5 \u0111\u1ea1i phong ki\u1ebfn."},
+ {"id":7, "name":"Comedy", "description":"Th\u1ec3 lo\u1ea1i c\u00f3 n\u1ed9i dung trong s\u00e1ng v\u00e0 c\u1ea3m \u0111\u1ed9ng, th\u01b0\u1eddng c\u00f3 c\u00e1c t\u00ecnh ti\u1ebft g\u00e2y c\u01b0\u1eddi, c\u00e1c xung \u0111\u1ed9t nh\u1eb9 nh\u00e0ng"},
+ {"id":8, "name":"Comic", "description":"Truy\u1ec7n tranh Ch\u00e2u \u00c2u v\u00e0 Ch\u00e2u M\u0129"}]

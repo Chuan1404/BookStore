@@ -1,6 +1,5 @@
 from flask import render_template
-from app.controllers import get_books, get_categories
-
+from app.controllers import *
 def index():
     products = get_books()
     categories = get_categories()
@@ -8,6 +7,6 @@ def index():
         return render_template('pages/index.html', products=products, categories=categories)
     return render_template('pages/index.html')
 
-   
+
 
 
