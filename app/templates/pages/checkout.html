@@ -266,9 +266,9 @@ link %}
             <!-- End hinh -->
             <div class="alert alert-info">
               <h4 class="text-black">
-                Tổng sản phẩm: {{ stats.total_quantity }}
+                Tổng sản phẩm: {{ cart_stats.total_quantity }}
               </h4>
-              <h4 class="text-black">Tổng tiền: {{ stats.total_amount }}</h4>
+              <h4 class="text-black">Tổng tiền: {{ cart_stats.total_amount }}</h4>
             </div>
           </form>
           {% else %}
@@ -675,8 +675,8 @@ link %}
         {% endfor %}
         <!-- End hinh -->
         <div class="alert alert-info">
-          <h4 class="text-black">Tổng sản phẩm: {{ stats.total_quantity }}</h4>
-          <h4 class="text-black">Tổng tiền: {{ stats.total_amount }}</h4>
+          <h4 class="text-black">Tổng sản phẩm: {{ cart_stats.total_quantity }}</h4>
+          <h4 class="text-black">Tổng tiền: {{ cart_stats.total_amount }}</h4>
         </div>
       </form>
 

@@ -1,12 +1,13 @@
 from app import app
 from flask_login import login_required
 from flask import render_template , session , jsonify ,request
+import json
 
 
 
 @login_required
 def checkout():
-    return render_template('pages/checkout.html',stats=count_cart(session['cart']))
+    return render_template('pages/checkout.html')
 
 # PS: T không dẫn đường dẫn ngược ra ngoài được :)))))
 # Gio hang
@@ -42,7 +43,6 @@ def add_to_cart():
 
 def count_cart(cart):
     total_quantity,total_amount =0,0
-
     if cart:
         for c in cart.values():
             total_quantity +=c['quantity']
