@@ -1,7 +1,7 @@
 from app.controllers import add_user, auth_user
 from app.models import User_role
 from app.decorators import anonymous_user
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, session
 from flask_login import login_user, logout_user
 
 
@@ -42,5 +42,6 @@ def register():
 
 def logout():
     logout_user()
+    # del session['cart']
     return redirect('/login')
 
