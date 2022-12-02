@@ -68,6 +68,7 @@
   border: 1px solid transparent;
   transition: var(--t);
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .button:hover,
@@ -112,6 +113,10 @@
 .btn-org-to-white:hover {
   background-color: var(--main-cl);
   color: white;
+}
+
+.button.btn-max-content {
+  width: max-content;
 }
 /* ----------form---------- */
 .form {
