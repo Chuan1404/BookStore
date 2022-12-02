@@ -2,7 +2,6 @@
 <script src="{{url_for('static', filename='js/importBook.js')}}"></script>
 {% endblock%} {% block body %}
 <main>
-  {% if note_detail %}
   <h1 class="text-center">Import book</h1>
   <form class="form">
     <div class="form__group d-flex align-items-center justify-content-end">
@@ -14,6 +13,7 @@
       />
     </div>
   </form>
+  {% if note_detail %}
   <table class="table">
     <thead>
       <th>STT</th>

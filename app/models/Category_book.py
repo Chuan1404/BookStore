@@ -21,7 +21,8 @@ class Book(db.Model):
     price = Column(Float, nullable=False, default=0)
     description = Column(String(200))
     author = Column(String(50))
-    # active = Column(Boolean, default=True)
+    active = Column(Boolean, default=True)
+    amount = Column(Integer, default = 0)
     img = Column(String(100), nullable=False)
 
     # RELATIONSHIP

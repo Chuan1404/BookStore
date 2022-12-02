@@ -1,20 +1,17 @@
 // execute when html loaded
 window.addEventListener("load", () => {
   let dateInput = document.querySelector("#date");
+  setInputValue(dateInput)
 
-  dateInput.addEventListener("change", async (e) => {
-    // const res = await get_note_by_date(e.target.value);
-    // res.data = JSON.parse(res.data)
-    // console.log(res)
+  dateInput?.addEventListener("change", (e) => {
+    window.location.search = `?current_date=${e.target.value}`
   });
 
-  // function get_note_by_date(date) {
-  //   return fetch("/admin/import", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(date),
-  //   }).then(res => res.json())
-  // }
 });
+
+function setInputValue(input) {
+  let search = window.location.search
+  if (search) {
+    input.value = search.split('=')[1]
+  }
+}

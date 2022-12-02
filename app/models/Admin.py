@@ -10,6 +10,8 @@ from app.controllers import *
 from app import db
 
 # Admin, Warehouse, Saler View
+
+
 class AuthenticatedView(BaseView):
     def is_accessible(self):
         return current_user.is_authenticated
@@ -72,6 +74,7 @@ class LoginView(BaseView):
             else:
                 return self.render('admin/login.html', err=result.get('err'))
         return self.render('admin/login.html')
+
 
 class ImportBookView(WarehouseView):
     @expose('/', methods=('GET', 'POST'))
@@ -216,10 +219,26 @@ class NoteDetailsView(AdminView):
 
     def on_model_change(self, form, model, is_created):
         if is_created:
-            if model.amount <= 150:
-                flash('test', 'success')
+            err = ''
+
+            # check amount of model
+            if model.amount < 150:
+                err = 'Số lượng nhập phải trên 150'
+            else:
+                book = get_book_by_id(model.book_id)
+                if book and book.amount < 300:
+                    err = 'Số lượng sản phẩm đã trên 300'
+
+            # check model exist on database or not
+            data_exist = Note_detail.query.filter(
+                Note_detail.book_id == model.book_id, Note_detail.note_id == model.note_id).all()
+            print('-------------------------------', data_exist)
+            if len(data_exist) > 1:
+                err = 'Sản phẩm đã tồn tại'
+            
+
+            if err:
+                flash(err, 'error')
                 self.delete_model(model)
             else:
-                return
-        else:
-            return
+                flash('Create success', 'success')

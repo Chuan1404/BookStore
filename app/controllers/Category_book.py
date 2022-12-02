@@ -9,11 +9,3 @@ def get_books():
 def get_categories():
     return Category.query.all()
 
-def convert_categories_to_str(book):
-    strs = []
-    if book.category:
-        for category in book.category:
-            strs.append(category.__str__())
-        return ','.join(strs)
-    else:
-        return ''

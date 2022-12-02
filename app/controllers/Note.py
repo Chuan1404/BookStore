@@ -20,8 +20,6 @@ def get_books_in_note_detail(note_id):
     note_details = Note_detail.query.filter(Note_detail.note_id == note_id).all()
     books = []
     for detail in note_details:
-        print(convert_categories_to_str(get_book_by_id(detail.book_id)))
-
         books.append({
             'book': get_book_by_id(detail.book_id),
             'amount': detail.amount
