@@ -13,7 +13,7 @@
       />
     </div>
   </form>
-  {% if note_detail %}
+  {% if note_detail and note_detail.books %}
   <table class="table">
     <thead>
       <th>STT</th>
@@ -23,7 +23,7 @@
       <th>Số lượng</th>
     </thead>
     <tbody>
-      {% for detail in note_detail %}
+      {% for detail in note_detail.books %}
       <tr>
         <td>{{detail.book.id}}</td>
         <td>{{detail.book.name}}</td>
@@ -39,7 +39,7 @@
     </tbody>
   </table>
 
-  <div class="button btn-max-content">Hoàn tất nhập sách</div>
+  <button note_id="{{note_detail.note_id}}" id='submitImport' class="button btn-max-content">Hoàn tất nhập sách</button>
   {% else %}
   <h1 class="text-center">Không có phiếu nhập</h1>
   {% endif %}

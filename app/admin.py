@@ -12,6 +12,7 @@ admin = Admin(app=app, name='Bookstore', template_mode='bootstrap4', index_view=
 
 admin.add_view(LoginView(endpoint='/login'))
 admin.add_view(ImportBookView(name='Nhập sách', endpoint='/import'))
+admin.add_view(SaleView(name='Bán hàng', endpoint='/sale'))
 
 admin.add_view(RuleView(Rule, db.session, name='Rule'))
 

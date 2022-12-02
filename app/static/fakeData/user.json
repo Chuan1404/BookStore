@@ -1,2 +1,4 @@
 [{"id":1, "name":"ADMINISTRATOR", "username":"admin", "email":"admin123@gmail.com", "password":"21232f297a57a5a743894a0e4a801fc3", "phone_number":"0392819389", "avatar":"None", "user_role":"ADMIN"},
- {"id":6, "name":"WAREHOUSE_MANAGER", "username":"warehouse", "email":"warehouse123@gmail.com", "password":"372d30dd2849813ef674855253900679", "phone_number":"0974568392", "avatar":"", "user_role":"WAREHOUSE_MANAGER"}] 
+ {"id":6, "name":"WAREHOUSE_MANAGER", "username":"warehouse", "email":"warehouse123@gmail.com", "password":"372d30dd2849813ef674855253900679", "phone_number":"0974568392", "avatar":"", "user_role":"WAREHOUSE_MANAGER"},
+ {"id":7, "name":"Nguy\u1ec5n Chu Ph\u01b0\u1edbc \u00c2n", "username":"user1122", "email":"chuan14402@gmail.com", "password":"3b712de48137572f3849aabd5666a4e3", "phone_number":"0365151354", "avatar":"", "user_role":"CUSTOMMER"},
+ {"id":8, "name":"saler", "username":"saler", "email":"saler123@gmail.com", "password":"03c91917aef63ae655821b365309432f", "phone_number":"0365151354", "avatar":"", "user_role":"SALER"}]

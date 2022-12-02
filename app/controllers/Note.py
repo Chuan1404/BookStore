@@ -27,7 +27,10 @@ def get_books_in_note_detail(note_id):
     if books:
         return {
             'status': 1,
-            'data': books
+            'data': {
+                'note_id': note_id,
+                'books': books
+            }
         }
     else: 
         return {
@@ -39,10 +42,11 @@ def data_import_page(date=datetime.now().date()):
     note = get_note_by_date(date)
 
     if note.get('status') == 1:
-        books = get_books_in_note_detail(note.get('data').id)
-        if books.get('status') == 1:
-            return books.get("data")
+        res = get_books_in_note_detail(note.get('data').id)
+        if res.get('status') == 1:
+            return res.get("data")
         else:
             return 0
     else:
         return 0
+

@@ -27,12 +27,11 @@ class WarehouseView(BaseView):
         return current_user.is_authenticated and current_user.user_role == User_role.WAREHOUSE_MANAGER
 
 
-class SalerView(ModelView):
+class SalerView(BaseView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.SALER
 
 # Index Admin View
-
 
 class IndexView(AdminIndexView):
     @expose('/')
@@ -47,7 +46,6 @@ class IndexView(AdminIndexView):
         return redirect('/admin/login')
 
 # Login View
-
 
 class LoginView(BaseView):
     @expose('/', methods=('GET', 'POST'))
@@ -75,7 +73,17 @@ class LoginView(BaseView):
                 return self.render('admin/login.html', err=result.get('err'))
         return self.render('admin/login.html')
 
+# Logout View
 
+
+class LogoutView(AuthenticatedView):
+    @expose('/')
+    def index(self):
+        logout_user()
+        return redirect('/admin')
+
+
+# Warehouse View
 class ImportBookView(WarehouseView):
     @expose('/', methods=('GET', 'POST'))
     def index(self):
@@ -91,16 +99,14 @@ class ImportBookView(WarehouseView):
             return self.render('admin/import_book.html', note_detail=res)
         return self.render('admin/import_book.html')
 
-# Logout View
+# class Saler
 
-
-class LogoutView(AuthenticatedView):
-    @expose('/')
+class SaleView(SalerView):
+    @expose('/', methods=('GET', 'POST'))
     def index(self):
-        logout_user()
-        return redirect('/admin')
+        return self.render('admin/sale.html')
 
-
+# Admin View
 class RuleView(AdminView):
     can_export = True
     column_sortable_list = ['minimum_entry', 'minimum_inventory']
@@ -232,7 +238,7 @@ class NoteDetailsView(AdminView):
             # check model exist on database or not
             data_exist = Note_detail.query.filter(
                 Note_detail.book_id == model.book_id, Note_detail.note_id == model.note_id).all()
-            print('-------------------------------', data_exist)
+           
             if len(data_exist) > 1:
                 err = 'Sản phẩm đã tồn tại'
             
