@@ -1,6 +1,6 @@
 .checkout__content {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
 }
 .accordion {
   width: 100%;
@@ -8,7 +8,7 @@
 .userInfo {
   width: 100%;
 }
-@media (max-width: 576px) {
+@media (min-width: 576px) {
   /* ----------login------------- */
   /* .submit-btn__login {
     width: 100%;
@@ -22,10 +22,13 @@
   } */
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
 }
 
 @media (min-width: 992px) {
+  .checkout__content {
+    flex-direction: row-reverse;
+  }
   .accordion {
     pointer-events: none;
   }
