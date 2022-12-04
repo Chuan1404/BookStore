@@ -1,10 +1,15 @@
-// import { addClass, hasClass, removeClass } from "../modules.js";
+import { hasClass } from "../modules.js";
 
-// query
+let accordion = document.querySelector(".accordion");
 
 window.addEventListener("load", () => {
-  // viewMode();
-  none_checkout();
+  // none_checkout();
+});
+window.addEventListener("resize", () => {
+  if (window.innerWidth >= 992) {
+    if (hasClass(accordion, "active"))
+      accordion.querySelector(".accordion__title").click();
+  }
 });
 function none_checkout() {
   let re_checkout = document.querySelector("#re_checkout");

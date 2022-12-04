@@ -32,5 +32,5 @@ class Note_detail(db.Model):
     note_id = Column(Integer, ForeignKey(Note.id), nullable=False)
     book_id = Column(Integer, ForeignKey('book.id'), nullable=False)
 
-    def __str__(self):
-        return f'Note-{self.note_id} and Book-{self.book_id}'
+    # def __str__(self):
+    #     return f'Note-{self.note_id} and Book-{self.book_id}'

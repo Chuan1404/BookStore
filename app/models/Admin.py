@@ -226,14 +226,14 @@ class NoteDetailsView(AdminView):
     def on_model_change(self, form, model, is_created):
         if is_created:
             err = ''
+            book = get_book_by_id(model.book.id)
 
             # check amount of model
-            if model.amount < 150:
-                err = 'Số lượng nhập phải trên 150'
-            else:
-                book = get_book_by_id(model.book_id)
-                if book and book.amount < 300:
+            if book and book.amount >= 300:
                     err = 'Số lượng sản phẩm đã trên 300'
+            else:
+                if model.amount < 150:
+                    err = 'Số lượng nhập phải trên 150'
 
             # check model exist on database or not
             data_exist = Note_detail.query.filter(

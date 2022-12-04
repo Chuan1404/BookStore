@@ -42,6 +42,7 @@ def register():
 
 def logout():
     logout_user()
-    # del session['cart']
+    if session and session['cart']:
+        del session['cart']
     return redirect('/login')
 
