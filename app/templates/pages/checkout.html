@@ -8,20 +8,6 @@ link %}
 <main id="checkout">
   <div class="container background-white">
     <p class="heading-1 text-black">Boake - Book Store Shopify Theme</p>
-    <!-- <div onclick="none_checkout()">
-      <div class="cardbox re-svg__checkout re-svg-none">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-        >
-          <polygon
-            points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707"
-          />
-        </svg>
-      </div>
-    </div> -->
 
     <div class="row checkout__content">
       <div class="accordion">
@@ -268,7 +254,9 @@ link %}
               <h4 class="text-black">
                 Tổng sản phẩm: {{ cart_stats.total_quantity }}
               </h4>
-              <h4 class="text-black">Tổng tiền: {{ cart_stats.total_amount }}</h4>
+              <h4 class="text-black">
+                Tổng tiền: {{ cart_stats.total_amount }}
+              </h4>
             </div>
           </form>
           {% else %}
@@ -675,7 +663,9 @@ link %}
         {% endfor %}
         <!-- End hinh -->
         <div class="alert alert-info">
-          <h4 class="text-black">Tổng sản phẩm: {{ cart_stats.total_quantity }}</h4>
+          <h4 class="text-black">
+            Tổng sản phẩm: {{ cart_stats.total_quantity }}
+          </h4>
           <h4 class="text-black">Tổng tiền: {{ cart_stats.total_amount }}</h4>
         </div>
       </form>

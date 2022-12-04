@@ -25,9 +25,6 @@
   /* .checkout__content {
     flex-direction: column-reverse;
   } */
-  .re-svg__checkout svg {
-    fill: black;
-  }
   /* none <--> block */
   .re-svg-none {
     visibility: visible;

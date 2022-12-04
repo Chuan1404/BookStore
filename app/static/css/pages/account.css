@@ -1,0 +1,14 @@
+.account-svg {
+  width: 12rem;
+  height: 12rem;
+}
+.icon {
+  width: 2em;
+  height: 2em;
+}
+.font-acc {
+  font-size: 1.1em;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
