@@ -122,6 +122,12 @@ textarea {
   background-color: var(--main-cl);
 }
 
+/* ----------form-select---------- */
+.form-select {
+  padding: 1rem var(--padding);
+}
+
+
 @media (max-width: 576px) {
 }
 

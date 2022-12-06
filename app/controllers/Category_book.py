@@ -8,4 +8,3 @@ def get_books():
 
 def get_categories():
     return Category.query.all()
-

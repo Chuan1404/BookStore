@@ -17,8 +17,7 @@ def add_to_cart():
     id = str(data.get('id'))
     img = data.get('img')
     name=data.get('name')
-    price=data.get('price')
-
+    price=float(data.get('price'))
 
     cart=session.get('cart')
     if not cart:

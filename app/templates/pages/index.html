@@ -185,8 +185,11 @@ content %}
               </div>
               <div class="btn-box position-absolute top-50 start-50 p-4">
                 <button
-                  class="button btn-transparent white-border"
-                  onclick="addToCart({{pro.id}},'{{pro.img}}','{{pro.name}}',{{pro.price}})"
+                  class="addToCart button btn-transparent white-border"
+                  pro_id = "{{pro.id}}"
+                  pro_img = "{{pro.img}}"
+                  pro_name = {{pro.name}}
+                  pro_price = {{pro.price}}
                 >
                   Add to cart
                 </button>

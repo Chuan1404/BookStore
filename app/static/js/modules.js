@@ -41,7 +41,6 @@ export function activeCardbox() {
 // function work with .accordion
 export function accordion() {
   let accordion_titles = document.querySelectorAll(".accordion__title");
-
   accordion_titles.forEach((title) => {
     title.addEventListener("click", () => {
       toggleClass(title.parentNode, "active");
@@ -103,3 +102,62 @@ export function validate({ form, nameInputList = [], options = {} }) {
   return errs;
 }
 
+// function address
+
+export async function formAdress() {
+  let citySelect = document.querySelector(".form__address--city");
+  let districtSelect = document.querySelector(".form__address--district");
+  let wardSelect = document.querySelector(".form__address--ward");
+
+  // get data from api
+  let provinces = await fetch(
+    "https://provinces.open-api.vn/api/?depth=3"
+  ).then((res) => res.json());
+
+  // set default
+  setCityOptions();
+  setDistrictOption(citySelect.value);
+  setWardOption(citySelect.value, districtSelect.value);
+
+  // set district
+  citySelect.addEventListener("change", (e) => {
+    setDistrictOption(e.target.value);
+    setWardOption(citySelect.value, districtSelect.value);
+  });
+
+  // set ward
+  districtSelect.addEventListener("change", (e) => {
+    setWardOption(citySelect.value, e.target.value);
+  });
+
+  function setCityOptions() {
+    createOption(citySelect, provinces);
+  }
+
+  function setDistrictOption(cityId) {
+    let city = provinces.find((province) => province.code == cityId);
+    createOption(districtSelect, city.districts);
+  }
+
+  function setWardOption(cityId, districtId) {
+    let city = provinces.find((province) => province.code == cityId);
+    let district = city.districts.find(
+      (district) => district.code == districtId
+    );
+
+    createOption(wardSelect, district.wards);
+  }
+
+  function createOption(select, list) {
+    let html = "";
+    list.forEach((item, index) => {
+      console.log(item.name, index)
+      html += `
+        <option ${index == 0? 'selected': ''} value=${item.code}>
+          ${item.name}
+        </option>
+      `;
+    });
+    select.innerHTML = html;
+  }
+}

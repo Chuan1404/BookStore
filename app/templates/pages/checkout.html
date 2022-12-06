@@ -9,8 +9,9 @@ link %}
   <div class="container background-white">
     <p class="heading-1 text-black">Boake - Book Store Shopify Theme</p>
 
+    {% if current_user.is_authenticated %}
     <div class="checkout__content">
-      <div class="accordion">
+      <div class="accordion p-4">
         <div class="accordion__title d-flex justify-content-between">
           <h3 class="text-black">Giỏ hàng</h3>
           <div class="cardbox">
@@ -119,19 +120,20 @@ link %}
         </div>
       </div>
 
-      <div class="userInfo">
+      <div class="userInfo p-4">
         <form action="">
-          <div class="flex-row">
+          <div class="flex-row align-items-center mb-3">
             <label class="text-black re-label__checkout">Họ tên</label>
             <input
               type="text"
               name=""
               placeholder="Nhập họ tên"
               maxlength="50"
-              class="text-black border mb-3"
+              class="text-black border"
+              value="{{current_user.name}}"
             />
           </div>
-          <div class="flex-row">
+          <div class="flex-row align-items-center mb-3">
             <label class="text-black re-label__checkout"
               >Điện thoại di động</label
             >
@@ -139,136 +141,38 @@ link %}
               type="text"
               name=""
               placeholder="Nhập số điện thoại"
-              class="text-black border mb-3"
+              class="text-black border"
+              value="{{current_user.phone_number}}"
             />
           </div>
-          <div class="flex-row">
+          <div class="flex-row align-items-center mb-3">
             <label class="text-black re-label__checkout">Tỉnh/Thành phố</label>
             <select
-              class="form-select form-select-lg mb-3"
-              aria-label="multiple select example"
+              class="form-select form__address--city"
               style="font-size: 1.5rem"
             >
               <option class="text-black" selected>Tỉnh/Thành phố</option>
-              <option class="text-black" value="1">Hồ Chí Minh</option>
-              <option class="text-black" value="2">Hà Nội</option>
-              <option class="text-black" value="3">Đà Nẵng</option>
-              <option class="text-black" value="1">An Giang</option>
-              <option class="text-black" value="2">Bình Định</option>
-              <option class="text-black" value="3">Bà Rịa - Vũng Tàu</option>
-              <option class="text-black" value="1">Bắc Giang</option>
-              <option class="text-black" value="2">Hải Phòng</option>
-              <option class="text-black" value="1">Hồ Chí Minh</option>
-              <option class="text-black" value="2">Hà Nội</option>
-              <option class="text-black" value="3">Đà Nẵng</option>
-              <option class="text-black" value="1">An Giang</option>
-              <option class="text-black" value="2">Bình Định</option>
-              <option class="text-black" value="3">Bà Rịa - Vũng Tàu</option>
-              <option class="text-black" value="1">Bắc Giang</option>
-              <option class="text-black" value="2">Hải Phòng</option>
-              <option class="text-black" value="1">Hồ Chí Minh</option>
-              <option class="text-black" value="2">Hà Nội</option>
-              <option class="text-black" value="3">Đà Nẵng</option>
-              <option class="text-black" value="1">An Giang</option>
-              <option class="text-black" value="2">Bình Định</option>
-              <option class="text-black" value="3">Bà Rịa - Vũng Tàu</option>
-              <option class="text-black" value="1">Bắc Giang</option>
-              <option class="text-black" value="2">Hải Phòng</option>
-              <option class="text-black" value="1">Hồ Chí Minh</option>
-              <option class="text-black" value="2">Hà Nội</option>
-              <option class="text-black" value="3">Đà Nẵng</option>
-              <option class="text-black" value="1">An Giang</option>
-              <option class="text-black" value="2">Bình Định</option>
-              <option class="text-black" value="3">Bà Rịa - Vũng Tàu</option>
-              <option class="text-black" value="1">Bắc Giang</option>
-              <option class="text-black" value="2">Hải Phòng</option>
             </select>
           </div>
-          <div class="flex-row">
+          <div class="flex-row align-items-center mb-3">
             <label class="text-black re-label__checkout">Quận/Huyện</label>
             <select
-              class="form-select form-select-lg mb-3"
-              aria-label="multiple select example"
+              class="form-select form__address--district"
               style="font-size: 1.5rem"
             >
-              <option class="text-black" selected>Tỉnh/Thành phố</option>
-              <option class="text-black" value="1">Hồ Chí Minh</option>
-              <option class="text-black" value="2">Hà Nội</option>
-              <option class="text-black" value="3">Đà Nẵng</option>
-              <option class="text-black" value="1">An Giang</option>
-              <option class="text-black" value="2">Bình Định</option>
-              <option class="text-black" value="3">Bà Rịa - Vũng Tàu</option>
-              <option class="text-black" value="1">Bắc Giang</option>
-              <option class="text-black" value="2">Hải Phòng</option>
-              <option class="text-black" value="1">Hồ Chí Minh</option>
-              <option class="text-black" value="2">Hà Nội</option>
-              <option class="text-black" value="3">Đà Nẵng</option>
-              <option class="text-black" value="1">An Giang</option>
-              <option class="text-black" value="2">Bình Định</option>
-              <option class="text-black" value="3">Bà Rịa - Vũng Tàu</option>
-              <option class="text-black" value="1">Bắc Giang</option>
-              <option class="text-black" value="2">Hải Phòng</option>
-              <option class="text-black" value="1">Hồ Chí Minh</option>
-              <option class="text-black" value="2">Hà Nội</option>
-              <option class="text-black" value="3">Đà Nẵng</option>
-              <option class="text-black" value="1">An Giang</option>
-              <option class="text-black" value="2">Bình Định</option>
-              <option class="text-black" value="3">Bà Rịa - Vũng Tàu</option>
-              <option class="text-black" value="1">Bắc Giang</option>
-              <option class="text-black" value="2">Hải Phòng</option>
-              <option class="text-black" value="1">Hồ Chí Minh</option>
-              <option class="text-black" value="2">Hà Nội</option>
-              <option class="text-black" value="3">Đà Nẵng</option>
-              <option class="text-black" value="1">An Giang</option>
-              <option class="text-black" value="2">Bình Định</option>
-              <option class="text-black" value="3">Bà Rịa - Vũng Tàu</option>
-              <option class="text-black" value="1">Bắc Giang</option>
-              <option class="text-black" value="2">Hải Phòng</option>
+              <option class="text-black" selected>Quận/Huyện</option>
             </select>
           </div>
-          <div class="flex-row">
+          <div class="flex-row align-items-center mb-3">
             <label class="text-black re-label__checkout">Phường/Xã</label>
             <select
-              class="form-select form-select-lg mb-3"
-              aria-label="multiple select example"
+              class="form-select form__address--ward"
               style="font-size: 1.5rem"
             >
-              <option class="text-black" selected>Tỉnh/Thành phố</option>
-              <option class="text-black" value="1">Hồ Chí Minh</option>
-              <option class="text-black" value="2">Hà Nội</option>
-              <option class="text-black" value="3">Đà Nẵng</option>
-              <option class="text-black" value="1">An Giang</option>
-              <option class="text-black" value="2">Bình Định</option>
-              <option class="text-black" value="3">Bà Rịa - Vũng Tàu</option>
-              <option class="text-black" value="1">Bắc Giang</option>
-              <option class="text-black" value="2">Hải Phòng</option>
-              <option class="text-black" value="1">Hồ Chí Minh</option>
-              <option class="text-black" value="2">Hà Nội</option>
-              <option class="text-black" value="3">Đà Nẵng</option>
-              <option class="text-black" value="1">An Giang</option>
-              <option class="text-black" value="2">Bình Định</option>
-              <option class="text-black" value="3">Bà Rịa - Vũng Tàu</option>
-              <option class="text-black" value="1">Bắc Giang</option>
-              <option class="text-black" value="2">Hải Phòng</option>
-              <option class="text-black" value="1">Hồ Chí Minh</option>
-              <option class="text-black" value="2">Hà Nội</option>
-              <option class="text-black" value="3">Đà Nẵng</option>
-              <option class="text-black" value="1">An Giang</option>
-              <option class="text-black" value="2">Bình Định</option>
-              <option class="text-black" value="3">Bà Rịa - Vũng Tàu</option>
-              <option class="text-black" value="1">Bắc Giang</option>
-              <option class="text-black" value="2">Hải Phòng</option>
-              <option class="text-black" value="1">Hồ Chí Minh</option>
-              <option class="text-black" value="2">Hà Nội</option>
-              <option class="text-black" value="3">Đà Nẵng</option>
-              <option class="text-black" value="1">An Giang</option>
-              <option class="text-black" value="2">Bình Định</option>
-              <option class="text-black" value="3">Bà Rịa - Vũng Tàu</option>
-              <option class="text-black" value="1">Bắc Giang</option>
-              <option class="text-black" value="2">Hải Phòng</option>
+              <option class="text-black" selected>Phường/Xã</option>
             </select>
           </div>
-          <div class="flex-row">
+          <div class="flex-row align-items-center mb-3">
             <label class="text-black re-label__checkout" style="width: 30%"
               >Địa chỉ</label
             >
@@ -280,24 +184,18 @@ link %}
               class="text-black"
             ></textarea>
           </div>
-          <div class="flex-row">
-            <label class="re-label__checkout"></label>
-            <div class="d-flex justify-content-lg-between">
-              <a href="#"
-                ><button class="button btn-transparent me-5 re-btn__checkout">
-                  Cập nhật
-                </button>
-              </a>
-              <a href="#"
-                ><button class="button btn-transparent re-btn__checkout">
-                  Hủy bỏ
-                </button></a
-              >
-            </div>
+          <div class="flex-row align-items-center mb-3 justify-content-center">
+            <button class="button btn-transparent me-5 re-btn__checkout">
+              Hoàn tất mua
+            </button>
+            <button class="button btn-transparent re-btn__checkout">
+              Hủy bỏ
+            </button>
           </div>
         </form>
       </div>
     </div>
+    {% endif %}
   </div>
 </main>
 {% endblock %}{% block script %}

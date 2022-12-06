@@ -11,3 +11,4 @@ window.addEventListener("load", () => {
     toggleClass(headerBox, "active");
   });
 });
+
