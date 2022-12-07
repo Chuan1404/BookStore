@@ -27,4 +27,6 @@ admin.add_view(ReceiptDetailsView(Receipt_detail, db.session, name='Receipt_deta
 admin.add_view(NoteView(Note,db.session, name='Note'))
 admin.add_view(NoteDetailsView(Note_detail,db.session, name='Note_detail'))
 
+admin.add_view(AddressView(Address, db.session, name='Địa chỉ'))
+
 admin.add_view(LogoutView(name='Log out'))

@@ -11,6 +11,7 @@ class User_role(UserEnum):
     SALER = 3
 
 class User(db.Model, UserMixin):
+    __tablename__ = 'user'
     
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
@@ -22,10 +23,11 @@ class User(db.Model, UserMixin):
     user_role = Column(Enum(User_role), nullable=False)
 
     # RELATION SHIP
-    customer_receipt = relationship('Receipt', foreign_keys='Receipt.customer_id', backref='customer_receipt', lazy=True)
-    saler_receipt = relationship('Receipt', foreign_keys='Receipt.saler_id', backref='saler_receipt', lazy=True)
+    customer_receipt = relationship('Receipt', foreign_keys='Receipt.customer', backref='customer_id', lazy=True)
+    saler_receipt = relationship('Receipt', foreign_keys='Receipt.saler', backref='saler_id', lazy=True)
 
-    admin_note = relationship('Note', backref='admin_note', lazy=True)
+    admin_note = relationship('Note', backref='admin_id', lazy=True)
+    address = relationship('Address', backref='customer_id')
 
     def __str__(self):
         return self.username

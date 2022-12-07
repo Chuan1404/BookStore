@@ -121,12 +121,12 @@ link %}
       </div>
 
       <div class="userInfo p-4">
-        <form action="">
+        <form id="order-form" action="">
           <div class="flex-row align-items-center mb-3">
             <label class="text-black re-label__checkout">Họ tên</label>
             <input
               type="text"
-              name=""
+              name="name"
               placeholder="Nhập họ tên"
               maxlength="50"
               class="text-black border"
@@ -139,7 +139,7 @@ link %}
             >
             <input
               type="text"
-              name=""
+              name="phone_number"
               placeholder="Nhập số điện thoại"
               class="text-black border"
               value="{{current_user.phone_number}}"
@@ -150,6 +150,7 @@ link %}
             <select
               class="form-select form__address--city"
               style="font-size: 1.5rem"
+              name="city"
             >
               <option class="text-black" selected>Tỉnh/Thành phố</option>
             </select>
@@ -159,6 +160,7 @@ link %}
             <select
               class="form-select form__address--district"
               style="font-size: 1.5rem"
+              name="district"
             >
               <option class="text-black" selected>Quận/Huyện</option>
             </select>
@@ -168,26 +170,41 @@ link %}
             <select
               class="form-select form__address--ward"
               style="font-size: 1.5rem"
+              name="ward"
             >
               <option class="text-black" selected>Phường/Xã</option>
             </select>
           </div>
+
           <div class="flex-row align-items-center mb-3">
             <label class="text-black re-label__checkout" style="width: 30%"
               >Địa chỉ</label
             >
             <textarea
               type="textarea"
-              name=""
+              name="address"
               id=""
               placeholder="Nhập địa chỉ"
               class="text-black"
             ></textarea>
           </div>
+
+          <div class="flex-row align-items-center mb-3">
+            <label class="text-black re-label__checkout">Phương thức thanh toán</label>
+            <select
+              class="form-select form__address--city"
+              style="font-size: 1.5rem"
+              name="pay_method"
+            >
+              <option class="text-black" selected value="0">Thanh toán trực tiếp</option>
+              <option class="text-black" value="1">Thanh toán online</option>
+            </select>
+          </div>
+
           <div class="flex-row align-items-center mb-3 justify-content-center">
             <button
+              id="btn-submit"
               class="button btn-transparent me-5 re-btn__checkout"
-              onclick="pay()"
             >
               Hoàn tất mua
             </button>
@@ -207,24 +224,4 @@ link %}
   src="{{url_for('static', filename='js/pages/checkout.js')}}"
 ></script>
 
-<script>
-  function pay() {
-    if (confirm("Bạn chắc chắn muốn thanh toán không?") == true) {
-      fetch("/api/pay", {
-        method: "post",
-      })
-        .then(function (res) {
-          return res.json();
-        })
-        .then(function (data) {
-          if (data.code == 200) {
-            location.reload();
-          }
-        })
-        .catch(function (err) {
-          console.error(err);
-        });
-    }
-  }
-</script>
 {% endblock %}

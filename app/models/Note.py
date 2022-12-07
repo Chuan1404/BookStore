@@ -13,7 +13,7 @@ class Note(db.Model):
     updated_at = Column(DateTime, default=datetime.now().date())
 
     # FOREIGN KEYS
-    admin_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    admin = Column(Integer, ForeignKey('user.id'), nullable=False)
     
     # RELATIONSHIP
     note_book = relationship('Note_detail', backref='note', lazy=True)

@@ -248,3 +248,15 @@ class NoteDetailsView(AdminView):
                 self.delete_model(model)
             else:
                 flash('Create success', 'success')
+
+class AddressView(AdminView):
+    column_display_pk = True
+    can_view_details = True
+    # column_searchable_list = ['name', 'description']
+    # column_filters = ['name', 'description']
+    # column_sortable_list = ['id', 'name']
+    # column_labels = {
+    #     'id': 'ID',
+    #     'name': 'Tên thể loại',
+    #     'description': 'Mô tả'
+    # }

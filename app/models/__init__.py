@@ -12,6 +12,8 @@ from app.models.Note import *
 
 from app.models.Admin import *
 
+from app.models.Address import *
+
 
 with app.app_context():
     db.create_all()

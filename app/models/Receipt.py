@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, DateTime, Float, ForeignKey
+from sqlalchemy import Column, Integer, DateTime, Float, ForeignKey, Boolean
 from datetime import datetime
 from sqlalchemy.orm import relationship
 
@@ -8,14 +8,19 @@ class Receipt(db.Model):
     __tablename__='receipt'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
+    is_paid = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.now())
 
+
     # FOREIGN KEYS
-    saler_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    saler_id = Column(Integer, ForeignKey('user.id'))
     customer_id = Column(Integer, ForeignKey('user.id'))
 
     # RELATIONSHIP
     detail_id = relationship('Receipt_detail', backref='receipt', lazy=True)
+
+    def __str__(self):
+        return f'{self.id}'
 
 class Receipt_detail(db.Model):
     __tablename__='receipt_detail'

@@ -151,7 +151,6 @@ export async function formAdress() {
   function createOption(select, list) {
     let html = "";
     list.forEach((item, index) => {
-      console.log(item.name, index)
       html += `
         <option ${index == 0? 'selected': ''} value=${item.code}>
           ${item.name}
