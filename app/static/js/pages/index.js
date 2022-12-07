@@ -7,11 +7,11 @@ window.addEventListener("load", () => {
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", async (e) => {
-      let id = e.currentTarget.getAttribute('pro_id');
-      let img = e.currentTarget.getAttribute('pro_img');
-      let name = e.currentTarget.getAttribute('pro_name');
-      let price = e.currentTarget.getAttribute('pro_price');
-      console.log(id, img, name, price)
+      let id = e.currentTarget.getAttribute("pro_id");
+      let img = e.currentTarget.getAttribute("pro_img");
+      let name = e.currentTarget.getAttribute("pro_name");
+      let price = e.currentTarget.getAttribute("pro_price");
+      console.log(id, img, name, price);
       await addToCart(id, img, name, price);
     });
   });
@@ -73,7 +73,6 @@ function addToCart(id, img, name, price) {
       return res.json();
     })
     .then(function (data) {
-
       let counter = document.querySelector("#cartCounter");
       counter.innerText = data.total_quantity;
     })

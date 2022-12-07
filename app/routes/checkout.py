@@ -1,7 +1,9 @@
-from app import app
-from flask_login import login_required
+from app import app, db
+from flask_login import login_required, current_user
 from flask import render_template , session , jsonify ,request
 import json
+from models import Receipt, Receipt_detail
+
 
 
 
@@ -54,4 +56,22 @@ def count_cart(cart):
 
 
 
+def add_receipt(cart):
+    if cart:
+        receipt = Receipt(customer_id = current_user)
+        db.session.add(receipt)
 
+        for c in cart.values():
+            d=Receipt_detail(receipt_id=receipt, book_id=c['id'], amount=c['quantity'],unit_price=c['price'])
+            db.session.add(d)
+        
+        db.session.commit()
+
+@app.route('/api/pay',methods=['post'])
+def pay():
+    try: 
+        add_receipt(session.get('cart'))
+        del session['cart']
+    except:
+        return jsonify({'code':400})
+    return jsonify({'code':200})

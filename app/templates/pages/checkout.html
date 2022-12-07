@@ -185,7 +185,10 @@ link %}
             ></textarea>
           </div>
           <div class="flex-row align-items-center mb-3 justify-content-center">
-            <button class="button btn-transparent me-5 re-btn__checkout">
+            <button
+              class="button btn-transparent me-5 re-btn__checkout"
+              onclick="pay()"
+            >
               Hoàn tất mua
             </button>
             <button class="button btn-transparent re-btn__checkout">
@@ -203,4 +206,24 @@ link %}
   type="module"
   src="{{url_for('static', filename='js/pages/checkout.js')}}"
 ></script>
+<script>
+  function pay() {
+    if (confirm("Bạn chắc chắn muốn thanh toán không?") == true) {
+      fetch("/api/pay", {
+        method: "post",
+      })
+        .then(function (res) {
+          return res.json();
+        })
+        .then(function (data) {
+          if (data.code == 200) {
+            location.reload();
+          }
+        })
+        .catch(function (err) {
+          console.error(err);
+        });
+    }
+  }
+</script>
 {% endblock %}
