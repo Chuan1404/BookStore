@@ -6,20 +6,24 @@ from app import db
 
 
 def add_receipt(data):
+    try:
+        receipt = Receipt(customer_id=current_user.id, saler_id=current_user.id)
 
-    receipt = Receipt(customer_id=current_user.id, saler_id=current_user.id)
+        db.session.add(receipt)
+        db.session.commit()
 
-    db.session.add(receipt)
-    db.session.commit()
+        if session.get('cart'):
+            for c in session.get('cart').values():
+                d = Receipt_detail(
+                    receipt_id=receipt.id, book_id=c['id'], amount=c['quantity'], unit_price=c['price'])
+                db.session.add(d)
 
-    if session.get('cart'):
-        for c in session.get('cart').values():
-            d = Receipt_detail(
-                receipt_id=receipt.id, book_id=c['id'], amount=c['quantity'], unit_price=c['price'])
-            db.session.add(d)
-
-    db.session.commit()
-
+        db.session.commit()
+    except Exception as err:
+        return {
+            'status': 0,
+            'err': str(err)
+        }
     return {
         'status': 1
     }
@@ -27,28 +31,10 @@ def add_receipt(data):
 
 def get_all_receipt_by_user_id(user_id):
     receipt_list = Receipt.query.filter_by(customer_id=user_id).all()
+
+    for r in receipt_list:
+        for d in r.detail:
+            print(d.book)
+        
+
     return receipt_list
-
-
-def get_detail_receipt(receipt_id):
-    details_list = Receipt_detail.query.filter_by(receipt_id=receipt_id).all()
-    res = []
-    for d in details_list:
-        res.append({
-            'id': d.id,
-            'book': get_book_by_id(d.book_id),
-            'amount': d.amount,
-            'unit_price': d.unit_price,
-            'total': d.amount * d.unit_price
-        })
-
-    if res:
-        return {
-            'status': 1,
-            'data': res
-        }
-    else:
-        return {
-            'status': 0,
-            'data': 'Receipt error'
-        }

@@ -14,50 +14,54 @@ content %}
         <th>Tình trạng</th>
       </thead>
       <tbody>
-        {% for r in receipts %} 
-          <tr>
-            <td>{{r.id}}</td>
-            <td>
-              {% if details %}
-              {% for d in details %}
-              <div class="row detail py-2">
-                <div class="col-5">
-                  <img width="100" src="{{d['book'].img}}" alt="">
-                </div>
-                <div class="col-7">
-                  <ul>
-                    <li><p>{{d['book'].name}}</p></li>
-                    <li><p>Số lượng: {{d['amount']}}</p></li>
-                    <li><p>Giá tiền: {{d['unit_price']}}</p></li>
-                  </ul>
-                  
-                </div>
+        {% for r in receipts %}
+        <tr>
+          <td>{{r.id}}</td>
+          <td>
+            {% for d in r.detail %}
+            <div class="row detail py-2">
+              <div class="col-3">
+                <img width="100%" src="{{d.book.img}}" alt="" />
               </div>
-              {% endfor %}
-              {% endif %}
-            </td>
-            <td>{{r.created_at}}</td>
-            <td>
-              {% if details %}
-              <p>{{ details | sum(attribute='total') }}</p>
-              {% endif %}
-            </td>
-            <td>
-              {% if r.is_paid %}
-                <p>Da thanh toan</p>
-              {% else %}
-                <p>Chua thanh toan</p>
-              {% endif %}
-              
-            </td>
-          </tr>
-            
+              <div class="col-9">
+                <ul>
+                  <li>
+                    <a href="{{ url_for('detail', id=d.book.id )}}"
+                      >{{d['book'].name}}</a
+                    >
+                  </li>
+                  <li><span>Số lượng: {{d.amount}}</span></li>
+                  <li><span>Giá tiền: {{d.unit_price}}</span></li>
+                </ul>
+              </div>
+            </div>
+            {% endfor %}
+          </td>
+          <td>{{r.created_at}}</td>
+          <td>
+            {% set total =  namespace(value=0) %}
+
+            {% for d in r.detail %}
+            {% set total.value = total.value + d.amount * d.unit_price %} 
+            {% endfor %}
+
+            {{ total.value }} 
+
+          </td>
+          <td>
+            {% if r.is_paid %}
+            <p>Đã thanh toán</p>
+            {% else %}
+            <button class="button">Thanh toán ngay</button>
+            {% endif %}
+          </td>
+        </tr>
         {% endfor %}
       </tbody>
     </table>
 
     {% else %}
-    <h1>Khong co hoa don</h1>
+    <h1>Không có đơn hàng</h1>
     {% endif %}
   </div>
 </main>

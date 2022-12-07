@@ -17,7 +17,7 @@ class Receipt(db.Model):
     customer_id = Column(Integer, ForeignKey('user.id'))
 
     # RELATIONSHIP
-    detail_id = relationship('Receipt_detail', backref='receipt', lazy=True)
+    detail = relationship('Receipt_detail', backref='receipt', lazy=True)
 
     def __str__(self):
         return f'{self.id}'

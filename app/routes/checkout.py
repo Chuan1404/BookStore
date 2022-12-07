@@ -1,6 +1,6 @@
 from app import app, db
 from flask_login import login_required
-from flask import render_template, session, jsonify, request
+from flask import render_template, session, jsonify, request, redirect
 from app.controllers import add_receipt
 
 
@@ -58,13 +58,12 @@ def pay():
         data = request.json
         res = add_receipt(data)
 
-        if res.get('status'):
-            print('----------------------- success')
+        if res['status']:
+            del session['cart']
+            return redirect('/user_receipt')
         else:
-            print('----------------------- fail')
-        # del session['cart']
-        # print('---------------------',request.json)
-        # print('---------------------',session.get('cart'))
+            print(res['err'])
+
     except:
         return jsonify({'code': 400})
     return jsonify({'code': 200})
