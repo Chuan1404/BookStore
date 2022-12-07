@@ -59,6 +59,7 @@ def count_cart(cart):
 def add_receipt(cart):
     if cart:
         receipt = Receipt(customer_id = current_user)
+        print(receipt.__dict__)
         db.session.add(receipt)
 
         for c in cart.values():
@@ -75,3 +76,4 @@ def pay():
     except:
         return jsonify({'code':400})
     return jsonify({'code':200})
+
