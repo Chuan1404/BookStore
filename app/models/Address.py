@@ -11,4 +11,4 @@ class Address(db.Model):
     ward_id = Column(Integer, default=1)
     address = Column(String(100))
 
-    customner_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    customer_id = Column(Integer, ForeignKey('user.id'), nullable=False)

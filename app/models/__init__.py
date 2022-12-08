@@ -10,9 +10,10 @@ from app.models.Receipt import *
 
 from app.models.Note import *
 
+from app.models.Address import *
+
 from app.models.Admin import *
 
-from app.models.Address import *
 
 
 with app.app_context():

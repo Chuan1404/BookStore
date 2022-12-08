@@ -104,7 +104,7 @@ export function validate({ form, nameInputList = [], options = {} }) {
 
 // function address
 
-export async function formAdress() {
+export async function formAddress() {
   let citySelect = document.querySelector(".form__address--city");
   let districtSelect = document.querySelector(".form__address--district");
   let wardSelect = document.querySelector(".form__address--ward");
@@ -149,10 +149,16 @@ export async function formAdress() {
   }
 
   function createOption(select, list) {
+    let defaultValue = select.getAttribute("default");
+    console.log(defaultValue);
     let html = "";
     list.forEach((item, index) => {
       html += `
-        <option ${index == 0? 'selected': ''} value=${item.code}>
+        <option ${
+          defaultValue != null
+            ? defaultValue == item.code && "selected"
+            : index == 0 && "selected"
+        } value=${item.code}>
           ${item.name}
         </option>
       `;

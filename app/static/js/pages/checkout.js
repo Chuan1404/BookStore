@@ -1,4 +1,4 @@
-import { hasClass, formAdress } from "../modules.js";
+import { hasClass, formAddress } from "../modules.js";
 
 let accordion = document.querySelector(".accordion");
 let orderForm = document.querySelector("#order-form");
@@ -6,7 +6,7 @@ let submitBtn = document.querySelector("#btn-submit");
 
 window.addEventListener("load", () => {
   // none_checkout();
-  formAdress();
+  formAddress();
 
   submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -20,6 +20,7 @@ window.addEventListener("load", () => {
         district: orderForm.querySelector("select[name='district']").value,
         ward: orderForm.querySelector("select[name='ward']").value,
         address: orderForm.querySelector("textarea[name='address']").value,
+        pay_method: orderForm.querySelector("select[name='pay_method']")
       };
       fetch("/api/pay", {
         method: "post",
