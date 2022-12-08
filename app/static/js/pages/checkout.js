@@ -12,6 +12,7 @@ window.addEventListener("load", () => {
     e.preventDefault();
 
     if (confirm("Bạn chắc chắn muốn thanh toán không?") == true) {
+
       const formData = {
         name: orderForm.querySelector("input[name='name']").value,
         phone_number: orderForm.querySelector("input[name='phone_number']")
@@ -22,7 +23,8 @@ window.addEventListener("load", () => {
         address: orderForm.querySelector("textarea[name='address']").value,
         pay_method: orderForm.querySelector("select[name='pay_method']")
       };
-      fetch("/api/pay", {
+
+      fetch("/api/checkout", {
         method: "post",
         headers: {
           'Content-Type': 'application/json'
@@ -33,8 +35,12 @@ window.addEventListener("load", () => {
           return res.json();
         })
         .then(function (data) {
-          if (data.code == 200) {
-            location.reload();
+          if (data.status == 200) {
+            console.log(window.location)
+            window.location.pathname = '/user_receipt'
+          }
+          else {
+            alert(data.err)
           }
         })
         .catch(function (err) {

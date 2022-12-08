@@ -1,6 +1,6 @@
 from app import app, db
 from flask_login import login_required
-from flask import render_template, session, jsonify, request, redirect
+from flask import render_template, session, jsonify, request, redirect, flash
 from app.controllers import add_receipt, add_address
 
 
@@ -52,21 +52,21 @@ def count_cart(cart):
     }
 
 
-@app.route('/api/pay', methods=['post'])
+@app.route('/api/checkout', methods=['post'])
 def pay():
-    # try:
     data = request.json
-    # receipt_res = add_receipt(data)
-    add_address(city_id=int(data['city']), district_id=int(data['district']), ward_id=int(data['ward']), address=data['address'])
+    print(data)
+    receipt_res = add_receipt()
 
-        # if receipt_res['status']:
-        #     del session['cart']
-        #     return redirect('/user_receipt')
-        # else:
-        #     print(receipt_res['err'])
+    print(receipt_res)
 
-    # except:
-    #     print('err')
-    #     return jsonify({'code': 400})
-    return jsonify({'code': 200})
-
+    if receipt_res['status']:
+        add_address(city_id=int(data['city']), district_id=int(
+            data['district']), ward_id=int(data['ward']), address=data['address'])
+        del session['cart']
+        return jsonify({'status': 200})
+    else:
+        return jsonify({
+            'status': 400,
+            'err': receipt_res['err']
+        })

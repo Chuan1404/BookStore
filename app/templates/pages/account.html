@@ -106,7 +106,7 @@ link %}
             <select
               class="form-select form__address--district"
               style="font-size: 1.5rem"
-              name="city"
+              name="district"
               default="{{current_user.address[0].district_id}}"
             >
               <option class="text-black" selected>Quận/Huyện</option>
@@ -127,7 +127,7 @@ link %}
             <select
               class="form-select form__address--ward"
               style="font-size: 1.5rem"
-              name="city"
+              name="ward"
               default="{{current_user.address[0].ward_id}}"
             >
               <option class="text-black" selected>Phường/Xã</option>
@@ -149,7 +149,7 @@ link %}
             {% if current_user.address %}
             <textarea
               type="textarea"
-              name=""
+              name="address"
               id=""
               placeholder="Nhập địa chỉ"
               class="text-black"
@@ -157,7 +157,7 @@ link %}
             {% else %}
             <textarea
               type="textarea"
-              name=""
+              name="address"
               id=""
               placeholder="Nhập địa chỉ"
               class="text-black"
