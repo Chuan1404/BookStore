@@ -111,7 +111,11 @@ class SaleView(SalerView):
 
         return self.render('admin/sale.html', books = pay_session)
     
-
+class PayReceiptView(SalerView):
+    @expose('/', methods=('GET', 'POST'))
+    def index(self):
+        
+        return 'haha'
     
 
 

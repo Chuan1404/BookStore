@@ -8,7 +8,6 @@ from app.controllers import add_order, add_address
 def checkout():
     return render_template('pages/checkout.html')
 
-# PS: T không dẫn đường dẫn ngược ra ngoài được :)))))
 # Gio hang
 
 

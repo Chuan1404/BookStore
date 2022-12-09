@@ -4,7 +4,10 @@
   href="{{ url_for('static', filename='css/admin/sale.css') }}"
 />
 
-<script type="module" src="{{ url_for('static', filename='js/admin/sale.js') }}"></script>
+<script
+  type="module"
+  src="{{ url_for('static', filename='js/admin/sale.js') }}"
+></script>
 
 {% endblock %} {% block body %}
 <main id="sale">
@@ -28,7 +31,6 @@
             <button id="addProduct" class="button">Thêm sản phẩm</button>
           </div>
         </div>
-
         <table class="form__table table">
           <thead>
             <tr>
@@ -84,17 +86,11 @@
         </div>
 
         <div class="form__group">
-          <h2 class="mb-4">Tổng tiền cần thanh toán: 
-            {% set total = namespace(value=0) %}
-
-            {% if books %}
-            {% for b in books.values() %}
-            {% set total.value = total.value + b.amount * b.unit_price %} 
-            {% endfor %}
-            {% endif %}
-
-            {{ total.value }} vnd
-            
+          <h2 class="mb-4">
+            Tổng tiền cần thanh toán: {% set total = namespace(value=0) %} {% if
+            books %} {% for b in books.values() %} {% set total.value =
+            total.value + b.amount * b.unit_price %} {% endfor %} {% endif %} {{
+            total.value }} vnd
           </h2>
 
           <button class="button" type="submit">Xuất hóa đơn</button>
