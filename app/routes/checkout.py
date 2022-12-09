@@ -53,7 +53,7 @@ def count_cart(cart):
 
 
 @app.route('/api/checkout', methods=['post'])
-def pay():
+def checkout_api():
     data = request.json
     print(data)
     order_res = add_order()

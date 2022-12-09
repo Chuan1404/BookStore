@@ -4,20 +4,28 @@
   href="{{ url_for('static', filename='css/admin/sale.css') }}"
 />
 
+<script src="{{ url_for('static', filename='js/admin/sale.js') }}"></script>
+
 {% endblock %} {% block body %}
 <main id="sale">
-  <h1 class="mb-5">Nhân viên: Nguyễn Chu Phước Ân</h1>
+  {% if current_user.is_authenticated %}
+  <h1 class="mb-5">Nhân viên: {{current_user.name}}</h1>
 
   <form action="" class="form">
     <div class="row">
       <div class="form__product col-8">
         <div class="form__code d-flex align-items-center">
           <div class="form__group me-2">
-            <input type="text" class="input" placeholder="Mã sản phẩm" />
+            <input
+              id="code"
+              type="text"
+              class="input"
+              placeholder="Mã sản phẩm"
+            />
           </div>
 
           <div class="form__group">
-            <button class="button">Thêm sản phẩm</button>
+            <button id="addProduct" class="button">Thêm sản phẩm</button>
           </div>
         </div>
 
@@ -31,6 +39,7 @@
               <th></th>
             </tr>
           </thead>
+          {% if books%} {% for b in books.values() %}
           <tbody>
             <tr>
               <td>1</td>
@@ -38,26 +47,38 @@
                 <div class="row">
                   <div class="col-5">
                     <div class="img">
-                      <img src="https://i.truyenvua.com/ebook/190x247/vo-luyen-dinh-phong_1514903369.jpg?gf=hdfgdfg&mobile=2" alt="">
+                      <img src="{{b.img}}" alt="" />
                     </div>
                   </div>
-                  <div class="col-7  d-flex flex-column justify-content-center">
-                    <h3>Tên: Võ luyện đỉnh phong</h3>
-                    <h3>Tác giả: Ân Chu</h3>
+                  <div class="col-7 d-flex flex-column justify-content-center">
+                    <h3>Tên: {{ b.name }}</h3>
+                    <h3>Tác giả: {{ b.author }}</h3>
                   </div>
                 </div>
               </td>
               <td>
                 <div class="input input-amount">
                   <button>-</button>
-                  <input type="text" value="1">
+                  <input type="text" value="{{b.amount}}" />
                   <button>+</button>
                 </div>
               </td>
-              <td>Đơn giá</td>
-              <td>Xóa</td>
+              <td>{{b.unit_price}} vnd</td>
+              <td>
+                <div class="cardbox" book_id="{{b.id}}">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 50 50"
+                  >
+                    <path
+                      d="M 21 2 C 19.354545 2 18 3.3545455 18 5 L 18 7 L 10.154297 7 A 1.0001 1.0001 0 0 0 9.984375 6.9863281 A 1.0001 1.0001 0 0 0 9.8398438 7 L 8 7 A 1.0001 1.0001 0 1 0 8 9 L 9 9 L 9 45 C 9 46.645455 10.354545 48 12 48 L 38 48 C 39.645455 48 41 46.645455 41 45 L 41 9 L 42 9 A 1.0001 1.0001 0 1 0 42 7 L 40.167969 7 A 1.0001 1.0001 0 0 0 39.841797 7 L 32 7 L 32 5 C 32 3.3545455 30.645455 2 29 2 L 21 2 z M 21 4 L 29 4 C 29.554545 4 30 4.4454545 30 5 L 30 7 L 20 7 L 20 5 C 20 4.4454545 20.445455 4 21 4 z M 11 9 L 18.832031 9 A 1.0001 1.0001 0 0 0 19.158203 9 L 30.832031 9 A 1.0001 1.0001 0 0 0 31.158203 9 L 39 9 L 39 45 C 39 45.554545 38.554545 46 38 46 L 12 46 C 11.445455 46 11 45.554545 11 45 L 11 9 z M 18.984375 13.986328 A 1.0001 1.0001 0 0 0 18 15 L 18 40 A 1.0001 1.0001 0 1 0 20 40 L 20 15 A 1.0001 1.0001 0 0 0 18.984375 13.986328 z M 24.984375 13.986328 A 1.0001 1.0001 0 0 0 24 15 L 24 40 A 1.0001 1.0001 0 1 0 26 40 L 26 15 A 1.0001 1.0001 0 0 0 24.984375 13.986328 z M 30.984375 13.986328 A 1.0001 1.0001 0 0 0 30 15 L 30 40 A 1.0001 1.0001 0 1 0 32 40 L 32 15 A 1.0001 1.0001 0 0 0 30.984375 13.986328 z"
+                    />
+                  </svg>
+                </div>
+              </td>
             </tr>
           </tbody>
+          {% endfor %} {% endif %}
         </table>
       </div>
       <div class="form__customer col-4">
@@ -73,5 +94,7 @@
       </div>
     </div>
   </form>
+
+  {% endif %}
 </main>
 {% endblock %}

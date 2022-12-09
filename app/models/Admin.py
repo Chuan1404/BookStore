@@ -1,4 +1,4 @@
-from flask import request, redirect, flash
+from flask import request, redirect, flash, session
 from flask_admin import AdminIndexView, BaseView, expose
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_user, current_user, login_required, logout_user
@@ -104,7 +104,16 @@ class ImportBookView(WarehouseView):
 class SaleView(SalerView):
     @expose('/', methods=('GET', 'POST'))
     def index(self):
-        return self.render('admin/sale.html')
+        
+        pay_session = session.get('pay')
+
+         
+
+        return self.render('admin/sale.html', books = pay_session)
+    
+
+    
+
 
 # Admin View
 class RuleView(AdminView):
