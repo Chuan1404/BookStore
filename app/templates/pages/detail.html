@@ -1,76 +1,88 @@
-{% extends 'pages/base.html' %}
-
-{% block title %}Detail page{% endblock %}
-
-{% block link %}
-<link rel="stylesheet" href="{{url_for('static', filename='css/pages/details.css')}}">
-{% endblock %}
-
-
-{% block content %}
+{% extends 'pages/base.html' %} {% block title %}Detail page{% endblock %} {%
+block link %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/pages/details.css')}}"
+/>
+{% endblock %} {% block content %}
 <main>
-    <div class="container">
-        <div class="productbox row">
-            <div class="productbox__img col-12 col-md-6">
-                <div class="img">
-                    <img src="{{product.img}}"
-                        alt="">
-                </div>
-            </div>
-
-            <div class="productbox__info col-12 col-md-6">
-                <h1>{{product.name}}</h1>
-
-                <span class="price">${{product.price}}</span>
-                <span class="subprice">990.000 vnd</span>
-
-                <p>Type: Category</p>
-                <p>{{product.description}}</p>
-
-                <table class="table my-4">
-                    <tr>
-                        <td>Book name</td>
-                        <td>{{product.name}}</td>
-                    </tr>
-                    <tr>
-                        <td>Author</td>
-                        <td>{{product.author}}</td>
-                    </tr>
-                    <tr>
-                        <td>Category</td>
-                        <td>Action</td>
-                    </tr>
-                </table>
-
-                <div class="buttons">
-                    <div class="input input-amount">
-                        <button>-</button>
-                        <input type="text" value="1">
-                        <button>+</button>
-                    </div>
-                    <button class="button btn-black mx-4">Add to cart</button>
-                    <button class="button btn-black">Buy it now</button>
-                </div>
-            </div>
+  <div class="container">
+    <div class="productbox row">
+      <div class="productbox__img col-12 col-md-6">
+        <div class="img">
+          <img src="{{product.img}}" alt="" />
         </div>
+      </div>
 
-        <div class="description row">
-            <h2>Mô tả sản phẩm</h2>
+      <div class="productbox__info col-12 col-md-6">
+        <h1>{{product.name}}</h1>
 
-            <div class="content">
-                <p>
-                    <strong>GIỚI THIỆU</strong>
-                </p>
-                <p>Tiếp nối hành trình sống xanh - ăn sạch, GUfoods cho ra mắt sản phẩm Mì rau củ với hương vị tự nhiên
-                    nguyên bản. Sợi mì ngon ngọt cùng cảm giác thanh mát từ rau củ, bạn thương ngại gì không thử!</p>
-                <p>
-                    <strong>ĐẶC ĐIỂM NỔI BẬT</strong>
-                </p>
-                <p>Nếu gạo lứt đem đến cảm giác khô khan, khó ăn được liên tục thì những món ăn với mì rau củ mềm dai,
-                    chế biến được nhiều món sẽ là điểm sáng cho những bữa ăn giảm cân và giúp bạn thương không thấy nản
-                    giữa con đường giảm cân.</p>
-            </div>
+        <span class="price">${{product.price}}</span>
+        <span class="subprice">990.000 vnd</span>
+
+        <p>Type: Category</p>
+        <p>{{product.description}}</p>
+
+        <table class="table my-4">
+          <tr>
+            <td>Book name</td>
+            <td>{{product.name}}</td>
+          </tr>
+          <tr>
+            <td>Author</td>
+            <td>{{product.author}}</td>
+          </tr>
+          <tr>
+            <td>Category</td>
+            <td>Action</td>
+          </tr>
+        </table>
+
+        <div class="buttons">
+          <div class="input input-amount">
+            <button>-</button>
+            <input type="text" value="1" />
+            <button>+</button>
+          </div>
+          <button
+            class="addToCart button btn-black mx-4"
+            pro_id="{{product.id}}"
+            pro_img="{{product.img}}"
+            pro_name="{{product.name}}"
+            pro_price="{{product.price}}"
+          >
+            Add to cart
+          </button>
         </div>
+      </div>
     </div>
+
+    <div class="description row">
+      <h2>Mô tả sản phẩm</h2>
+
+      <div class="content">
+        {{product.description}}
+        <!-- <p>
+          <strong>GIỚI THIỆU</strong>
+        </p>
+        <p>
+          Tiếp nối hành trình sống xanh - ăn sạch, GUfoods cho ra mắt sản phẩm
+          Mì rau củ với hương vị tự nhiên nguyên bản. Sợi mì ngon ngọt cùng cảm
+          giác thanh mát từ rau củ, bạn thương ngại gì không thử!
+        </p>
+        <p>
+          <strong>ĐẶC ĐIỂM NỔI BẬT</strong>
+        </p>
+        <p>
+          Nếu gạo lứt đem đến cảm giác khô khan, khó ăn được liên tục thì những
+          món ăn với mì rau củ mềm dai, chế biến được nhiều món sẽ là điểm sáng
+          cho những bữa ăn giảm cân và giúp bạn thương không thấy nản giữa con
+          đường giảm cân.
+        </p> -->
+      </div>
+    </div>
+  </div>
 </main>
+{% endblock %} {% block script %}
+<script src="{{ url_for('static', filename='js/pages/detail.js') }}"></script>
 {% endblock %}

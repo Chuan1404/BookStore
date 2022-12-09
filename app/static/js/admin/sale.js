@@ -1,9 +1,14 @@
+import { inputAmount } from "../modules.js";
+
 // execute when html loaded
 window.addEventListener("load", () => {
   let addProductBtn = document.querySelector("#addProduct");
   let code_input = document.querySelector("#code");
 
   let cardbox = document.querySelector(".cardbox");
+
+  inputAmount()
+
 
   addProductBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -13,6 +18,7 @@ window.addEventListener("load", () => {
   cardbox.addEventListener("click", (e) =>
     delete_book_by_id(e.currentTarget.getAttribute("book_id"))
   );
+
 
   function get_book_by_id(id) {
     fetch("/api/pay/add", {

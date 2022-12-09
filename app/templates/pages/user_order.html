@@ -39,7 +39,7 @@ content %}
           </td>
           <td>{{o.created_at}}</td>
           <td>
-            {% set total =  namespace(value=0) %}
+            {% set total = namespace(value=0) %}
 
             {% for d in o.detail %}
             {% set total.value = total.value + d.amount * d.unit_price %} 

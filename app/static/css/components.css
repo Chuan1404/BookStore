@@ -7,7 +7,6 @@
 #header .container {
   position: relative;
   padding: var(--padding) 0;
-
 }
 
 .header__logo img {
@@ -120,7 +119,6 @@
 }
 /* ----------form---------- */
 .form {
-  
 }
 .form .input {
   border: 1px solid #dee2e6;
@@ -204,7 +202,7 @@
 .input.input-date {
   background-color: transparent;
   border: 1px solid var(--border-cl);
-  padding: 1rem
+  padding: 1rem;
 }
 .input-date.input-dark {
   color-scheme: dark;
@@ -213,9 +211,14 @@
 .product {
   border: 1px solid var(--border-cl);
 }
+
+.product:hover h3 {
+  color: var(--main-cl);
+  transition: var(--t);
+}
 .product__img .img {
   overflow: hidden;
-  height: 40rem;
+  height: 30rem;
   position: relative;
 }
 .product__img .img img {
@@ -228,15 +231,6 @@
   min-width: 100%;
   min-height: 100%;
 }
-.product__img .btn-box {
-  background-color: var(--main-bg);
-  border-radius: 3rem;
-  transform: translate(-50%, -50%) scaleY(0);
-  transition: var(--t);
-}
-.product:hover .btn-box {
-  transform: translate(-50%, -50%) scaleY(1);
-}
 .product .price {
   color: var(--main-cl);
   font-weight: 700;
@@ -248,8 +242,11 @@
 }
 .product .description {
   font-size: 1.6rem;
+  display: none;
 }
-
+.product.row .description {
+  display: block;
+}
 /* ----------accordion---------- */
 .accordion {
   padding: 1rem 0;
@@ -295,7 +292,7 @@
 }
 
 .table tr,
-.table td, 
+.table td,
 .table th {
   border: 1px solid var(--border-cl) !important;
   padding: 2rem;

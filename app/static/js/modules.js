@@ -166,3 +166,25 @@ export async function formAddress() {
     select.innerHTML = html;
   }
 }
+
+// function input amount
+export function inputAmount() {
+  let inputList = document.querySelectorAll(".input-amount");
+
+  inputList.forEach((item) => {
+    let btns = item.querySelectorAll("button");
+    let input = item.querySelector("input");
+    let prev = btns[0];
+    let next = btns[1];
+
+    next.addEventListener("click", (e) => {
+      e.preventDefault();
+      input.value = Number(input.value) + 1;
+    });
+
+    prev.addEventListener("click", (e) => {
+      e.preventDefault();
+      input.value = Number(input.value) - 1 < 1 ? 1 : Number(input.value) - 1;
+    });
+  });
+}
