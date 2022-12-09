@@ -132,6 +132,15 @@ input.disable {
   pointer-events: none;
   background-color: #ddd;
 }
+/* ----------img---------- */
+.img {
+  width: 100%;
+  position: relative;
+}
+.img img {
+  width: 100%;
+  object-fit: contain;
+}
 
 @media (max-width: 576px) {
 }

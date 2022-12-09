@@ -1,0 +1,13 @@
+#sale .form__product {
+    border-right: 1px solid var(--border-cl);
+}
+
+.col-6 .form__group:first-child {
+    width: 100%;
+}
+
+.form__customer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}

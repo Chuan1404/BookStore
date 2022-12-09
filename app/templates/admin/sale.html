@@ -1,7 +1,77 @@
-{% extends 'admin/base_view.html'%}
+{% extends 'admin/base_view.html'%} {% block head_css %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/admin/sale.css') }}"
+/>
 
-{% block body %}
-<main>
-  <h1>Sale page</h1>
+{% endblock %} {% block body %}
+<main id="sale">
+  <h1 class="mb-5">Nhân viên: Nguyễn Chu Phước Ân</h1>
+
+  <form action="" class="form">
+    <div class="row">
+      <div class="form__product col-8">
+        <div class="form__code d-flex align-items-center">
+          <div class="form__group me-2">
+            <input type="text" class="input" placeholder="Mã sản phẩm" />
+          </div>
+
+          <div class="form__group">
+            <button class="button">Thêm sản phẩm</button>
+          </div>
+        </div>
+
+        <table class="form__table table">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Sản phẩm</th>
+              <th>Số lượng</th>
+              <th>Đơn giá</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>
+                <div class="row">
+                  <div class="col-5">
+                    <div class="img">
+                      <img src="https://i.truyenvua.com/ebook/190x247/vo-luyen-dinh-phong_1514903369.jpg?gf=hdfgdfg&mobile=2" alt="">
+                    </div>
+                  </div>
+                  <div class="col-7  d-flex flex-column justify-content-center">
+                    <h3>Tên: Võ luyện đỉnh phong</h3>
+                    <h3>Tác giả: Ân Chu</h3>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="input input-amount">
+                  <button>-</button>
+                  <input type="text" value="1">
+                  <button>+</button>
+                </div>
+              </td>
+              <td>Đơn giá</td>
+              <td>Xóa</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="form__customer col-4">
+        <div class="form__group">
+          <input type="text" class="input" placeholder="Tên khách hàng" />
+        </div>
+
+        <div class="form__group">
+          <h2 class="mb-4">Tổng tiền cần thanh toán: 300.000 vnd</h2>
+
+          <button class="button" type="submit">Xuất hóa đơn</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </main>
 {% endblock %}
