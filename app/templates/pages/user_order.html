@@ -4,7 +4,7 @@ content %}
   <div class="container">
     <h1 class="text-center">My receipt</h1>
 
-    {% if receipts %}
+    {% if orders %}
     <table class="table">
       <thead>
         <th>Mã đơn hàng</th>
@@ -14,11 +14,11 @@ content %}
         <th>Tình trạng</th>
       </thead>
       <tbody>
-        {% for r in receipts %}
+        {% for o in orders %}
         <tr>
-          <td>{{r.id}}</td>
+          <td>{{o.id}}</td>
           <td>
-            {% for d in r.detail %}
+            {% for d in o.detail %}
             <div class="row detail py-2">
               <div class="col-3">
                 <img width="100%" src="{{d.book.img}}" alt="" />
@@ -37,11 +37,11 @@ content %}
             </div>
             {% endfor %}
           </td>
-          <td>{{r.created_at}}</td>
+          <td>{{o.created_at}}</td>
           <td>
             {% set total =  namespace(value=0) %}
 
-            {% for d in r.detail %}
+            {% for d in o.detail %}
             {% set total.value = total.value + d.amount * d.unit_price %} 
             {% endfor %}
 
@@ -49,7 +49,7 @@ content %}
 
           </td>
           <td>
-            {% if r.is_paid %}
+            {% if o.is_paid %}
             <p>Đã thanh toán</p>
             {% else %}
             <button class="button">Thanh toán ngay</button>

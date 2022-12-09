@@ -1,5 +1,5 @@
 from .User import *
 from .Category_book import *
 from .Note import *
-from .Receipt import *
+from .Order import *
 from .Address import *

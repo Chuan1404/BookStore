@@ -37,7 +37,7 @@ window.addEventListener("load", () => {
         .then(function (data) {
           if (data.status == 200) {
             console.log(window.location)
-            window.location.pathname = '/user_receipt'
+            window.location.pathname = '/user_order'
           }
           else {
             alert(data.err)

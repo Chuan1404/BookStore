@@ -173,6 +173,31 @@ class CategoryView(AdminView):
     }
 
 
+class OrderView(AdminView):
+    column_display_pk = True
+    can_view_details = True
+    can_export = True
+    column_searchable_list = ['created_at']
+    column_sortable_list = ['id']
+    column_labels = {
+        'id': 'ID',
+        'created_at': 'Thời gian lập'
+    }
+
+
+class OrderDetailsView(AdminView):
+    column_display_pk = True
+    can_view_details = True
+    can_export = True
+    column_sortable_list = ['id', 'amount', 'unit_price']
+    column_searchable_list = ['id']
+    column_labels = {
+        'id': 'ID',
+        'amount': 'Số lượng sách',
+        'unit_price': 'Tổng tiền'
+    }
+
+
 class ReceiptView(AdminView):
     column_display_pk = True
     can_view_details = True

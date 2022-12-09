@@ -5,21 +5,19 @@ from flask_login import current_user
 from app import db
 
 
-def add_receipt():
+def add_order():
     err = ''
     try:
         carts = session.get('cart')
-        print(carts)
         if carts:
-            receipt = Receipt(customer_id=current_user.id,
-                          saler_id=current_user.id)
+            order = Order(customer_id=current_user.id)
 
-            db.session.add(receipt)
+            db.session.add(order)
             db.session.commit()
 
             for c in carts.values():
-                d = Receipt_detail(
-                    receipt_id=receipt.id, book_id=c['id'], amount=c['quantity'], unit_price=c['price'])
+                d = Order_detail(
+                    order_id=order.id, book_id=c['id'], amount=c['quantity'], unit_price=c['price'])
                 db.session.add(d)
 
             db.session.commit()
@@ -38,11 +36,11 @@ def add_receipt():
     }
 
 
-def get_all_receipt_by_user_id(user_id):
-    receipt_list = Receipt.query.filter_by(customer_id=user_id).all()
+def get_all_order_by_user_id(user_id):
+    order_list = Order.query.filter_by(customer_id=user_id).all()
 
-    for r in receipt_list:
+    for r in order_list:
         for d in r.detail:
             print(d.book)
 
-    return receipt_list
+    return order_list

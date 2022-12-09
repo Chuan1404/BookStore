@@ -13,7 +13,7 @@ with app.app_context():
     app.add_url_rule('/logout', view_func=routes.logout)
     app.add_url_rule('/register', view_func=routes.register, methods=['GET', 'POST'])
     app.add_url_rule('/product/<id>', view_func=routes.detail)
-    app.add_url_rule('/user_receipt', view_func=routes.user_receipt)
+    app.add_url_rule('/user_order', view_func=routes.user_order)
     app.add_url_rule('/checkout', view_func=routes.checkout)
     app.add_url_rule('/account', view_func=routes.account)
 

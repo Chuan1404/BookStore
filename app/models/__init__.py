@@ -6,6 +6,8 @@ from app.models.Rule import *
 
 from app.models.Category_book import *
 
+from app.models.Order import *
+
 from app.models.Receipt import *
 
 from app.models.Note import *

@@ -4,26 +4,27 @@ from sqlalchemy.orm import relationship
 
 from app import db
 
-class Receipt(db.Model):
-    __tablename__='receipt'
+class Order(db.Model):
+    __tablename__='order'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
+    is_paid = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.now())
 
 
     # FOREIGN KEYS
-    saler_id = Column(Integer, ForeignKey('user.id'))
+    customer_id = Column(Integer, ForeignKey('user.id'))
  
     # RELATIONSHIP
-    detail = relationship('Receipt_detail', backref='receipt', lazy=True)
+    detail = relationship('Order_detail', backref='order', lazy=True)
 
     def __str__(self):
         return f'{self.id}'
 
 
 
-class Receipt_detail(db.Model):
-    __tablename__='receipt_detail'
+class Order_detail(db.Model):
+    __tablename__='order_detail'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     amount = Column(Integer, nullable=False, default=1)
@@ -31,7 +32,7 @@ class Receipt_detail(db.Model):
 
     # FOREIGN KEYS
     book_id = Column(Integer, ForeignKey('book.id'), nullable=False)
-    order_id = Column(Integer, ForeignKey(Receipt.id), nullable=False)
+    order_id = Column(Integer, ForeignKey(Order.id), nullable=False)
 
     
     

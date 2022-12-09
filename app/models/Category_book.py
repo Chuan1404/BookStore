@@ -28,6 +28,7 @@ class Book(db.Model):
     # RELATIONSHIP
     category = relationship('Category', secondary='category_book', lazy='subquery', backref=backref('book', lazy=True))
     note = relationship('Note_detail', backref='book', lazy=True)
+    order = relationship('Order_detail', backref='book', lazy=True)
     receipt = relationship('Receipt_detail', backref='book', lazy=True)
 
     def __str__(self):

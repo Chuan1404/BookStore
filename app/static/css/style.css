@@ -127,6 +127,11 @@ textarea {
   padding: 1rem var(--padding);
 }
 
+/* ----------disable input---------- */
+input.disable {
+  pointer-events: none;
+  background-color: #ddd;
+}
 
 @media (max-width: 576px) {
 }
