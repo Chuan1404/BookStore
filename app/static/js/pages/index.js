@@ -74,7 +74,7 @@ function addToCart(id, img, name, price) {
     })
     .then(function (data) {
       let counter = document.querySelector("#cartCounter");
-      counter.innerText = data.total_quantity;
+      counter.innerText = data.total_header_cart;
     })
     .catch(function (err) {
       console.error(err);
