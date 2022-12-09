@@ -40,16 +40,20 @@ def add_to_cart():
 
 
 def count_cart(cart):
-    total_quantity, total_amount = 0, 0
+    total_quantity, total_amount,total_header_cart= 0, 0,0
+    
     if cart:
         for c in cart.values():
-            total_quantity += c['quantity']
+            if c['id'] not in cart.values():
+                total_header_cart += 1
+            total_quantity +=c['quantity']
             total_amount += c['quantity'] * c['price']
 
     return {
         'total_quantity': total_quantity,
-        'total_amount': total_amount
-    }
+        'total_amount': total_amount,
+        'total_header_cart':total_header_cart
+     }
 
 
 @app.route('/api/checkout', methods=['post'])
