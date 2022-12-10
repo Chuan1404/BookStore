@@ -77,7 +77,6 @@ link %}
               name=""
               placeholder="Nhập số điện thoại"
               class="text-black border mb-3"
-              value="{{current_user.phone_number}}"
             />
           </div>
           <div class="flex-row">
@@ -87,7 +86,7 @@ link %}
               class="form-select form__address--city"
               style="font-size: 1.5rem"
               name="city"
-              default="{{current_user.address[0].city_id}}"
+              default="{{current_user.address[-1].city_id}}"
             >
               <option class="text-black" selected>Tỉnh/Thành phố</option>
             </select>
@@ -108,7 +107,7 @@ link %}
               class="form-select form__address--district"
               style="font-size: 1.5rem"
               name="district"
-              default="{{current_user.address[0].district_id}}"
+              default="{{current_user.address[-1].district_id}}"
             >
               <option class="text-black" selected>Quận/Huyện</option>
             </select>
@@ -129,7 +128,7 @@ link %}
               class="form-select form__address--ward"
               style="font-size: 1.5rem"
               name="ward"
-              default="{{current_user.address[0].ward_id}}"
+              default="{{current_user.address[-1].ward_id}}"
             >
               <option class="text-black" selected>Phường/Xã</option>
             </select>
@@ -154,7 +153,7 @@ link %}
               id=""
               placeholder="Nhập địa chỉ"
               class="text-black"
-            >{{current_user.address[0].address}}</textarea>
+            >{{current_user.address[-1].address}}</textarea>
             {% else %}
             <textarea
               type="textarea"

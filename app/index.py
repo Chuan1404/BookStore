@@ -18,10 +18,6 @@ with app.app_context():
     app.add_url_rule('/account', view_func=routes.account)
 
 
-
-    
-
-
 @login_manager.user_loader
 def load_user(id):
     return get_user_by_id(id)

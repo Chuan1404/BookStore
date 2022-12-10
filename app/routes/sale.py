@@ -31,7 +31,6 @@ def add_to_sale():
         }
 
     session['pay'] = pay
-
     return jsonify({'status': 200})
 
 
@@ -48,3 +47,14 @@ def delete_to_sale():
     return jsonify({'status': 200})
 
 
+@app.route('/api/pay/update', methods=['POST'])
+def update_to_sale():
+    data = request.json
+
+    pay = session.get('pay')
+
+    pay[data['id']]['amount'] = int(data['newAmount'])
+
+    session['pay'] = pay
+
+    return jsonify({'status': 200})

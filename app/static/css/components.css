@@ -24,6 +24,7 @@
   max-width: 30rem;
   width: 100%;
   display: none !important;
+  z-index: 1000;
 }
 
 .header__box.active {

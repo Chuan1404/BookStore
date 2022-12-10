@@ -2,18 +2,20 @@
 
 window.addEventListener("load", () => {
   let buttons = document.querySelectorAll(".addToCart");
+  let input = document.querySelector(".input-amount input");
 
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", async (e) => {
+  buttons.forEach((btn, index) => {
+    btn.addEventListener("click", (e) => {
       let id = e.currentTarget.getAttribute("pro_id");
       let img = e.currentTarget.getAttribute("pro_img");
       let name = e.currentTarget.getAttribute("pro_name");
       let price = e.currentTarget.getAttribute("pro_price");
-      await addToCart(id, img, name, price);
+      let amount = input.value;
+      addToCart(id, img, name, price, amount, index);
     });
   });
 
-  function addToCart(id, img, name, price) {
+  function addToCart(id, img, name, price, amount, index) {
     fetch("/api/add-cart", {
       method: "post",
       body: JSON.stringify({
@@ -21,6 +23,7 @@ window.addEventListener("load", () => {
         img: img,
         name: name,
         price: price,
+        amount: amount
       }),
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +35,9 @@ window.addEventListener("load", () => {
       .then(function (data) {
         let counter = document.querySelector("#cartCounter");
         counter.innerText = data.total_header_cart;
-        window.location.pathname = '/checkout'
+        if (index == 0) {
+          window.scrollTo(0, 0);
+        } else window.location.pathname = "/checkout";
       })
       .catch(function (err) {
         console.error(err);

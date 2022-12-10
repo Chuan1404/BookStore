@@ -39,8 +39,7 @@ def add_order():
 def get_all_order_by_user_id(user_id):
     order_list = Order.query.filter_by(customer_id=user_id).all()
 
-    for r in order_list:
-        for d in r.detail:
-            print(d.book)
-
     return order_list
+
+def get_order_by_id(id):
+    return Order.query.get(id)

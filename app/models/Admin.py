@@ -33,6 +33,7 @@ class SalerView(BaseView):
 
 # Index Admin View
 
+
 class IndexView(AdminIndexView):
     @expose('/')
     @login_required
@@ -46,6 +47,7 @@ class IndexView(AdminIndexView):
         return redirect('/admin/login')
 
 # Login View
+
 
 class LoginView(BaseView):
     @expose('/', methods=('GET', 'POST'))
@@ -101,22 +103,30 @@ class ImportBookView(WarehouseView):
 
 # class Saler
 
+
 class SaleView(SalerView):
     @expose('/', methods=('GET', 'POST'))
     def index(self):
-        
-        pay_session = session.get('pay')
+        if request.method == 'POST':
+            print(request.form)
+            res = add_receipt(request.form)
+            return redirect('/admin/sale/')
+        else:
+            pay_session = session.get('pay')
+            return self.render('admin/sale.html', books=pay_session)
 
-         
 
-        return self.render('admin/sale.html', books = pay_session)
-    
 class PayReceiptView(SalerView):
     @expose('/', methods=('GET', 'POST'))
     def index(self):
-        
-        return 'haha'
-    
+        if request.method == "POST":
+            id = request.form['order_id']
+            
+            order = get_order_by_id(id)
+
+            print('*************************', order.__dict__)
+
+        return self.render('admin/pay_order.html')
 
 
 # Admin View
@@ -268,7 +278,7 @@ class NoteDetailsView(AdminView):
 
             # check amount of model
             if book and book.amount >= 300:
-                    err = 'Số lượng sản phẩm đã trên 300'
+                err = 'Số lượng sản phẩm đã trên 300'
             else:
                 if model.amount < 150:
                     err = 'Số lượng nhập phải trên 150'
@@ -276,16 +286,16 @@ class NoteDetailsView(AdminView):
             # check model exist on database or not
             data_exist = Note_detail.query.filter(
                 Note_detail.book_id == model.book_id, Note_detail.note_id == model.note_id).all()
-           
+
             if len(data_exist) > 1:
                 err = 'Sản phẩm đã tồn tại'
-            
 
             if err:
                 flash(err, 'error')
                 self.delete_model(model)
             else:
                 flash('Create success', 'success')
+
 
 class AddressView(AdminView):
     column_display_pk = True

@@ -150,7 +150,6 @@ export async function formAddress() {
 
   function createOption(select, list) {
     let defaultValue = select.getAttribute("default");
-    console.log(defaultValue);
     let html = "";
     list.forEach((item, index) => {
       html += `
@@ -177,14 +176,22 @@ export function inputAmount() {
     let prev = btns[0];
     let next = btns[1];
 
+    if (input.value <= 1) prev.style.pointerEvents = "none";
+
     next.addEventListener("click", (e) => {
       e.preventDefault();
-      input.value = Number(input.value) + 1;
+      changeValue(Number(input.value) + 1);
     });
 
     prev.addEventListener("click", (e) => {
       e.preventDefault();
-      input.value = Number(input.value) - 1 < 1 ? 1 : Number(input.value) - 1;
+      changeValue(Number(input.value) - 1);
     });
+
+    function changeValue(newValue) {
+      if (newValue <= 1) prev.style.pointerEvents = "none";
+      else prev.style.pointerEvents = "visible";
+      input.value = newValue;
+    }
   });
 }

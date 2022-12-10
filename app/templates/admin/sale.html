@@ -14,7 +14,7 @@
   {% if current_user.is_authenticated %}
   <h1 class="mb-5">Nhân viên: {{current_user.name}}</h1>
 
-  <form action="" class="form">
+  <form action="/admin/sale/" class="form" method="post">
     <div class="row">
       <div class="form__product col-8">
         <div class="form__code d-flex align-items-center">
@@ -59,7 +59,7 @@
                 </div>
               </td>
               <td>
-                <div class="input input-amount">
+                <div class="input input-amount" pro_id="{{b.id}}">
                   <button>-</button>
                   <input type="text" value="{{b.amount}}" />
                   <button>+</button>
@@ -81,20 +81,36 @@
         </table>
       </div>
       <div class="form__customer col-4">
+        {% if books %}
         <div class="form__group">
-          <input type="text" class="input" placeholder="Tên khách hàng" />
+          <input type="text" class="input" placeholder="Tên khách hàng" name="name" />
         </div>
-
         <div class="form__group">
           <h2 class="mb-4">
-            Tổng tiền cần thanh toán: {% set total = namespace(value=0) %} {% if
-            books %} {% for b in books.values() %} {% set total.value =
-            total.value + b.amount * b.unit_price %} {% endfor %} {% endif %} {{
-            total.value }} vnd
+            Tổng tiền cần thanh toán: {% set total = namespace(value=0) %} {%
+            for b in books.values() %} {% set total.value = total.value +
+            b.amount * b.unit_price %} {% endfor %} {{ total.value }} vnd
+            <input type="text" value="{{total.value}}" name="total" hidden/>
           </h2>
-
-          <button class="button" type="submit">Xuất hóa đơn</button>
+          <button id="export-receipt" class="button" type="submit">
+            Xuất hóa đơn
+          </button>
         </div>
+        {% else %}
+        <div class="form__group">
+          <input
+            disabled
+            type="text"
+            class="input"
+            placeholder="Tên khách hàng"
+          />
+        </div>
+        <div class="form__group">
+          <h2 class="mb-4">0 vnd</h2>
+
+          <button disabled class="button" type="submit">Xuất hóa đơn</button>
+        </div>
+        {% endif %}
       </div>
     </div>
   </form>
