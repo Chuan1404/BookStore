@@ -217,21 +217,23 @@
   color: var(--main-cl);
   transition: var(--t);
 }
+.product:hover .product__img .img img {
+  transform: translate(-50%, -50%) scale(1);
+}
 .product__img .img {
   overflow: hidden;
   height: 30rem;
   position: relative;
 }
 .product__img .img img {
-  width: 100%;
+  width: 80%;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(.8);
+  transition: var(--t);
   object-fit: contain;
-  min-width: 100%;
-  min-height: 100%;
-}
+  }
 .product .price {
   color: var(--main-cl);
   font-weight: 700;

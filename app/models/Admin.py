@@ -9,29 +9,54 @@ from app.controllers import *
 
 from app import db
 
+from wtforms import TextAreaField
+from wtforms.widgets import TextArea
+
 # Admin Model View
+
+
 class AdminView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.ADMIN
 
 # Admin, Warehouse, Saler BaseView
+
+
 class AuthenticatedView(BaseView):
     def is_accessible(self):
         return current_user.is_authenticated
+
 
 class AdminBaseView(BaseView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.ADMIN
 
+
 class WarehouseView(BaseView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.WAREHOUSE_MANAGER
+
 
 class SalerView(BaseView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.SALER
 
+
+class CKTextAreaWidget(TextArea):
+    def __call__(self, field, **kwargs):
+        if kwargs.get('class'):
+            kwargs['class'] += ' ckeditor'
+        else:
+            kwargs.setdefault('class', 'ckeditor')
+        return super(CKTextAreaWidget, self).__call__(field, **kwargs)
+
+
+class CKTextAreaField(TextAreaField):
+    widget = CKTextAreaWidget()
+
 # Index Admin View
+
+
 class IndexView(AdminIndexView):
     @expose('/')
     @login_required
@@ -45,6 +70,8 @@ class IndexView(AdminIndexView):
         return redirect('/admin/login')
 
 # Login View
+
+
 class LoginView(BaseView):
     @expose('/', methods=('GET', 'POST'))
     @anonymous_staff
@@ -72,6 +99,8 @@ class LoginView(BaseView):
         return self.render('admin/login.html')
 
 # Logout View
+
+
 class LogoutView(AuthenticatedView):
     @expose('/')
     def index(self):
@@ -79,6 +108,8 @@ class LogoutView(AuthenticatedView):
         return redirect('/admin')
 
 # Warehouse View
+
+
 class ImportBookView(WarehouseView):
     @expose('/', methods=('GET', 'POST'))
     def index(self):
@@ -95,6 +126,8 @@ class ImportBookView(WarehouseView):
         return self.render('admin/import_book.html')
 
 # Sale View
+
+
 class SaleView(SalerView):
     @expose('/', methods=('GET', 'POST'))
     def index(self):
@@ -107,6 +140,8 @@ class SaleView(SalerView):
             return self.render('admin/sale.html', books=pay_session)
 
 # Pay receipt View
+
+
 class PayReceiptView(SalerView):
     @expose('/', methods=('GET', 'POST'))
     def index(self):
@@ -121,6 +156,8 @@ class PayReceiptView(SalerView):
         return self.render('admin/pay_order.html')
 
 # Admin View
+
+
 class RuleView(AdminView):
     can_export = True
     column_sortable_list = ['minimum_entry', 'minimum_inventory']
@@ -129,6 +166,7 @@ class RuleView(AdminView):
         'minimum_entry': 'Số lượng nhập sách tối thiểu',
         'minimum_inventory': 'Số lượng tồn kho tối thiểu'
     }
+
 
 class UserView(AdminView):
     column_display_pk = True
@@ -142,6 +180,11 @@ class UserView(AdminView):
         'username': 'Tên đăng nhập',
         'phone_number': 'Số điện thoại'
     }
+
+    # def on_model_change(self, form, model, is_created):
+    #     if is_created:
+    #         pass
+
 
 class BookView(AdminView):
     # Hiện id sách
@@ -171,6 +214,12 @@ class BookView(AdminView):
     # Sắp xếp thứ tự theo id, tên, giá
     column_sortable_list = ['id', 'name', 'price', 'author']
 
+    extra_js = ['//cdn.ckeditor.com/4.6.0/standard/ckeditor.js']
+    form_overrides = {
+        'description': CKTextAreaField
+    }
+
+
 class CategoryView(AdminView):
     column_display_pk = True
     can_view_details = True
@@ -182,6 +231,11 @@ class CategoryView(AdminView):
         'name': 'Tên thể loại',
         'description': 'Mô tả'
     }
+    extra_js = ['//cdn.ckeditor.com/4.6.0/standard/ckeditor.js']
+    form_overrides = {
+        'description': CKTextAreaField
+    }
+
 
 class OrderView(AdminView):
     column_display_pk = True
@@ -193,6 +247,7 @@ class OrderView(AdminView):
         'id': 'ID',
         'created_at': 'Thời gian lập'
     }
+
 
 class OrderDetailsView(AdminView):
     column_display_pk = True
@@ -206,6 +261,7 @@ class OrderDetailsView(AdminView):
         'unit_price': 'Tổng tiền'
     }
 
+
 class ReceiptView(AdminView):
     column_display_pk = True
     can_view_details = True
@@ -216,6 +272,7 @@ class ReceiptView(AdminView):
         'id': 'ID',
         'created_at': 'Thời gian lập'
     }
+
 
 class ReceiptDetailsView(AdminView):
     column_display_pk = True
@@ -229,6 +286,7 @@ class ReceiptDetailsView(AdminView):
         'unit_price': 'Tổng tiền'
     }
 
+
 class NoteView(AdminView):
     column_display_pk = True
     can_view_details = True
@@ -241,6 +299,7 @@ class NoteView(AdminView):
         'created_at': 'Ngày tạo hoá đơn',
         'updated_at': 'Ngày cập nhật'
     }
+
 
 class NoteDetailsView(AdminView):
     column_display_pk = True
@@ -278,13 +337,16 @@ class NoteDetailsView(AdminView):
             else:
                 flash('Create success', 'success')
 
+
 class AddressView(AdminView):
     column_display_pk = True
     can_view_details = True
-    
+
 # Stats View
+
+
 class StatsView(AdminBaseView):
     @expose('/')
     def index(self):
         categories = category_turnover()
-        return self.render('admin/stats.html', categories = categories)
+        return self.render('admin/stats.html', categories=categories)

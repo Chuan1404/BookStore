@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, Boolean
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, Boolean, Text
 from sqlalchemy.orm import relationship, backref
 from app import db
 
@@ -8,7 +8,7 @@ class Category(db.Model):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
-    description = Column(String(200))
+    description = Column(Text)
 
     def __str__(self):
             return self.name
@@ -19,7 +19,7 @@ class Book(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
     price = Column(Float, nullable=False, default=0)
-    description = Column(String(200))
+    description = Column(Text)
     author = Column(String(50))
     active = Column(Boolean, default=True)
     amount = Column(Integer, default = 0)

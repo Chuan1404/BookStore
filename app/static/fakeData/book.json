@@ -8,5 +8,75 @@
     "active": 1,
     "amount": 0,
     "img": "https://i.truyenvua.com/ebook/190x247/onepunch-man_1552232163.jpg?gf=hdfgdfg&mobile=2"
+  },
+  {
+    "id": 2,
+    "name": "One Piece",
+    "price": 200000,
+    "description": "One Piece là câu truyện kể về Luffy và các thuyền viên của mình",
+    "author": "Eiichiro Oda",
+    "active": 1,
+    "amount": 0,
+    "img": "https://i.truyenvua.com/ebook/190x247/dao-hai-tac_1552224567.jpg?gf=hdfgdfg&mobile=2"
+  },
+  {
+    "id": 3,
+    "name": "Black Clover - Thế Giới Phép Thuật",
+    "price": 150000,
+    "description": "Onepunch-Man là một Manga thể loại siêu anh hùng với đặc trưng phồng tôm đấm phát chết luôn… Lol!!! Nhân vật chính trong Onepunch-man là Saitama, một con người mà nhìn đâu cũng thấy 'tầm thường'",
+    "author": "Tabata Yuuki",
+    "active": 1,
+    "amount": 0,
+    "img": "https://i.truyenvua.com/ebook/190x247/black-clover_1552555341.jpg?gf=hdfgdfg&mobile=2"
+  },
+  {
+    "id": 4,
+    "name": "Đại Chiến Người Khổng Lồ",
+    "price": 300000,
+    "description": "Hơn 100 năm trước, giống người khổng lồ Titan đã tấn công và đẩy loài người tới bờ vực tuyệt chủng.",
+    "author": "Hajime Isayama",
+    "active": 1,
+    "amount": 0,
+    "img": "https://i.truyenvua.com/ebook/190x247/attack-on-titan_1552228880.jpg?gf=hdfgdfg&mobile=2"
+  },
+  {
+    "id": 5,
+    "name": "Thanh Gươm Diệt Quỷ",
+    "price": 144000,
+    "description": "Kimetsu no Yaiba - Tanjirou là con cả của gia đình vừa mất cha. Một ngày nọ, Tanjirou đến thăm thị trấn khác để bán than, khi đêm về cậu ở nghỉ tại nhà người khác thay vì về nhà vì lời đồn thổi về ác quỷ luôn rình mò gần núi vào buổi tối",
+    "author": "One",
+    "active": 1,
+    "amount": 0,
+    "img": "https://i.truyenvua.com/ebook/190x247/kimetsu-no-yaiba_1478064120.jpg?gf=hdfgdfg&mobile=2"
+  },
+  {
+    "id": 6,
+    "name": "Thất Hình Đại Tội",
+    "price": 200000,
+    "description": "'Thất đại ác nhân', một nhóm chiến binh có tham vọng lật đổ vương quốc Britannia, được cho là đã bị tiêu diệt bởi các “hiệp sĩ thánh chiến” mặc dù vẫn còn 1 số người cho rằng họ vẫn còn sống.",
+    "author": "Suzuki Nakaba",
+    "active": 1,
+    "amount": 0,
+    "img": "https://i.truyenvua.com/ebook/190x247/nanatsu-no-taizai_1442987070.jpg?gf=hdfgdfg&mobile=2"
+  },
+  {
+    "id": 7,
+    "name": "Võ Nghịch",
+    "price": 156000,
+    "description": "Truyện tranh Võ Nghịch được cập nhật nhanh và đầy đủ nhất tại TruyenQQ. Bạn đọc đừng quên để lại bình luận và chia sẻ, ủng hộ TruyenQQ ra các chương mới nhất của truyện Võ Nghịch.",
+    "author": "Đang Cập Nhật",
+    "active": 1,
+    "amount": 0,
+    "img": "https://i.truyenvua.com/ebook/190x247/vo-nghich_1576583669.jpg?gf=hdfgdfg&mobile=2"
+  },
+  {
+    "id": 8,
+    "name": "Naruto - Cửu Vĩ Hồ Ly",
+    "price": 520000,
+    "description": "Bối cảnh Naruto xảy ra vào mười hai năm trước khi câu chuyện chính thức bắt đầu, một con hồ ly chín đuôi đã tấn công Konohagakure. Nó là một con quái vật có sức mạnh khủng khiếp",
+    "author": "Kishimoto Masashi",
+    "active": 1,
+    "amount": 0,
+    "img": "https://i.truyenvua.com/ebook/190x247/naruto_1552225598.jpg?gf=hdfgdfg&mobile=2"
   }
 ]
