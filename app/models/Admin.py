@@ -121,11 +121,12 @@ class PayReceiptView(SalerView):
     def index(self):
         if request.method == "POST":
             id = request.form['order_id']
-            
-            order = get_order_by_id(id)
+            res = get_data_render_pay_order_page(id)
 
-            print('*************************', order.__dict__)
-
+            if res['status']:
+                return self.render('admin/pay_order.html', order=res['data'])
+            else:
+                return self.render('admin/pay_order.html', err=res['err'])
         return self.render('admin/pay_order.html')
 
 

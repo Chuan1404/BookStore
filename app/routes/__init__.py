@@ -6,3 +6,4 @@ from .note import *
 from .account import *
 from .user_order import *
 from .sale import *
+from .order import *
