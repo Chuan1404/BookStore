@@ -53,11 +53,11 @@ link %}
                 </div>
                 <div class="col-3 productbox mt-5">
                   <span class="price text-black price__checkout"
-                    >{{ c.price }} vnd</span
+                    >{{ "{:,.1f}".format(c.price) }} VND</span
                   >
                 </div>
                 <div class="col-2">
-                  <div class="input input-amount mt-5">
+                  <div class="input input-amount mt-5" style="pointer-events: visible;">
                     <button class="text-black">-</button>
                     <input
                       type="text"
@@ -67,7 +67,7 @@ link %}
                     <button class="text-black">+</button>
                   </div>
                 </div>
-                <div class="col-1 checkout-svg">
+                <div class="col-1 checkout-svg" style="pointer-events: visible;">
                   <div id="delete-btn" class="cardbox" pro_id="{{c.id}}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                       <path
@@ -85,7 +85,7 @@ link %}
                 Tổng sản phẩm: {{ cart_stats.total_quantity }}
               </h4>
               <h4 class="text-black">
-                Tổng tiền: {{ cart_stats.total_amount }}
+                Tổng tiền: {{ "{:,.1f}".format(cart_stats.total_amount) }} VND 
               </h4>
             </div>
           </form>

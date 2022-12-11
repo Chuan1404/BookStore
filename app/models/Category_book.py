@@ -35,5 +35,5 @@ class Book(db.Model):
         return self.name
 
 db.Table('category_book', 
-Column('category_id', Integer, ForeignKey('book.id'), nullable=False, primary_key=True),
-Column('book_id',Integer,ForeignKey('category.id'), nullable=False, primary_key=True))
+Column('category_id', Integer, ForeignKey('category.id'), nullable=False, primary_key=True),
+Column('book_id',Integer,ForeignKey('book.id'), nullable=False, primary_key=True))

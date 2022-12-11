@@ -22,7 +22,9 @@
 .text-black {
   color: black;
 }
-
+.text-main {
+  color: var(--main-cl);
+}
 /* -------background-white--------- */
 .background-white {
   background-color: white;

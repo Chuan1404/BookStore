@@ -4,3 +4,4 @@ from .Note import *
 from .Order import *
 from .Address import *
 from .Receipt import *
+from .stats import *

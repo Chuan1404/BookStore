@@ -9,31 +9,29 @@ from app.controllers import *
 
 from app import db
 
-# Admin, Warehouse, Saler View
-
-
-class AuthenticatedView(BaseView):
-    def is_accessible(self):
-        return current_user.is_authenticated
-
-
+# Admin Model View
 class AdminView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.ADMIN
 
+# Admin, Warehouse, Saler BaseView
+class AuthenticatedView(BaseView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+class AdminBaseView(BaseView):
+    def is_accessible(self):
+        return current_user.is_authenticated and current_user.user_role == User_role.ADMIN
 
 class WarehouseView(BaseView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.WAREHOUSE_MANAGER
-
 
 class SalerView(BaseView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == User_role.SALER
 
 # Index Admin View
-
-
 class IndexView(AdminIndexView):
     @expose('/')
     @login_required
@@ -47,8 +45,6 @@ class IndexView(AdminIndexView):
         return redirect('/admin/login')
 
 # Login View
-
-
 class LoginView(BaseView):
     @expose('/', methods=('GET', 'POST'))
     @anonymous_staff
@@ -76,14 +72,11 @@ class LoginView(BaseView):
         return self.render('admin/login.html')
 
 # Logout View
-
-
 class LogoutView(AuthenticatedView):
     @expose('/')
     def index(self):
         logout_user()
         return redirect('/admin')
-
 
 # Warehouse View
 class ImportBookView(WarehouseView):
@@ -101,9 +94,7 @@ class ImportBookView(WarehouseView):
             return self.render('admin/import_book.html', note_detail=res)
         return self.render('admin/import_book.html')
 
-# class Saler
-
-
+# Sale View
 class SaleView(SalerView):
     @expose('/', methods=('GET', 'POST'))
     def index(self):
@@ -115,7 +106,7 @@ class SaleView(SalerView):
             pay_session = session.get('pay')
             return self.render('admin/sale.html', books=pay_session)
 
-
+# Pay receipt View
 class PayReceiptView(SalerView):
     @expose('/', methods=('GET', 'POST'))
     def index(self):
@@ -129,7 +120,6 @@ class PayReceiptView(SalerView):
                 return self.render('admin/pay_order.html', err=res['err'])
         return self.render('admin/pay_order.html')
 
-
 # Admin View
 class RuleView(AdminView):
     can_export = True
@@ -139,7 +129,6 @@ class RuleView(AdminView):
         'minimum_entry': 'Số lượng nhập sách tối thiểu',
         'minimum_inventory': 'Số lượng tồn kho tối thiểu'
     }
-
 
 class UserView(AdminView):
     column_display_pk = True
@@ -153,7 +142,6 @@ class UserView(AdminView):
         'username': 'Tên đăng nhập',
         'phone_number': 'Số điện thoại'
     }
-
 
 class BookView(AdminView):
     # Hiện id sách
@@ -183,7 +171,6 @@ class BookView(AdminView):
     # Sắp xếp thứ tự theo id, tên, giá
     column_sortable_list = ['id', 'name', 'price', 'author']
 
-
 class CategoryView(AdminView):
     column_display_pk = True
     can_view_details = True
@@ -196,7 +183,6 @@ class CategoryView(AdminView):
         'description': 'Mô tả'
     }
 
-
 class OrderView(AdminView):
     column_display_pk = True
     can_view_details = True
@@ -207,7 +193,6 @@ class OrderView(AdminView):
         'id': 'ID',
         'created_at': 'Thời gian lập'
     }
-
 
 class OrderDetailsView(AdminView):
     column_display_pk = True
@@ -221,7 +206,6 @@ class OrderDetailsView(AdminView):
         'unit_price': 'Tổng tiền'
     }
 
-
 class ReceiptView(AdminView):
     column_display_pk = True
     can_view_details = True
@@ -232,7 +216,6 @@ class ReceiptView(AdminView):
         'id': 'ID',
         'created_at': 'Thời gian lập'
     }
-
 
 class ReceiptDetailsView(AdminView):
     column_display_pk = True
@@ -246,7 +229,6 @@ class ReceiptDetailsView(AdminView):
         'unit_price': 'Tổng tiền'
     }
 
-
 class NoteView(AdminView):
     column_display_pk = True
     can_view_details = True
@@ -259,7 +241,6 @@ class NoteView(AdminView):
         'created_at': 'Ngày tạo hoá đơn',
         'updated_at': 'Ngày cập nhật'
     }
-
 
 class NoteDetailsView(AdminView):
     column_display_pk = True
@@ -297,15 +278,13 @@ class NoteDetailsView(AdminView):
             else:
                 flash('Create success', 'success')
 
-
 class AddressView(AdminView):
     column_display_pk = True
     can_view_details = True
-    # column_searchable_list = ['name', 'description']
-    # column_filters = ['name', 'description']
-    # column_sortable_list = ['id', 'name']
-    # column_labels = {
-    #     'id': 'ID',
-    #     'name': 'Tên thể loại',
-    #     'description': 'Mô tả'
-    # }
+    
+# Stats View
+class StatsView(AdminBaseView):
+    @expose('/')
+    def index(self):
+        categories = category_turnover()
+        return self.render('admin/stats.html', categories = categories)

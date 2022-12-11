@@ -45,7 +45,7 @@ content %}
             {% set total.value = total.value + d.amount * d.unit_price %} 
             {% endfor %}
 
-            {{ total.value }} 
+            {{ "{:,.1f}".format(total.value) }} VND
 
           </td>
           <td>

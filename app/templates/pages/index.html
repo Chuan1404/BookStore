@@ -193,7 +193,7 @@ content %}
               <p class="description my-4">{{pro.description}}</p>
 
               <span class="subprice">130.00 vnd</span>
-              <span class="price">{{pro.price}} vnd</span>
+              <span class="price">{{ "{:,.1f}".format(pro.price) }} VND</span>
               <div class="rate d-flex">
                 {% for num in range(0,5) %}
                 <div class="cardbox mx-2">

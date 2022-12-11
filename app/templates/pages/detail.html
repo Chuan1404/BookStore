@@ -17,7 +17,7 @@ block link %}
       <div class="productbox__info col-12 col-md-6">
         <h1>{{product.name}}</h1>
 
-        <span class="price">${{product.price}}</span>
+        <span class="price">{{ "{:,.1f}".format(product.price) }} VND</span>
         <span class="subprice">990.000 vnd</span>
 
         <p>Type: Category</p>
