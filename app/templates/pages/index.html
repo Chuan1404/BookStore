@@ -4,7 +4,7 @@ content %}
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-3 home__filter">
-        <form action="">
+        <form action="/">
           <div class="form__group accordion">
             <div class="accordion__title d-flex justify-content-between">
               <h3>Price</h3>
@@ -24,14 +24,16 @@ content %}
             <div class="accordion__panel">
               <div class="form__group d-flex align-items-center">
                 <label for="" class="me-2">From</label>
-                <input type="number" />
+                <input type="number" name="from_price" />
               </div>
 
               <div class="form__group d-flex align-items-center">
                 <label for="" class="me-2">To</label>
-                <input type="number" />
+                <input type="number" name="to_price"/>
               </div>
             </div>
+
+            
           </div>
 
           {% if categories %}
@@ -76,6 +78,10 @@ content %}
             </div>
           </div>
           {% endif %}
+
+          <div class="form__group">
+            <button id="filter-price" class="button w-100">Lọc</button>
+          </div>
         </form>
       </div>
       <div class="col-12 col-lg-9 home__shop">

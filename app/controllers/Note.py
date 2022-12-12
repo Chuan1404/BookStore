@@ -17,7 +17,9 @@ def get_note_by_date(date=datetime.now().date()):
         }
 
 def get_books_in_note_detail(note_id):
-    note_details = Note_detail.query.filter(Note_detail.note_id == note_id).all()
+    note = Note.query.get(note_id)
+    note_details = note.detail
+
     books = []
     for detail in note_details:
         books.append({
@@ -29,6 +31,7 @@ def get_books_in_note_detail(note_id):
             'status': 1,
             'data': {
                 'note_id': note_id,
+                'is_imported': note.is_imported,
                 'books': books
             }
         }
@@ -40,7 +43,6 @@ def get_books_in_note_detail(note_id):
     
 def data_import_page(date=datetime.now().date()):
     note = get_note_by_date(date)
-
     if note.get('status') == 1:
         res = get_books_in_note_detail(note.get('data').id)
         if res.get('status') == 1:

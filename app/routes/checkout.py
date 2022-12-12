@@ -84,3 +84,15 @@ def count_cart(cart):
         'total_amount': total_amount,
         'total_header_cart': total_header_cart
     }
+@app.route('/api/checkout/update', methods=['POST'])
+def update_to_checkout():
+    data = request.json
+    
+    print(data)
+    cart = session.get('cart')
+
+    cart[data['id']]['quantity'] = int(data['newAmount'])
+
+    session['cart'] = cart
+
+    return jsonify({'status': 200})

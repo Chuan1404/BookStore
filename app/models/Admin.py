@@ -121,6 +121,7 @@ class ImportBookView(WarehouseView):
                 int(date_split[0]), int(date_split[1]), int(date_split[2])))
         else:
             res = data_import_page()
+
         if res:
             return self.render('admin/import_book.html', note_detail=res)
         return self.render('admin/import_book.html')
@@ -291,13 +292,12 @@ class NoteView(AdminView):
     column_display_pk = True
     can_view_details = True
     can_export = True
-    column_searchable_list = ['created_at', 'updated_at']
-    column_sortable_list = ['id', 'created_at', 'updated_at']
+    column_searchable_list = ['created_at', ]
+    column_sortable_list = ['id', 'created_at']
     column_labels = {
         'id': 'ID',
         'import_at': 'Ngày nhập',
         'created_at': 'Ngày tạo hoá đơn',
-        'updated_at': 'Ngày cập nhật'
     }
 
 
@@ -305,6 +305,7 @@ class NoteDetailsView(AdminView):
     column_display_pk = True
     can_view_details = True
     can_export = True
+    can_edit=False
     column_searchable_list = ['id']
     column_sortable_list = ['id', 'amount']
     column_labels = {
@@ -327,8 +328,9 @@ class NoteDetailsView(AdminView):
             # check model exist on database or not
             data_exist = Note_detail.query.filter(
                 Note_detail.book_id == model.book_id, Note_detail.note_id == model.note_id).all()
-
-            if len(data_exist) > 1:
+            print(model.book_id,  model.note_id)
+            print(data_exist)
+            if len(data_exist) >= 1:
                 err = 'Sản phẩm đã tồn tại'
 
             if err:

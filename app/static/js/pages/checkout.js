@@ -4,6 +4,7 @@ let accordion = document.querySelector(".accordion");
 let orderForm = document.querySelector("#order-form");
 let submitBtn = document.querySelector("#btn-submit");
 let deleteBtn = document.querySelector("#delete-btn");
+let inputAmount = document.querySelectorAll(".input-amount");
 
 window.addEventListener("load", () => {
   formAddress();
@@ -41,6 +42,27 @@ window.addEventListener("load", () => {
       deleteCart(e.currentTarget.getAttribute('pro_id'));
     }
   });
+  inputAmount.forEach((item) => {
+    let buttons = item.querySelectorAll("button");
+    let input = item.querySelector("input");
+
+    input.addEventListener('blur', (e) => {
+      update_amount_book(item.getAttribute("pro_id"), input.value);
+    })
+
+    input.addEventListener('keydown', (e) => {
+      if (e.keyCode == 13) {
+        e.preventDefault();
+        update_amount_book(item.getAttribute("pro_id"), input.value);
+    }
+    })
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        update_amount_book(item.getAttribute("pro_id"), input.value);
+      });
+    });
+  });
 
   function deleteCart(id) {
     fetch("/api/checkout/delete", {
@@ -53,7 +75,20 @@ window.addEventListener("load", () => {
       .then((res) => res.json())
       .then((data) => data.status == 200 && window.location.reload());
   }
+  function update_amount_book(id, newAmount) {
+    fetch("/api/checkout/update", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id, newAmount }),
+    })
+      .then((res) => res.json())
+      .then((data) => data.status == 200 && location.reload());
+  }
+
 });
+
 window.addEventListener("resize", () => {
   if (window.innerWidth >= 992) {
     if (hasClass(accordion, "active"))

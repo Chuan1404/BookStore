@@ -39,7 +39,12 @@
     </tbody>
   </table>
 
+  {% if note_detail.is_imported %}
+  <h1>Đã nhập</h1>
+  {% else %}
   <button note_id="{{note_detail.note_id}}" id='submitImport' class="button btn-max-content">Hoàn tất nhập sách</button>
+
+  {% endif %}
   {% else %}
   <h1 class="text-center">Không có phiếu nhập</h1>
   {% endif %}

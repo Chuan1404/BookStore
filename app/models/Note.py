@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, ForeignKey, DateTime, String
+from sqlalchemy import Column, Integer, ForeignKey, DateTime, String, Boolean
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from app import db
@@ -10,13 +10,13 @@ class Note(db.Model):
     name = Column(String(50), nullable=False)
     import_at = Column(DateTime, default=datetime.now().date())
     created_at = Column(DateTime, default=datetime.now().date())
-    updated_at = Column(DateTime, default=datetime.now().date())
+    is_imported = Column(Boolean, default=False, nullable=False)
 
     # FOREIGN KEYS
     admin = Column(Integer, ForeignKey('user.id'), nullable=False)
     
     # RELATIONSHIP
-    note_book = relationship('Note_detail', backref='note', lazy=True)
+    detail = relationship('Note_detail', backref='detail', lazy=True)
 
     def __str__(self):
         return self.name

@@ -50,6 +50,7 @@ def delete_to_sale():
 @app.route('/api/pay/update', methods=['POST'])
 def update_to_sale():
     data = request.json
+    
 
     pay = session.get('pay')
 
