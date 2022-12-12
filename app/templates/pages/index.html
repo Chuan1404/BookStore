@@ -29,11 +29,9 @@ content %}
 
               <div class="form__group d-flex align-items-center">
                 <label for="" class="me-2">To</label>
-                <input type="number" name="to_price"/>
+                <input type="number" name="to_price" />
               </div>
             </div>
-
-            
           </div>
 
           {% if categories %}
@@ -57,7 +55,12 @@ content %}
               {% for cate in categories %}
               <div class="form__group d-flex align-items-center">
                 <label for="{{cate.id}}" class="input input-checkbox me-2">
-                  <input name="category" id="{{cate.id}}" value="{{cate.id}}" type="radio" />
+                  <input
+                    name="category"
+                    id="{{cate.id}}"
+                    value="{{cate.id}}"
+                    type="radio"
+                  />
                   <div class="checkbox">
                     <svg
                       fill="#000000"
@@ -186,10 +189,7 @@ content %}
           >
             <div class="product__img position-relative">
               <div class="img position-relative">
-                <img
-                  src="{{pro.img}}"
-                  alt=""
-                />
+                <img src="{{pro.img}}" alt="" />
               </div>
             </div>
             <div class="product__info">
@@ -256,6 +256,17 @@ content %}
           <h1>Không có sản phẩm phù hợp</h1>
           {% endif %}
         </div>
+
+        {% if products and pages %}
+        <ul class="pagination justify-content-end my-4">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+
+          {% for page in range(1, pages + 1) %}
+          <li class="page-item"><a class="page-link" href="{{url_for('index')}}?page={{page}}">{{page}}</a></li>
+          {% endfor %}
+          <li class="page-item"><a class="page-link" href="?#">Next</a></li>
+        </ul>
+        {% endif %}
       </div>
     </div>
   </div>
