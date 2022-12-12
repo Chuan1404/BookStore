@@ -350,10 +350,10 @@ class AddressView(AdminView):
 class StatsView(AdminBaseView):
     @expose('/')
     def index(self):
-        category_month = request.args.get('category_month') if request.args.get('category_month') else datetime.now().month
-        book_month = request.args.get('book_month') if request.args.get('book_month') else datetime.now().month
+        month = request.args.get('month') if request.args.get('month') else datetime.now().month
+        year = request.args.get('year') if request.args.get('year') else datetime.now().year
 
 
-        categories = category_turnover(category_month)
-        books = book_stats(book_month)
+        categories = category_turnover(month, year)
+        books = book_stats(month, year)
         return self.render('admin/stats.html', categories=categories, books=books)

@@ -43,7 +43,7 @@ def add_to_cart():
 def checkout_api():
     data = request.json
     order_res = add_order()
-
+    print(data['address'])
     if order_res['status']:
         add_address(city_id=int(data['city']), district_id=int(
             data['district']), ward_id=int(data['ward']), address=data['address'])

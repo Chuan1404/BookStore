@@ -4,7 +4,7 @@ def get_book_by_id(id):
     return Book.query.get(id)
 
 def get_books(from_price=None, to_price=None, kw=None, category=None):
-    product = Book.query
+    product = Book.query.filter(Book.amount > 0, Book.active == True)
 
     if (from_price):
 
