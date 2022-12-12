@@ -21,7 +21,7 @@ block link %}
         <span class="subprice">990.000 vnd</span>
 
         <p>Type: Category</p>
-        <p>{{product.description}}</p>
+        <p>{{product.description|safe}}</p>
 
         <table class="table my-4">
           <tr>
@@ -70,7 +70,7 @@ block link %}
       <h2>Mô tả sản phẩm</h2>
 
       <div class="content">
-        {{product.description}}
+        {{product.description|safe}}
         <!-- <p>
           <strong>GIỚI THIỆU</strong>
         </p>

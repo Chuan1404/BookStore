@@ -8,3 +8,10 @@ def get_books():
 
 def get_categories():
     return Category.query.all()
+
+def convert_categories_to_str(categories):
+    newList = []
+    for c in categories:
+        newList.append(c.name)
+    
+    return ','.join(newList)

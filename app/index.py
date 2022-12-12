@@ -2,6 +2,7 @@ from app import app, admin, login_manager
 from app.controllers import get_user_by_id
 from flask import session
 import routes
+from datetime import datetime
 
 from flask import request, redirect
 
@@ -31,7 +32,8 @@ def unauthorized_handler():
 @app.context_processor
 def common_response():
     return {
-        'cart_stats': routes.count_cart(session.get('cart'))
+        'cart_stats': routes.count_cart(session.get('cart')),
+        'now': datetime.utcnow()
     }
     
 if __name__ == '__main__':

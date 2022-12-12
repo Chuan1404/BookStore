@@ -189,7 +189,7 @@ content %}
             <div class="product__info">
               <h3 class="my-4">{{pro.name}}</h3>
 
-              <p class="description my-4">{{pro.description}}</p>
+              <p class="description my-4">{{pro.description|safe}}</p>
 
               <span class="subprice">130.00 vnd</span>
               <span class="price">{{ "{:,.1f}".format(pro.price) }} VND</span>

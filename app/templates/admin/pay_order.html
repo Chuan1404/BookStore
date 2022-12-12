@@ -44,13 +44,13 @@
           </div>
         </td>
         <td>{{d.amount}}</td>
-        <td>{{d.unit_price}}</td>
+        <td>{{"{:,.1f} VND".format(d.unit_price) }}</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
   <div class="totalbox text-end">
-    <h1 style="display: inline-block">Tổng cộng: {{order.total}}</h1>
+    <h1 style="display: inline-block">Tổng cộng: {{ "{:,.1f} VND".format(order.total) }}</h1>
 
     {% if order.is_paid %}
     <h1>Đã thanh toán</h1>

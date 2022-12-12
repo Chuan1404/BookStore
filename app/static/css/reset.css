@@ -52,11 +52,11 @@ input[type="password"] {
 input[type="checkbox"] {
   appearance: none;
 }
-input[type="date"] {
+input[type="date"],
+input[type="month"] {
   outline: none;
   border: none;
 }
-
 /* ----------textarea---------- */
 textarea {
   padding: 1rem var(--padding);

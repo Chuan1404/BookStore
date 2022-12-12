@@ -1,40 +1,85 @@
 {% extends 'admin/base_view.html' %} {% block head_css %} {{super()}}
 <script src="{{ url_for('static', filename='js/admin/stats.js') }}"></script>
+<script>
+  let categories = {{ categories|safe }}
+  let books = {{ books|safe }}
+  window.onload = function() {
+    categories = Object.values(categories)
+    books = Object.values(books)
 
+    setUpChart('category_chart', 'Doanh thu theo tháng' ,categories.map(item => item.name), categories.map(item => item.turnover))
+    setUpChart('book_chart', 'Tần suất bán hàng' ,books.map(item => item.name), books.map(item => item.total_amount))
+  }
+
+  function setUpChart(ctx, label, labels, data) {
+    new Chart(document.getElementById(ctx), {
+    type: "bar",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: label,
+          data: data,
+          borderWidth: 1,
+        },
+
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+  }
+</script>
 {% endblock %} {% block body %}
 
 <main id="statspage">
   {% if current_user.is_authenticated %}
   <div class="stats">
+    <div class="row mb-5">
+      <div class="offset-3 col-3">
+        <select
+          class="form-select bg-dark text-white"
+          name="month"
+          style="font-size: 1.5rem; border-color: var(--border-cl)"
+        >
+          <option class="text-white" value="1">Tháng 1</option>
+          <option class="text-white" value="2">Tháng 2</option>
+          <option class="text-white" value="3">Tháng 3</option>
+          <option class="text-white" value="4">Tháng 4</option>
+          <option class="text-white" value="5">Tháng 5</option>
+          <option class="text-white" value="6">Tháng 6</option>
+          <option class="text-white" value="7">Tháng 7</option>
+          <option class="text-white" value="8">Tháng 8</option>
+          <option class="text-white" value="9">Tháng 9</option>
+          <option class="text-white" value="10">Tháng 10</option>
+          <option class="text-white" value="11">Tháng 11</option>
+          <option class="text-white" value="12">Tháng 12</option>
+        </select>
+      </div>
+      <div class="col-3">
+        <select
+          class="form-select bg-dark text-white"
+          name="month"
+          style="font-size: 1.5rem; border-color: var(--border-cl)"
+        >
+          {% for y in range(2000, now.year + 1) %}
+          <option class="text-white" value="{{y}}">Năm {{ y }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
     <div class="row mb-4">
       <h3 class="stats__title col-12 text-center mb-4 text-main">
         BÁO CÁO DOANH THU THEO THÁNG
       </h3>
 
       <div class="stats__table col-12 col-md-6">
-        <form action="" class="form">
-          <div class="form__group">
-            <select
-              class="form-select bg-dark text-white"
-              name="month"
-              style="font-size: 1.5rem; border-color: var(--border-cl)"
-            >
-              <option class="text-white" selected value="">Tháng 1</option>
-              <option class="text-white" value="">Tháng 2</option>
-              <option class="text-white" value="">Tháng 3</option>
-              <option class="text-white" value="">Tháng 4</option>
-              <option class="text-white" value="">Tháng 5</option>
-              <option class="text-white" value="">Tháng 6</option>
-              <option class="text-white" value="">Tháng 7</option>
-              <option class="text-white" value="">Tháng 8</option>
-              <option class="text-white" value="">Tháng 9</option>
-              <option class="text-white" value="">Tháng 10</option>
-              <option class="text-white" value="">Tháng 11</option>
-              <option class="text-white" value="">Tháng 12</option>
-            </select>
-          </div>
-        </form>
-
         <table class="table">
           <thead>
             <tr>
@@ -46,23 +91,21 @@
             </tr>
           </thead>
           <tbody>
-            {% if categories %}
-            {% for c in categories.values() %}
+            {% if categories %} {% for c in categories.values() %}
             <tr>
-                <td>{{ loop.index }}</td>
-                <td>{{ c.name }}</td>
-                <td>{{ "{:,.1f} VND".format(c.turnover)}}</td>
-                <td>{{ c.total_amount }}</td>
-                <td>{{ c.rate }}%</td>
+              <td>{{ loop.index }}</td>
+              <td>{{ c.name }}</td>
+              <td>{{ "{:,.1f} VND".format(c.turnover)}}</td>
+              <td>{{ c.total_amount }}</td>
+              <td>{{ c.rate }}%</td>
             </tr>
-            {% endfor %}
-            {% endif %}
+            {% endfor %} {% endif %}
           </tbody>
         </table>
       </div>
 
       <div class="stats__char col-12 col-md-6">
-        <canvas id="myChart"></canvas>
+        <canvas id="category_chart"></canvas>
       </div>
     </div>
 
@@ -71,28 +114,6 @@
         BÁO CÁO TẦN SUẤT SÁCH BÁN
       </h3>
       <div class="stats__table col-12 col-md-6">
-        <form action="" class="form">
-            <div class="form__group">
-              <select
-                class="form-select bg-dark text-white"
-                name="month"
-                style="font-size: 1.5rem; border-color: var(--border-cl)"
-              >
-                <option class="text-white" selected value="">Tháng 1</option>
-                <option class="text-white" value="">Tháng 2</option>
-                <option class="text-white" value="">Tháng 3</option>
-                <option class="text-white" value="">Tháng 4</option>
-                <option class="text-white" value="">Tháng 5</option>
-                <option class="text-white" value="">Tháng 6</option>
-                <option class="text-white" value="">Tháng 7</option>
-                <option class="text-white" value="">Tháng 8</option>
-                <option class="text-white" value="">Tháng 9</option>
-                <option class="text-white" value="">Tháng 10</option>
-                <option class="text-white" value="">Tháng 11</option>
-                <option class="text-white" value="">Tháng 12</option>
-              </select>
-            </div>
-          </form>
         <table class="table">
           <thead>
             <tr>
@@ -104,36 +125,25 @@
             </tr>
           </thead>
           <tbody>
+            {% if books %} {% for b in books.values() %}
             <tr>
-              <th>1</th>
-              <th>One piece</th>
-              <th>Anime</th>
-              <th>50</th>
-              <th>50%</th>
+              <td>{{loop.index}}</td>
+              <td>{{b.name}}</td>
+              <td>{{b.categories}}</td>
+              <td>{{b.total_amount}}</td>
+              <td>{{b.rate}}%</td>
             </tr>
-            <tr>
-              <th>2</th>
-              <th>Naruto</th>
-              <th>Manga</th>
-              <th>20</th>
-              <th>20%</th>
-            </tr>
-            <tr>
-              <th>3</th>
-              <th>One punch man</th>
-              <th>Anime</th>
-              <th>30</th>
-              <th>30%</th>
-            </tr>
+            {% endfor %} {% endif %}
           </tbody>
         </table>
       </div>
 
       <div class="stats__char col-12 col-md-6">
-        <canvas id="myChart2"></canvas>
+        <canvas id="book_chart"></canvas>
       </div>
     </div>
   </div>
   {% endif %}
 </main>
+
 {% endblock body %}
