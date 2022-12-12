@@ -11,7 +11,6 @@ window.addEventListener("load", () => {
       let img = e.currentTarget.getAttribute("pro_img");
       let name = e.currentTarget.getAttribute("pro_name");
       let price = e.currentTarget.getAttribute("pro_price");
-      console.log(id, img, name, price);
       await addToCart(id, img, name, price);
     });
   });

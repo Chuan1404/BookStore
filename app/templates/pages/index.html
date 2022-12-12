@@ -57,7 +57,7 @@ content %}
               {% for cate in categories %}
               <div class="form__group d-flex align-items-center">
                 <label for="{{cate.id}}" class="input input-checkbox me-2">
-                  <input id="{{cate.id}}" type="checkbox" />
+                  <input name="category" id="{{cate.id}}" value="{{cate.id}}" type="radio" />
                   <div class="checkbox">
                     <svg
                       fill="#000000"

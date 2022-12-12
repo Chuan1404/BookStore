@@ -65,7 +65,7 @@
                   <button>+</button>
                 </div>
               </td>
-              <td>{{b.unit_price}} vnd</td>
+              <td>{{"{:,.1f}".format(b.unit_price)}} VND</td>
               <td>
                 <div class="cardbox" book_id="{{b.id}}">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
@@ -89,7 +89,7 @@
           <h2 class="mb-4">
             Tổng tiền cần thanh toán: {% set total = namespace(value=0) %} {%
             for b in books.values() %} {% set total.value = total.value +
-            b.amount * b.unit_price %} {% endfor %} {{ total.value }} vnd
+            b.amount * b.unit_price %} {% endfor %} {{ "{:,.1f}".format(total.value) }} VND
             <input type="text" value="{{total.value}}" name="total" hidden/>
           </h2>
           <button id="export-receipt" class="button" type="submit">
